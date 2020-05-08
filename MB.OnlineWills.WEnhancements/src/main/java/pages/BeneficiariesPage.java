@@ -1,0 +1,670 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utilities.Base;
+import utilities.CommonFunctions;
+
+public class BeneficiariesPage extends Base {
+	// ========================================================== Page Objects ===========================================================
+	@FindBy(xpath = "//input[contains(@id,'FutureChildren_True')]")
+	WebElement YesQuestion1;
+	@FindBy(xpath = "//input[contains(@id,'FutureChildren_False')]")
+	WebElement NoQuestion1;
+	@FindBy(xpath = "//input[contains(@id,'GrandChildren_True')]")
+	WebElement YesQuestion2;
+	@FindBy(xpath = "//input[contains(@id,'GrandChildren_False')]")
+	WebElement NoQuestion2;
+	@FindBy(xpath = "//input[contains(@id,'ImmediateChildren_True')]")
+	WebElement YesQuestion1SingleWithChildren;
+	@FindBy(xpath = "//input[contains(@id,'ImmediateChildren_False')]")
+	WebElement NoQuestion1SingleWithChildren;
+	@FindBy(xpath = "//input[contains(@id,'Partner_True')]")
+	WebElement YesQuestion1WithSpouse;
+	@FindBy(xpath = "//input[contains(@id,'Partner_False')]")
+	WebElement NoQuestion1WithSpouse;
+	@FindBy(xpath = "//input[contains(@id,'WishDetail_Input')]")
+	WebElement FuneralWishField;
+
+	@FindBy(xpath = "// *[contains(text(), 'If all of your chosen beneficiaries pass away')]")
+	WebElement DisasterQuestion;
+	@FindBy(xpath = "//input[contains(@id,'OtherInstruction')]")
+	WebElement DisasterQuestionField;
+
+	@FindBy(xpath = "// *[contains(text(), 'Who do you want to leave your estate to?')]")
+	WebElement BeneficiaryQuestion;
+	@FindBy(xpath = "//a[text()='Add Beneficiary']")
+	WebElement AddBeneficiary;
+	@FindBy(xpath = "//input[contains(@id,'Button_BenefSave')]")
+	WebElement SaveBeneficiaries;
+	@FindBy(xpath = "//input[contains(@id,'Button_BenefCancel')]")
+	WebElement CancelBeneficiaries;
+	@FindBy(xpath = "(//a[contains(@id,'BeneficiaryListEdit')])[1]")
+	WebElement Edit1stBeneficiary;
+	@FindBy(xpath = "(//a[contains(@id,'BeneficiaryListDelete')])[1]")
+	WebElement Delete1stBeneficiary;
+	@FindBy(xpath = "//select[contains(@id,'BenefTitle')]")
+	WebElement AddBeneficiariesTitle;
+	@FindBy(xpath = "(//select[contains(@id,'BenefTitle')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesTitleReq;
+	@FindBy(xpath = "//input[contains(@id,'BenefFirstName')]")
+	WebElement AddBeneficiariesFName;
+	@FindBy(xpath = "(//input[contains(@id,'BenefFirstName')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesFNameReq;
+	@FindBy(xpath = "//input[contains(@id,'BenefMiddleName')]")
+	WebElement AddBeneficiariesMName;
+	@FindBy(xpath = "//input[contains(@id,'BenefLastName')]")
+	WebElement AddBeneficiariesLName;
+	@FindBy(xpath = "(//input[contains(@id,'BenefLastName')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesLNameReq;
+	@FindBy(xpath = "//select[contains(@id,'BenefRelationship2')]")
+	WebElement AddBeneficiariesRelationship;
+	@FindBy(xpath = "(//select[contains(@id,'BenefRelationship2')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesRelationshipReq;
+	@FindBy(xpath = "//select[contains(@id,'BenefCountry')]")
+	WebElement AddBeneficiariesCountry;
+	@FindBy(xpath = "//input[contains(@id,'BeneftAddressLine1')]")
+	WebElement AddBeneficiariesAddressLine1;
+	@FindBy(xpath = "(//input[contains(@id,'BeneftAddressLine1')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesAddressLine1Req;
+	@FindBy(xpath = "//input[contains(@id,'BeneftAddressLine2')]")
+	WebElement AddBeneficiariesAddressLine2;
+	@FindBy(xpath = "//input[contains(@id,'BenefSuburb')]")
+	WebElement AddBeneficiariesSuburb;
+	@FindBy(xpath = "(//input[contains(@id,'BenefSuburb')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesSuburbReq;
+	@FindBy(xpath = "//select[contains(@id,'BenefState')]")
+	WebElement AddBeneficiariesState;
+	@FindBy(xpath = "(//select[contains(@id,'BenefState')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesStateReq;
+	@FindBy(xpath = "//input[contains(@id,'BenefPostcode')]")
+	WebElement AddBeneficiariesPostcode;
+	@FindBy(xpath = "(//input[contains(@id,'BenefPostcode')]//following::a//following::span//following::span[text()='Required field'])[1]")
+	WebElement AddBeneficiariesPostcodeReq;
+
+	@FindBy(xpath = "//input[contains(@id,'BenefShareTypeAmount')]")
+	WebElement AddBeneficiariesAmountRadioButton;
+	@FindBy(xpath = "//input[contains(@id,'BenefShareTypePercentage')]")
+	WebElement AddBeneficiariesPercentageRadioButton;
+
+	@FindBy(xpath = "//input[contains(@id,'BenefShareAmount')]")
+	WebElement AddBeneficiariesAmountField;
+	@FindBy(xpath = "//input[contains(@id,'BenefShareAmount')]//following::a//following::span//following::span[text()='Required Field']")
+	WebElement AddBeneficiariesAmountFieldReq;
+	@FindBy(xpath = "//input[contains(@id,'BenefSharePercentage')]")
+	WebElement AddBeneficiariesPercentageField;
+	@FindBy(xpath = "//input[contains(@id,'BenefSharePercentage')]//following::a//following::span//following::span[text()='Required Field']")
+	WebElement AddBeneficiariesPercentageFieldReq;
+	@FindBy(xpath = "// input[contains(@id,'BenefSharePercentage')]//following::div//following::div[text()='Required Field']")
+	WebElement AddBeneficiariesShareTypeReq;
+
+	@FindBy(xpath = "//input[contains(@id,'RadioButton_Person')]")
+	WebElement PersonAddBeneficiary;
+	@FindBy(xpath = "//input[contains(@id,'RadioButton_Charity')]")
+	WebElement CharityAddBeneficiary;
+
+	@FindBy(xpath = "//input[contains(@id,'BeneftCharityName')]")
+	WebElement AddBeneficiariesCharityName;
+	@FindBy(xpath = "//input[contains(@id,'BeneftCharityName')]//following::a//following::span//following::span[text()='Required Field']")
+	WebElement AddBeneficiariesCharityNameReq;
+	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
+	WebElement NextButton;
+	@FindBy(xpath = "//input[contains(@value.'Back')]")
+	WebElement BackButton;
+	@FindBy(xpath = "//input[contains(@id,'Gifts_True')]")
+	WebElement GiftsYes;
+	@FindBy(xpath = "//input[contains(@id,'Gifts_False')]")
+	WebElement GiftsNo;
+
+	// Beneficiaries - Gifts
+	@FindBy(xpath = "//span[contains(text(),'Do you wish to leave any gifts?')]")
+	WebElement Gift_Question;
+	@FindBy(xpath = "//a[contains(text(),'Add Gift')]")
+	WebElement AddGift;
+	@FindBy(xpath = "//input[contains(@id,'GiftDescription')]")
+	WebElement Gift_Description;
+	@FindBy(xpath = "//input[contains(@id,'GiftsReceiver')]")
+	WebElement Gift_Receiver;
+	@FindBy(xpath = "//select[contains(@id,'GiftsRelationship')]")
+	WebElement Gift_Relationship;
+	@FindBy(xpath = "//select[contains(@id,'GiftsCountry')]")
+	WebElement Gift_Country;
+	@FindBy(xpath = "//input[contains(@id,'GiftsAddressLine1')]")
+	WebElement Gift_Address1;
+	@FindBy(xpath = "//input[contains(@id,'GiftsAddressLine2')]")
+	WebElement Gift_Address2;
+	@FindBy(xpath = "//input[contains(@id,'GiftsSuburb')]")
+	WebElement Gift_Suburb;
+	@FindBy(xpath = "//select[contains(@id,'GiftsState')]")
+	WebElement Gift_State;
+	@FindBy(xpath = "//input[contains(@id,'GiftsPostcode')]")
+	WebElement Gift_PostCode;
+
+	// Beneficiaries - Buttons
+	@FindBy(xpath = "//input[contains(@value,'Add')]")
+	WebElement Gift_Add;
+	@FindBy(xpath = "//input[contains(@value,'Cancel')]")
+	WebElement Gift_Cancel;
+	// @FindBy(xpath = "//a[contains(text(),'Edit')]")
+	@FindBy(xpath = "(//a[contains(@id,'GiftEdit')])[1]")
+	WebElement Gift_Edit1;
+	@FindBy(xpath = "(//a[contains(@id,'GiftEdit')])[2]")
+	WebElement Gift_Edit2;
+	// @FindBy(xpath = "//a[contains(text(),'Delete')]")
+	@FindBy(xpath = "(//a[contains(@id,'GiftDelete')])[1]")
+	WebElement Gift_Delete1;
+	@FindBy(xpath = "(//a[contains(@id,'GiftDelete')])[2]")
+	WebElement Gift_Delete2;
+	@FindBy(xpath = "//input[contains(@value,'Save')]")
+	WebElement Gift_Save;
+
+	// Beneficiaries - Error Message
+	@FindBy(xpath = "//span[contains(text(),'Please add gift')]")
+	WebElement Gift_AddGiftMsg;
+
+	/* Progess Bar */
+	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressPersonal;
+	@FindBy(xpath = "//div[text()='About You']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAbout;
+	@FindBy(xpath = "//div[text()='Assets']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAssets;
+	@FindBy(xpath = "//div[text()='Executors']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressExecutors;
+	@FindBy(xpath = "//div[text()='ID Docs']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressIDDocs;
+	@FindBy(xpath = "//div[text()='Review & Confirm']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressReviewConfirm;
+	@FindBy(xpath = "//div[text()='Add-ons']//following-sibling::a[contains(text(),'Change')]")
+	WebElement ProgressAddOns;
+
+	@FindBy(xpath = "// div[contains(@id,'Benef_Tooltip')]")
+	WebElement Beneficiaries_Tooltip;
+
+	// ================================================== Initializing the Page Objects ==================================================
+	public BeneficiariesPage()throws Exception{
+		PageFactory.initElements(driver, this);
+	}
+
+	// ============================================================= Actions =============================================================
+	public void checkGiftRadioButton()throws Exception{
+		CommonFunctions.elementDisplayed(GiftsYes);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void checkGiftQuestion()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Question);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void CheckGiftDescriptionRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRecieverRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Receiver.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRelationshipRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftCountryRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftAddress1Required()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftSuburbRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftStateRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftPostcodeRequired()throws Exception{
+		CommonFunctions.elementDisplayed(Gift_PostCode.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	}
+
+	public void CheckGiftRequiredFields()throws Exception{
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.scrollToBottom();
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Description.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Receiver.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Relationship.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		// CommonFunctions.elementDisplayed(Gift_Country.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Address1.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_Suburb.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_State.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(Gift_PostCode.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(Gift_Add);
+	}
+
+	public void ClickPersonAddBeneficiary()throws Exception{
+		CommonFunctions.clickElement(PersonAddBeneficiary);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void ClickGiftYes()throws Exception{
+		CommonFunctions.clickElement(GiftsYes);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void ClickGiftNo()throws Exception{
+		CommonFunctions.clickElement(GiftsNo);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void ClickCharityAddBeneficiary()throws Exception{
+		CommonFunctions.clickElement(CharityAddBeneficiary);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void clickDeleteGift()throws Exception{
+		// CommonFunctions.clickElement(Gift_Delete1);
+		CommonFunctions.clickElement(Gift_Delete2);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+		CommonFunctions.clickKeys(Keys.chord(Keys.ENTER));
+	}
+
+	public void MandatoryFieldsInAddingBeneficiaryCharity()throws Exception{
+		CommonFunctions.clickElement(CharityAddBeneficiary);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesCharityNameReq);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
+		CommonFunctions.pause(5000, false);
+
+	}
+
+	public void MandatoryFieldsInAddingBeneficiaryPerson()throws Exception{
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesTitleReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesFNameReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesLNameReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesRelationshipReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesAddressLine1Req);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesSuburbReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesStateReq);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.elementDisplayed(AddBeneficiariesPostcodeReq);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.elementDisplayed(AddBeneficiariesShareTypeReq);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountFieldReq);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageFieldReq);
+		CommonFunctions.pause(5000, false);
+	}
+
+	public void AddBeneficiaryPersonWithAmount()throws Exception{
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesTitle, "Dr");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesFName, "A Demeth Rey");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesMName, "A Cañete");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesLName, "A Camuin");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesRelationship, "Father");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesCountry, "AUSTRALIA");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine1, "A This is a test address line 1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine2, "A This is a test address line 2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesSuburb, "A This is a Suburb");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesState, "VIC");
+		CommonFunctions.pause(10000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesPostcode, "1111");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void EditBeneficiaryPersonWithAmount()throws Exception{
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesTitle, "Dr");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesFName, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesMName, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesLName, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesRelationship, "Father");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesCountry, "AUSTRALIA");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine1, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine2, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesSuburb, " Update");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesState, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesPostcode, "1111");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void AddBeneficiaryPersonWithPercentage()throws Exception{
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesTitle, "Dr");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesFName, "Demeth Rey");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesMName, "Cañete");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesLName, "Camuin");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesRelationship, "Father");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesCountry, "AUSTRALIA");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine1, "This is a test address line 1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAddressLine2, "This is a test address line 2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesSuburb, "This is a Suburb");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(AddBeneficiariesState, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesPostcode, "1111");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesPercentageField, "9999999999");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void AddBeneficiaryCharityWithPercentage()throws Exception{
+		CommonFunctions.enterElementValue(AddBeneficiariesCharityName, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesPercentageRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesPercentageField, "9999999999");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void AddBeneficiaryCharityWithAmount()throws Exception{
+		CommonFunctions.enterElementValue(AddBeneficiariesCharityName, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(AddBeneficiariesAmountRadioButton);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(AddBeneficiariesAmountField, "9999999999");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(SaveBeneficiaries);
+	}
+
+	public void FillUpGiftSection()throws Exception{
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Description, "Sample");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Father");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.enterElementValue(Gift_Address1, "Address1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Suburb, "Suburb1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_PostCode, "Postcode1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.pause(5000, false);
+
+	}
+
+	public void FillUpGiftSection2()throws Exception{
+		CommonFunctions.clickElement(AddGift);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Description, "Test");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Brother");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.enterElementValue(Gift_Address1, "Address2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_Suburb, "Suburb2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Gift_PostCode, "Postcode2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(Gift_Add);
+		CommonFunctions.pause(5000, false);
+
+	}
+
+	public void UpdatesGiftSection()throws Exception{
+		CommonFunctions.clickElement(Gift_Edit1);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Description, "Test");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Brother");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.clearThenEnterElementValue(Gift_Address1, "Address2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Suburb, "Suburb2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_PostCode, "Postcode2");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(Gift_Save);
+		CommonFunctions.pause(5000, false);
+
+	}
+
+	public void UpdatesGiftSection2()throws Exception{
+		CommonFunctions.clickElement(Gift_Edit2);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Description, "Sample");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Receiver, "Demeth Camuin Foundation");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_Relationship, "Father");
+		CommonFunctions.pause(5000, false);
+		// CommonFunctions.selectValueFromDropdown(Gift_Country, "AUSTRALIA");
+		CommonFunctions.clearThenEnterElementValue(Gift_Address1, "Address1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_Suburb, "Suburb1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.selectValueFromDropdown(Gift_State, "VIC");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(Gift_PostCode, "Postcode1");
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(Gift_Save);
+		CommonFunctions.pause(5000, false);
+
+	}
+
+	public void ClickYesQuestion1SingleWithChildren()throws Exception{
+		CommonFunctions.clickElement(YesQuestion1SingleWithChildren);
+	}
+
+	public void ClickNoQuestion1SingleWithChildren()throws Exception{
+		CommonFunctions.clickElement(NoQuestion1SingleWithChildren);
+	}
+
+	public void ClickYesQuestion1()throws Exception{
+		CommonFunctions.clickElement(YesQuestion1);
+	}
+
+	public void ClickYesQuestion1WithSpouse()throws Exception{
+		CommonFunctions.clickElement(YesQuestion1WithSpouse);
+	}
+
+	public void ClickNoQuestion1WithSpouse()throws Exception{
+		CommonFunctions.clickElement(NoQuestion1WithSpouse);
+	}
+
+	public void ClickNoQuestion1()throws Exception{
+		CommonFunctions.clickElement(NoQuestion1);
+	}
+
+	public void BeneficiaryQuestionDisplayed()throws Exception{
+		CommonFunctions.elementDisplayed(BeneficiaryQuestion);
+		CommonFunctions.elementDisplayed(AddBeneficiary);
+	}
+
+	public void ClickBeneficiaryQuestion()throws Exception{
+		CommonFunctions.clickElement(AddBeneficiary);
+	}
+
+	public void ClickCancelBeneficiary()throws Exception{
+		CommonFunctions.clickElement(CancelBeneficiaries);
+	}
+
+	public void ClickEditBeneficiary()throws Exception{
+		CommonFunctions.clickElement(Edit1stBeneficiary);
+	}
+
+	public void ClickDeleteBeneficiary()throws Exception{
+		CommonFunctions.clickElement(Delete1stBeneficiary);
+	}
+
+	public void DisasterQuestionDisplayed()throws Exception{
+		CommonFunctions.elementDisplayed(DisasterQuestion);
+		CommonFunctions.elementDisplayed(DisasterQuestionField);
+	}
+
+	public void ClickYesQuestion2()throws Exception{
+		CommonFunctions.clickElement(YesQuestion2);
+	}
+
+	public void ClickNoQuestion2()throws Exception{
+		CommonFunctions.clickElement(NoQuestion2);
+	}
+
+	public ExecutorsPage ClickNextButton()throws Exception{
+		CommonFunctions.clickElement(NextButton);
+
+		return new ExecutorsPage();
+	}
+
+	public IDdocsPage clickNextIDDocs()throws Exception{
+		CommonFunctions.clickElement(NextButton);
+
+		return new IDdocsPage();
+	}
+
+	public AboutPage ProgressChangeAbout()throws Exception{
+		CommonFunctions.clickElement(ProgressAbout);
+
+		return new AboutPage();
+	}
+
+	public PersonalPage ProgressChangePersonal()throws Exception{
+		CommonFunctions.clickElement(ProgressPersonal);
+
+		return new PersonalPage();
+	}
+
+	public AssetsPage ProgressChangeAssets()throws Exception{
+		CommonFunctions.clickElement(ProgressAssets);
+
+		return new AssetsPage();
+	}
+
+	public ExecutorsPage ProgressChangeExecutors()throws Exception{
+		CommonFunctions.clickElement(ProgressExecutors);
+
+		return new ExecutorsPage();
+	}
+
+	public IDdocsPage ProgressChangeIDdocs()throws Exception{
+		CommonFunctions.clickElement(ProgressIDDocs);
+
+		return new IDdocsPage();
+	}
+
+	public ReviewConfirmPage ProgressChangeReviewConfirm()throws Exception{
+		CommonFunctions.clickElement(ProgressReviewConfirm);
+
+		return new ReviewConfirmPage();
+	}
+
+	public AddOnsPage ProgressChangeAddOns()throws Exception{
+		CommonFunctions.clickElement(ProgressAddOns);
+
+		return new AddOnsPage();
+	}
+
+	public AssetsPage clickBackToAssets()throws Exception{
+		CommonFunctions.clickElement(BackButton);
+
+		return new AssetsPage();
+	}
+
+	public void DisplayBeneficiaries_Tooltip()throws Exception{
+		CommonFunctions.elementDisplayed(Beneficiaries_Tooltip);
+	}
+
+	public void ClickBeneficiaries_Tooltip()throws Exception{
+		CommonFunctions.clickElement(Beneficiaries_Tooltip);
+	}
+
+}
