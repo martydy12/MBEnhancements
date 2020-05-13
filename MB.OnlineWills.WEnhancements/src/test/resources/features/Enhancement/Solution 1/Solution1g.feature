@@ -1,6 +1,11 @@
 Feature: Standard single To Standard Couple With about you page details
+  Scenario Outline: Delete Order
+    Given the user deletes any existing order on "<email>"
 
-  Scenario Outline: Solution 1d
+    Examples: 
+      | email           | password     |
+      | sol1g@gmail.com | Passw0rd123! |
+  Scenario Outline: Solution 1G
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<Victorian>" and "<password>" as the login credentials

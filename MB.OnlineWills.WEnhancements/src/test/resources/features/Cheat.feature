@@ -98,5 +98,5 @@ Feature: CHEAT
     Then user is on "Thank You" page
 
     Examples: 
-      | email               | password     | Address1  | Suburb         | email2              |
-      | victorian@gmail.com | Password123! | Australia | Executive Lane | NonVICSol@gmail.com |
+      | email           | password     | Address1  | Suburb         | email2          |
+      | sol1a@gmail.com | Passw0rd123! | Australia | Executive Lane | sol1b@gmail.com |

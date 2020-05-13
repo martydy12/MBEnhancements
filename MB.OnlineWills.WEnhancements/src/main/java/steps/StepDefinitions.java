@@ -3,7 +3,9 @@ package steps;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.commons.configuration.interpol.ExprLookup.Variable;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -106,6 +108,24 @@ public class StepDefinitions extends Base {
 		} else {
 			homePage.clickCouplesProduct();
 
+		}
+	}
+
+	@Given("^the user deletes any existing order on \"([^\"]*)\"$")
+	public void the_user_deletes_any_existing_order_on(String arg1) throws Throwable {
+		driver.get(prop.getProperty("orders"));
+		homePage = new HomePage();
+		CommonFunctions.pause(10000, false);
+		homePage.selectEmailOnOrders(arg1);
+		CommonFunctions.pause(15000, false);
+
+		List<WebElement> wes = driver.findElements(By.xpath("(//span[@class='fa fa-fw fa-trash-o fa-2x'])[1]"));
+
+		if (wes.size() == 0) {
+			Thread.sleep(10000);
+		} else {
+			homePage.clickDeleteButtonORders();
+			Thread.sleep(10000);
 		}
 	}
 
@@ -359,7 +379,12 @@ public class StepDefinitions extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 	}
-
+	@Then("^user clicks on add non couple POA on addons page$")
+	public void user_clicks_on_add_non_couple_POA_on_addons_page() throws Throwable {
+		addOnsPage.clickAddPOAButton2();
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+	}
 	@Then("^user sees beneficiary question displayed$")
 	public void user_sees_beneficiary_question_displayed() throws Throwable {
 		beneficiariesPage.BeneficiaryQuestionDisplayed();
@@ -656,14 +681,21 @@ public class StepDefinitions extends Base {
 	@When("^user sees feedback message when changing from Mylife Couple to Standard Couple$")
 	public void user_sees_feedback_message_when_changing_from_Mylife_Couple_to_Standard_Couple() throws Throwable {
 		CommonFunctions.pause(5000, false);
-		CommonFunctions
-				.checkFeedbackMessageDisplayedContainsString("Are you sure you want to change your order from a");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents®");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Couple)");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Wills (Couple)?");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString(
 				"t worry, all the personal details you have entered will be retained.");
+	}
+
+	@When("^user sees feedback message when changing from Standard Couple to Mylife Couple$")
+	public void user_sees_feedback_message_when_changing_from_Standard_Couple_to_Mylife_Couple() throws Throwable {
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Standard");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Wills (Couple)");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Couple)?");
 	}
 
 	@When("^user sees feedback message when changing from Standard Single to Mylife Couple$")
@@ -672,7 +704,7 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(
 				driver.findElement(By.xpath("//*[contains(text(),'Standard') and @class='modal-content']")));
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Will (Single)");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents®");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents");
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Couple)?')])[1]")));
 
 	}
@@ -683,9 +715,49 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(
 				driver.findElement(By.xpath("//*[contains(text(),'Standard') and @class='modal-content']")));
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Will (Single)");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents®");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents");
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)?')])[1]")));
 
+	}
+	
+	@When("^user sees feedback message when changing from Mylife Single to Standard Couple$")
+	public void user_sees_feedback_message_when_changing_from_Mylife_Single_to_Standard_Couple() throws Throwable {
+		CommonFunctions.pause(10000, false);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)')])[1]")));
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Wills (Couple)?");
+		
+	}
+	@When("^user sees feedback message when changing from Standard Couple to Mylife Single$")
+	public void user_sees_feedback_message_when_changing_from_Standard_Couple_to_Mylife_Single() throws Throwable {
+		CommonFunctions.pause(10000, false);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Standard");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Wills (Couple)");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to MyLife Documents");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Single)?");
+	}
+
+	
+	@When("^user sees feedback message when changing from Mylife Single to Standard Single$")
+	public void user_sees_feedback_message_when_changing_from_Mylife_Single_to_Standard_Single() throws Throwable {
+		CommonFunctions.pause(2000, false);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)?')])[1]")));
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Will (Single)?");
+		
+		
+	}
+
+	@When("^user sees feedback message when changing from Mylife Single to Mylife Couple$")
+	public void user_sees_feedback_message_when_changing_from_Mylife_Single_to_Mylife_Couple() throws Throwable {
+		CommonFunctions.pause(10000, false);
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
+
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single) to')])[1]")));
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Couple)?')])[2]")));
 	}
 
 	@When("^user sees feedback message when changing from Mylife Couple to Mylife Single$")
@@ -693,21 +765,29 @@ public class StepDefinitions extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions
 				.checkFeedbackMessageDisplayedContainsString("Are you sure you want to change your order from a");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents® (Couple) to");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents® (Single)?");
-		// CommonFunctions.checkFeedbackMessageDisplayedContainsString("t worry, all the
-		// personal details you have entered will be retained.");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents� (Couple) to");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents� (Single)?");
+
 	}
 
 	@When("^user sees feedback message when changing from Standard Single to Standard Couple$")
 	public void user_sees_feedback_message_when_changing_from_Standard_Single_to_Standard_Couple() throws Throwable {
 		CommonFunctions.pause(2000, false);
-		// CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'Are
-		// you sure you want to change your order from')])[1]")));
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Standard Will");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Single) to");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Standard Wills");
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Couple)?')])[2]")));
+
+	}
+
+	@When("^user sees feedback message when changing from Standard Couple to Standard Single$")
+	public void user_sees_feedback_message_when_changing_from_Standard_Couple_to_Standard_Single() throws Throwable {
+		CommonFunctions.pause(2000, false);
+		// CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'Are
+		// you sure you want to change your order from')])[1]")));
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString(
+				"Standard Wills (Couple) to a Standard Will (Single) all data from your spouse or partner will be deleted.");
+
 	}
 
 	@Then("^user sees relationship status is unselected$")
@@ -788,9 +868,10 @@ public class StepDefinitions extends Base {
 	@When("^user sees feedback message when changing from Mylife Couple to Standard Single$")
 	public void user_sees_feedback_message_when_changing_from_Mylife_Couple_to_Standard_Single() throws Throwable {
 		CommonFunctions.pause(5000, false);
-		CommonFunctions
-				.checkFeedbackMessageDisplayedContainsString("Are you sure you want to change your order from a");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents®");
+		// CommonFunctions
+		// .checkFeedbackMessageDisplayedContainsString("Are you sure you want to change
+		// your order from a");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Couple)");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Will (Single)?");
@@ -1484,7 +1565,7 @@ public class StepDefinitions extends Base {
 	public void user_click_change_button_on_personal_page_from_assets_page() throws Throwable {
 		personalPage = assetsPage.ClickChangeButtonPersonal();
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
-		CommonFunctions.pause(5000, false);
+		CommonFunctions.pause(10000, false);
 	}
 
 	@When("^user clicks next page to review and confirm details$")
@@ -2234,17 +2315,14 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(
 				driver.findElement(By.xpath("//select[contains(@id,'AffiliationUnions_Current_Id')]")));
 	}
-	
+
 	@Then("^user sees union membership details$")
 	public void user_sees_union_membership_details() throws Throwable {
-		CommonFunctions.elementDisplayed(
-				driver.findElement(By.xpath("//option[text()='Alpha' and @selected]")));
-		CommonFunctions.elementDisplayed(
-				driver.findElement(By.xpath("//input[@value='AAA']")));
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//option[text()='Alpha' and @selected]")));
+		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("//input[@value='AAA']")));
 		CommonFunctions.elementNotExistingByXPath("//input[@value='Apply']");
-		
-	}
 
+	}
 
 	@Then("^user adds union membership$")
 	public void user_adds_union_membership() throws Throwable {

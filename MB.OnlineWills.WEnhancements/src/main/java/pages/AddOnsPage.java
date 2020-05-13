@@ -9,19 +9,22 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class AddOnsPage extends Base {
-	// ========================================================== Page Objects ===========================================================
+	// ========================================================== Page Objects
+	// ===========================================================
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonSingle')]")
-	//@FindBy(xpath = "input[value='Add']")
+	// @FindBy(xpath = "input[value='Add']")
 	WebElement AddPOAButton;
-	//@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]|//input[@value=Add]")
+	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonNonCouple')]")
+	WebElement AddPOAButton2;
+
+	// @FindBy(xpath =
+	// "//input[contains(@id,'AddSpouseButtonVic')]|//input[@value=Add]")
 	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
 	WebElement AddSpouseButton;
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement btn_Next;
 	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
 	WebElement Btn_AddPartner;
-
-	
 
 	/* Progess Bar */
 	@FindBy(xpath = "//div[text()='Personal Details']//following-sibling::a[contains(text(),'Change')]")
@@ -48,11 +51,14 @@ public class AddOnsPage extends Base {
 	@FindBy(xpath = "//div[contains(@id,'Everything')]")
 	WebElement TextBody;
 
-	// @FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection
+	// @FindBy(xpath = "//span[text()='By providing the contact email address, you
+	// confirm that you have consent from the relevant person to pass on such
+	// details to Maurice Blackburn in connection
 	// with the service.']")
 
-	//@FindBy(xpath = "//span[text()='By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
-
+	// @FindBy(xpath = "//span[text()='By providing the contact email address, you
+	// confirm that you have consent from the relevant person to pass on such
+	// details to Maurice Blackburn in connection with the service.']")
 
 	@FindBy(xpath = "//span[text()='By adding your partner now you can take advantage of our bundled price for couples of $599']")
 	WebElement Body_spouse;
@@ -67,142 +73,160 @@ public class AddOnsPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonNonCouple')]")
 	WebElement AddCouple_POA;
 
-
-	// ================================================== Initializing the Page Objects ==================================================
-	public AddOnsPage()throws Exception{
+	// ================================================== Initializing the Page
+	// Objects ==================================================
+	public AddOnsPage() throws Exception {
 		PageFactory.initElements(driver, this);
 	}
 
-	// ============================================================= Actions =============================================================
+	// ============================================================= Actions
+	// =============================================================
 
-	public void clickAddPOAButton()throws Exception{
+	public void clickAddPOAButton() throws Exception {
 		CommonFunctions.clickElement(AddPOAButton);
 	}
+	public void clickAddPOAButton2() throws Exception {
+		CommonFunctions.clickElement(AddPOAButton2);
+	}
 
-	public FinancialDecisionsPage clickNextWithPOA()throws Exception{
+	public FinancialDecisionsPage clickNextWithPOA() throws Exception {
 		CommonFunctions.clickElement(btn_Next);
 		return new FinancialDecisionsPage();
 	}
 
-	public PaymentsPage clickNextWithoutPOA()throws Exception{
+	public PaymentsPage clickNextWithoutPOA() throws Exception {
 		CommonFunctions.clickElement(btn_Next);
 		return new PaymentsPage();
 	}
 
-	public AboutPage ProgressChangeAbout()throws Exception{
+	public AboutPage ProgressChangeAbout() throws Exception {
 		CommonFunctions.clickElement(ProgressAbout);
 
 		return new AboutPage();
 	}
 
-	public AssetsPage ProgressChangeAssets()throws Exception{
+	public AssetsPage ProgressChangeAssets() throws Exception {
 		CommonFunctions.clickElement(ProgressAssets);
 
 		return new AssetsPage();
 	}
 
-	public BeneficiariesPage ProgressChangeBeneficiaries()throws Exception{
+	public BeneficiariesPage ProgressChangeBeneficiaries() throws Exception {
 		CommonFunctions.clickElement(ProgressBeneficiaries);
 
 		return new BeneficiariesPage();
 	}
 
-	public ExecutorsPage ProgressChangeExecutors()throws Exception{
+	public ExecutorsPage ProgressChangeExecutors() throws Exception {
 		CommonFunctions.clickElement(ProgressExecutors);
 
 		return new ExecutorsPage();
 	}
 
-	public IDdocsPage ProgressChangeIDdocs()throws Exception{
+	public IDdocsPage ProgressChangeIDdocs() throws Exception {
 		CommonFunctions.clickElement(ProgressIDDocs);
 
 		return new IDdocsPage();
 	}
 
-	public ReviewConfirmPage ProgressChangeReviewConfirm()throws Exception{
+	public ReviewConfirmPage ProgressChangeReviewConfirm() throws Exception {
 		CommonFunctions.clickElement(ProgressReviewConfirm);
 
 		return new ReviewConfirmPage();
 	}
 
-	public PersonalPage ProgressChangeAddOns()throws Exception{
+	public PersonalPage ProgressChangeAddOns() throws Exception {
 		CommonFunctions.clickElement(ProgressPersonal);
 
 		return new PersonalPage();
 	}
 
-	public void CheckProgressConfirmed()throws Exception{
-		CommonFunctions.elementDisplayed(ProgressConfirmed.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
+	public void CheckProgressConfirmed() throws Exception {
+		CommonFunctions.elementDisplayed(
+				ProgressConfirmed.findElement(By.xpath(".//following-sibling::a[contains(text(),'Change')]")));
 	}
 
-	public void CheckWillConfirmed()throws Exception{
+	public void CheckWillConfirmed() throws Exception {
 		CommonFunctions.elementDisplayed(ProgressConfirmed);
 		CommonFunctions.pause(2500, false);
 	}
 
-	public void clickPowerOfAttorney_Tooltip2()throws Exception{
+	public void clickPowerOfAttorney_Tooltip2() throws Exception {
 		CommonFunctions.clickElement(PowerOfAttorney_Tooltip2);
 	}
 
-	public void DisplayPowerOfAttorney_Tooltip2()throws Exception{
+	public void DisplayPowerOfAttorney_Tooltip2() throws Exception {
 		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2);
 	}
 
-	public void DisplayPowerOfAttorney_Tooltip2Video()throws Exception{
+	public void DisplayPowerOfAttorney_Tooltip2Video() throws Exception {
 		CommonFunctions.elementDisplayed(PowerOfAttorney_Tooltip2Video);
 	}
 
-	public void TextDisplay()throws Exception{
-		// WebElement element = driver.findElement(By.xpath("//div[contains(@id,'Everything"));
+	public void TextDisplay() throws Exception {
+		// WebElement element =
+		// driver.findElement(By.xpath("//div[contains(@id,'Everything"));
 		// System.out.println(element.getText());
 		//
-		System.out.println(driver.findElement(By.xpath("//div[contains(@id,'Everything')]")).getText().contains("Did you know that both you and your spouse/partner need a Will?  This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes." + "\r\n" + "You should also consider another equally important document that plays a role while you are still here. Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.\n" + "\r\n" + "Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today."));
+		System.out.println(driver.findElement(By.xpath("//div[contains(@id,'Everything')]")).getText().contains(
+				"Did you know that both you and your spouse/partner need a Will?  This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes."
+						+ "\r\n"
+						+ "You should also consider another equally important document that plays a role while you are still here. Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.\n"
+						+ "\r\n"
+						+ "Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today."));
 	}
 
-	public void CheckText()throws Exception{
+	public void CheckText() throws Exception {
 		CommonFunctions.textVisibleInPage("Save money and include your spouse/partner at the same time.");
 		CommonFunctions.textVisibleInPage("Did you know that both you and your spouse/partner need a Will?");
-		CommonFunctions.textVisibleInPage("This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes. ");
+		CommonFunctions.textVisibleInPage(
+				"This is the best way to ensure your family is protected and you have the confidence that your estate will be distributed as per your wishes. ");
 
-		CommonFunctions.textVisibleInPage("You should also consider another equally important document that plays a role while you are still here.");
-		CommonFunctions.textVisibleInPage(" Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.");
-		CommonFunctions.textVisibleInPage("Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. ");
-		CommonFunctions.textVisibleInPage("By adding your spouse/partner now you can take advantage of our bundled price for couples of $599.  This is a saving of $199 with the online couple price and $280 less than the offline price.");
-		CommonFunctions.textVisibleInPage("Maurice Blackburn offers great value if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. This bundled package is a savings of $220 over the offline price.  If you and your spouse/partner both include these documents, you can take advantage of our bundled price for couples of $560.  This is a saving of $320.");
+		CommonFunctions.textVisibleInPage(
+				"You should also consider another equally important document that plays a role while you are still here.");
+		CommonFunctions.textVisibleInPage(
+				" Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are no longer able to.");
+		CommonFunctions.textVisibleInPage(
+				"Maurice Blackburn offers a bundled price for a couple to each have a Will and a huge saving if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. ");
+		CommonFunctions.textVisibleInPage(
+				"By adding your spouse/partner now you can take advantage of our bundled price for couples of $599.  This is a saving of $199 with the online couple price and $280 less than the offline price.");
+		CommonFunctions.textVisibleInPage(
+				"Maurice Blackburn offers great value if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. This bundled package is a savings of $220 over the offline price.  If you and your spouse/partner both include these documents, you can take advantage of our bundled price for couples of $560.  This is a saving of $320.");
 		// CommonFunctions.textVisibleInPage("");
-		// CommonFunctions.textVisibleInPage(" Power of Attorney documents give you peace of mind knowing that a trusted person can make vital financial and personal decisions for you when you are
+		// CommonFunctions.textVisibleInPage(" Power of Attorney documents give you
+		// peace of mind knowing that a trusted person can make vital financial and
+		// personal decisions for you when you are
 		// no longer able to.");
 
 	}
 
-	public void clickAddSpouse()throws Exception{
+	public void clickAddSpouse() throws Exception {
 		CommonFunctions.clickElement(AddSpouseButton);
-		//CommonFunctions.pause(2500, false);
-		//CommonFunctions.switchFrameByXPath("//label[contains(text(),'Spouse/Partner')]");
+		// CommonFunctions.pause(2500, false);
+		// CommonFunctions.switchFrameByXPath("//label[contains(text(),'Spouse/Partner')]");
 	}
 
-	public void checkSpouseBody()throws Exception{
+	public void checkSpouseBody() throws Exception {
 		CommonFunctions.elementDisplayed(Body_spouse);
 		CommonFunctions.pause(2500, false);
 	}
 
-	public void setSpouseEmailInput()throws Exception{
+	public void setSpouseEmailInput() throws Exception {
 		CommonFunctions.enterElementValue(Email_spouse, "wife.spouse@email.com");
 		CommonFunctions.pause(2500, false);
 	}
 
-	public void clickSaveSpouse()throws Exception{
+	public void clickSaveSpouse() throws Exception {
 		CommonFunctions.clickElement(btn_SaveSpouse);
 		CommonFunctions.pause(2500, false);
 	}
 
-
-	public void clickCouplePOA()throws Exception{
+	public void clickCouplePOA() throws Exception {
 		CommonFunctions.clickElement(AddCouple_POA);
 		CommonFunctions.pause(2500, false);
 	}
 
-	public PendingSpousePage clickNextSpouse()throws Exception{
+	public PendingSpousePage clickNextSpouse() throws Exception {
 		// CommonFunctions.scrollToElement(btn_Next);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.pause(4000, false);
@@ -211,9 +235,7 @@ public class AddOnsPage extends Base {
 		return new PendingSpousePage();
 	}
 
-
-	
-	public void clickAddPartner()throws Exception{
+	public void clickAddPartner() throws Exception {
 		CommonFunctions.clickElement(Btn_AddPartner);
 		CommonFunctions.pause(2500, false);
 	}

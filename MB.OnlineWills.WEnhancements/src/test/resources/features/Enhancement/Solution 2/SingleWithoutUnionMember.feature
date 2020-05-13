@@ -1,5 +1,10 @@
 Feature: Single without union membership
+ Scenario Outline: Delete Order
+    Given the user deletes any existing order on "<email>"
 
+    Examples: 
+      | email           | password     |
+      | sol2d@gmail.com | Password123! |
   Scenario Outline: Single without union membership
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------

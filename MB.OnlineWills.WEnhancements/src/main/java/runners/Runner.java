@@ -35,11 +35,12 @@ import cucumber.api.junit.Cucumber;
 		// features = "src/test/resources/features/Sprint 2/MW - 42/MW - 42A.feature" //
 		// Feature file to use for Sprint 2.
 		// features = "src/test/resources/features/Cheat.feature"
-		//features = "src/test/resources/features/Enhancement/Solution 1/Solution1g.feature"
-		features = "src/test/resources/features/Enhancement/"
-			//	features = "src/test/resources/features/Enhancement/6 months/6Months.feature"
-			//	features = "src/test/resources/features/Enhancement/BackOffice"
-			//	features = "src/test/resources/features/Enhancement/Solution 2/SingleWithUnionMember.feature"
+		// features = "src/test/resources/features/Enhancement/Solution 1/Solution1g.feature"
+		// features = "src/test/resources/features/Enhancement/Solution 1/"
+		// features = "src/test/resources/features/Enhancement/"
+		features = "src/test/resources/features/Enhancement/6 months/6Months.feature"
+// features = "src/test/resources/features/Enhancement/BackOffice"
+ //features = "src/test/resources/features/Enhancement/Solution 2/SingleWithUnionMember.feature"
 )
 
 public class Runner {

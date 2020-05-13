@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -109,14 +110,35 @@ public class HomePage extends Base {
 	WebElement link_EmailLog;
 	@FindBy(xpath = "//a[text()='More Options']")
 	WebElement moreOption_EmailLog;
+	@FindBy(xpath = "//select[contains(@id,'InputUser')]")
+	WebElement dropdown_OrdersInputUSer;
+	@FindBy(xpath = "//input[contains(@id,'DeleteAll')]")
+	WebElement button_OrdersDeleteAll;
+	@FindBy(xpath = "(//span[@class='fa fa-fw fa-trash-o fa-2x'])[1]")
+	WebElement button_OrdersDelete;
+
+	
+	
+	
 	
 	
 	// ================================================== Initializing the Page Objects ==================================================
+	
 	public HomePage()throws Exception{
 		PageFactory.initElements(driver, this);
 	}
 
 	// ============================================================= Actions =============================================================
+	
+	public void selectEmailOnOrders(String newEmail)throws Exception{
+		CommonFunctions.selectValueFromDropdown(dropdown_OrdersInputUSer, newEmail);
+	}
+	public void clickDeleteAllButtonORders()throws Exception{
+		CommonFunctions.clickElement(button_OrdersDeleteAll);
+	}
+	public void clickDeleteButtonORders()throws Exception{
+		CommonFunctions.clickElement(button_OrdersDelete);
+	}
 	public void setSpouseNewEmail(String newEmail)throws Exception{
 		CommonFunctions.clearThenEnterElementValue(spouse_NewEmail, newEmail);
 	}

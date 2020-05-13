@@ -1,6 +1,11 @@
-Feature: Single without union membership
+Feature: Couple with union membership
+ Scenario Outline: Delete Order
+    Given the user deletes any existing order on "<email>"
 
-  Scenario Outline: Single without union membership
+    Examples: 
+      | email           | password     |
+      | sol2d@gmail.com | Password123! |
+  Scenario Outline: Couple with union membership
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -16,9 +21,9 @@ Feature: Single without union membership
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
-    #Single-------------------------------------------------------------------------
-    When user selects "Single" as Relationship Status on about page
-    And user fill up the all required fields for single status
+   #Defacto-------------------------------------------------------------------------
+    When user selects "Defacto" as Relationship Status on about page
+    And user fill up the all required fields for defacto status
     And user click the next button on the about page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
@@ -26,8 +31,9 @@ Feature: Single without union membership
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    And user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question
+    And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
+    And user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #Executors Page-------------------------------------------------------------------------
@@ -56,7 +62,7 @@ Feature: Single without union membership
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user clicks on add non couple POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page

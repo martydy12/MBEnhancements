@@ -1,6 +1,11 @@
-Feature: Single without union membership
+Feature: Single with union membership
+ Scenario Outline: Delete Order
+    Given the user deletes any existing order on "<email>"
 
-  Scenario Outline: Single without union membership
+    Examples: 
+      | email           | password     |
+      | sol2d@gmail.com | Password123! |
+  Scenario Outline: Single with union membership
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<email>" and "<password>" as the login credentials
