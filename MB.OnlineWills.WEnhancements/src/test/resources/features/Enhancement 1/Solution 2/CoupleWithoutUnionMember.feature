@@ -1,37 +1,35 @@
-Feature: Single without union membership
- Scenario Outline: Delete Order
+Feature: Couple without union membership
+  Scenario Outline: Delete Order
     Given the user deletes any existing order on "<email>"
 
     Examples: 
       | email           | password     |
-      | sol2d@gmail.com | Password123! |
-  Scenario Outline: Single without union membership
+      | sol1g@gmail.com | Passw0rd123! |
+  Scenario Outline: Couple without union membership
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    #When user clicks on new order on incomplete order popup
-    #When user clicks on continue on incomplete order popup
-    When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
-    When user clicks Standard will product for singles
+    When user clicks Standard will product for couples
     Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
-    #Single-------------------------------------------------------------------------
-    When user selects "Single" as Relationship Status on about page
-    And user fill up the all required fields for single status
-    And user click the next button on the about page
+    #Defacto-------------------------------------------------------------------------
+    When user selects "Married" as Relationship Status on about page
+    And user fill up the all required fields for married status
+    And user click the next button on the about page with spouse
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
     And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
-    And user clicks yes to Do you want to include any children you have in the future question
-    And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
+    And user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question
+    And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
+    And user click NO If any of your children predecease you, do you want to divide that child's share equally among their children question
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #Executors Page-------------------------------------------------------------------------
@@ -60,7 +58,7 @@ Feature: Single without union membership
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -85,21 +83,21 @@ Feature: Single without union membership
     And user confirms on the acknowledgement inside the review and confirm page
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments
-    Then user is on "Payment" page
+    #Then user is on "Payment" page
     #Check union membership
-    And user sees union membership dropdown
-    And user adds union membership
-    And user clicks on pay now button
+    #And user sees union membership dropdown
+    #And user adds union membership
+    #And user clicks on pay now button
     #Checkout page
-    Then user is on "Checkout" page
+    #Then user is on "Checkout" page
     #Scenario2: Checkout - valid details--------------------------
-    Then user enter payment details
-    Then user select month
-    Then user select year
-    When user clicks the pay button
+    #Then user enter payment details
+    #Then user select month
+    #Then user select year
+    #When user clicks the pay button
     #Payment Complete
-    Then user is on "Thank You" page
+    Then user is on "Pending Spouse" page
 
     Examples: 
       | email           | password     | Address1  | Suburb         |
-      | sol2d@gmail.com | Password123! | Australia | Executive Lane |
+      | sol1g@gmail.com | Passw0rd123! | Australia | Executive Lane |

@@ -19,26 +19,11 @@ import cucumber.api.junit.Cucumber;
 		// Testing. @RegressionFail = Comment this line for testing multiple feature
 		// files.
 		// tags = { "@42-20" }, // @WIP = Work in Progress. @Regression = For Repeating
-		// Testing. @RegressionFail = Comment this line for testing multiple feature
-		// files.
-		// features = "src/test/resources/features/" // Features used for Regression.
-		// features = "src/test/resources/features/WIP.feature" // Feature file to use
-		// for WIP.
+		// Testing. @RegressionFail = Comment this line for testing multiple feature.
 		// features = "src/test/resources/features/Sprint 0/" // Feature file to use for
-		// Sprint 0.
-		// features = "src/test/resources/features/Sprint 1/MW - 27/MW - 27 -
-		// QuestionsB.feature" // Feature file to use for Sprint 1.
-		// features = "src/test/resources/features/Sprint 1/MW - 40.feature" // Feature
-		// file to use for Sprint 1.
-		// features = "src/test/resources/features/Sprint 2/MW - 175.feature" // Feature
-		// file to use for Sprint 2.
-		// features = "src/test/resources/features/Sprint 2/MW - 42/MW - 42A.feature" //
-		// Feature file to use for Sprint 2.
-		// features = "src/test/resources/features/Cheat.feature"
-		// features = "src/test/resources/features/Enhancement/Solution 1/Solution1g.feature"
-		// features = "src/test/resources/features/Enhancement/Solution 1/"
-		// features = "src/test/resources/features/Enhancement/"
-		features = "src/test/resources/features/Enhancement/6 months/6Months.feature"
+		//################### Per Sprint .
+		features = "src/test/resources/features/Sprint 2/MW - 176.feature"
+		//features = "src/test/resources/features/Sprint 1/MW - 27.feature"
 // features = "src/test/resources/features/Enhancement/BackOffice"
  //features = "src/test/resources/features/Enhancement/Solution 2/SingleWithUnionMember.feature"
 )

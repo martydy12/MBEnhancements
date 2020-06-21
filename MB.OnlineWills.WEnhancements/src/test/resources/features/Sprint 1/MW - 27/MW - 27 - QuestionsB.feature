@@ -36,9 +36,9 @@ Feature: MW - 27B Questions : As a customer, I want to list my beneficiaries so 
     And user clicks yes to Do you want to give the whole estate equally to your children question
     And user sees question "Do you want to include any children you have in the future?"
     And user clicks yes to Do you want to include any children you have in the future question
-    And user sees question "If any of your children predecease you"
+    And user sees question "If any of your children pass away before you"
     And user clicks no to Do you want to include any children you have in the future question
-    And user sees question "If any of your children predecease you"
+    And user sees message "If any of your children pass away before you"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question

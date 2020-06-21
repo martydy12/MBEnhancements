@@ -1,6 +1,6 @@
-Feature: About you tooltips
+Feature: MW - 59A - About you tooltips
 
-  Scenario Outline: 
+  Scenario Outline: Delete Order
     #Delete Order for a fresh start
     Given user opens browser and proceeds to orders page
     Then user selects "<email>" on user dropdown
@@ -10,7 +10,7 @@ Feature: About you tooltips
       | email            |
       | demeth@gmail.com |
 
-  Scenario Outline: About you tooltips
+  Scenario Outline: MW - 59A - About you tooltips
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -20,7 +20,7 @@ Feature: About you tooltips
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     And user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

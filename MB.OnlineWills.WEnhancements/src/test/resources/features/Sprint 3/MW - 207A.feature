@@ -1,7 +1,7 @@
-Feature: MW - 207: Given I am a primary user, and my spouse and I have both added on POAs, then a discounted rate will show on the order summary
+Feature: MW - 207A: Given I am a primary user, and my spouse and I have both added on POAs, then a discounted rate will show on the order summary
 
   @WIP
-  Scenario: 
+  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     Then user close browser
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 207A
     #With POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -20,7 +20,7 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -53,14 +53,11 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
@@ -68,7 +65,7 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     When user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -113,5 +110,3 @@ Feature: MW - 207: Given I am a primary user, and my spouse and I have both adde
     Examples: 
       | email       | password     | Address1  | Suburb         |
       | bam@bam.com | Password123! | Australia | Executive Lane |
-
-  

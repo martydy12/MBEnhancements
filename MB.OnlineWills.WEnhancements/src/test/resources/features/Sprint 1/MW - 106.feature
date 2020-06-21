@@ -1,20 +1,19 @@
 Feature: MW - 106 : Payments Page
 
-@WIP
-  Scenario Outline: 
+  @WIP
+  Scenario Outline: MW - 106 : Payments Page
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-    
-        Examples: 
-      | email      | password     | Address1 | Suburb   			|
-      | bam@bam.com| Password123! | Australia| Executive Lane |
 
+    Examples: 
+      | email       | password     | Address1  | Suburb         |
+      | bam@bam.com | Password123! | Australia | Executive Lane |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 106 : Payments Page
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -23,7 +22,7 @@ Feature: MW - 106 : Payments Page
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -35,7 +34,7 @@ Feature: MW - 106 : Payments Page
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to do you have assets question
+    And user clicks no to all assets question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
     And user clicks yes to Do you want to include any children you have in the future question
@@ -56,24 +55,19 @@ Feature: MW - 106 : Payments Page
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
     And user clicks next button on the ID docs page
-    #And user sees next button on the ID docs page
-    Then user clicks next button on the ID docs page
+    And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
     And user confirms on the acknowledgement inside the review and confirm page
     And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -102,11 +96,9 @@ Feature: MW - 106 : Payments Page
     #Check order summary (With POA)
     And POA is displayed in the order summary
     And Standard will legal document is displayed in the order summary
-    And user clicks on pay now button
     Then user close browser
+
     #User is redirected to
-    
-    
     Examples: 
-      | email            | password     | Address1 | Suburb         |
-      | bam@bam.com| Password123! | Australia| Executive Lane |
+      | email       | password     | Address1  | Suburb         |
+      | bam@bam.com | Password123! | Australia | Executive Lane |

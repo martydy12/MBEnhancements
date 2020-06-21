@@ -1,7 +1,7 @@
 Feature: MW - 104 As a Legal Assistant, I want to navigate to a Dashboard, So that I can easily view who I need to contact
 
   @Regression
-  Scenario Outline: 
+  Scenario Outline: MW - 104
     # Go to site and log in
     #Scenario1
     Given user opens admin page
@@ -26,7 +26,7 @@ Feature: MW - 104 As a Legal Assistant, I want to navigate to a Dashboard, So th
       | backuser | Password123! |
 
   @Regression
-  Scenario Outline: 
+  Scenario Outline: MW - 104
     # Go to site and log in
     #Scenario1
     Given user opens admin page
@@ -41,8 +41,8 @@ Feature: MW - 104 As a Legal Assistant, I want to navigate to a Dashboard, So th
     #Scenario 4-5-6
     When user updates action details in dashboard
     #Scenario 7
-    Then user enters invalid date in action
-    And user sees feedback message "Invalid Date"
+    #Then user enters invalid date in action
+    #And user sees feedback message "Invalid Date"
     Then user sorts dashboard column
 
     Examples: 

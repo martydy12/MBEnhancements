@@ -158,7 +158,7 @@ public class BeneficiariesPage extends Base {
 	WebElement Gift_Delete1;
 	@FindBy(xpath = "(//a[contains(@id,'GiftDelete')])[2]")
 	WebElement Gift_Delete2;
-	@FindBy(xpath = "//input[contains(@value,'Save')]")
+	@FindBy(xpath = "//input[@value='Save']")
 	WebElement Gift_Save;
 
 	// Beneficiaries - Error Message
@@ -450,7 +450,7 @@ public class BeneficiariesPage extends Base {
 	}
 
 	public void FillUpGiftSection()throws Exception{
-		CommonFunctions.clickElement(AddGift);
+		//CommonFunctions.clickElement(AddGift);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Gift_Description, "Sample");
 		CommonFunctions.pause(5000, false);
@@ -603,6 +603,11 @@ public class BeneficiariesPage extends Base {
 		CommonFunctions.clickElement(NextButton);
 
 		return new ExecutorsPage();
+	}
+	public IDdocsPage ClickNextButton2()throws Exception{
+		CommonFunctions.clickElement(NextButton);
+
+		return new IDdocsPage();
 	}
 
 	public IDdocsPage clickNextIDDocs()throws Exception{

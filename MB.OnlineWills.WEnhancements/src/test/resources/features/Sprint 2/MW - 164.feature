@@ -11,7 +11,7 @@ Feature: MW - 164
       | david.peralta@yahoo.com |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 164
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -20,7 +20,7 @@ Feature: MW - 164
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     And user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

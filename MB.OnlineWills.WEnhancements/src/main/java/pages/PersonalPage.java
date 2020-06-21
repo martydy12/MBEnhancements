@@ -24,9 +24,9 @@ public class PersonalPage extends Base {
 	WebElement PhoneNumber;
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_Occupation_Input')]")
 	WebElement Occupation;
-	@FindBy(xpath = "//span[text()='Please ensure that you are the one filling in this form.']")
+	@FindBy(xpath = "//span[text()='Please ensure you are the one filling in this form.']")
 	WebElement SectionTitle;
-	@FindBy(xpath = "//span[text()='Hi bam!']")
+	@FindBy(xpath = "//span[contains(text(),'Hi bam!')]")
 	WebElement WelcomeMessage;
 
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_Line1ResAddress_Input')]")
@@ -41,6 +41,9 @@ public class PersonalPage extends Base {
 	WebElement ResidentialPostCode;
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_IsPostAddDetails_CheckBox')]")
 	WebElement ResidentialAddressSameAsResidential;
+	
+	@FindBy(xpath = "//input[contains(@id,'PersonalDetailsPopup_block')]")
+	WebElement OKBtnPopUp;
 
 	@FindBy(xpath = "//input[contains(@id,'PersonalInfo_Line1PostAddress_Input')]")
 	WebElement PostalAddressLine1;
@@ -534,6 +537,10 @@ public class PersonalPage extends Base {
 		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
+	}
+	public void clickOKBtnPopUp2()throws Exception{
+		CommonFunctions.elementDisplayed(OKBtnPopUp);
+		CommonFunctions.clickElement(OKBtnPopUp);
 	}
 
 	public void CheckProgressAbout()throws Exception{

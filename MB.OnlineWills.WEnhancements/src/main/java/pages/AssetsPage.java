@@ -68,7 +68,7 @@ public class AssetsPage extends Base {
 	WebElement RightsYes;
 	@FindBy(xpath = "//input[contains(@id,'RadioButton_RightsNo')]")
 	WebElement RightsNo;
-	@FindBy(xpath = "//*[text()='Add Superannuation Account']")
+	@FindBy(xpath = "//*[text()='Add Superannuation Account (Optional)']")
 	WebElement AddSuper;
 	@FindBy(xpath = "//input[contains(@id,'Button_SuperAdd')]")
 	WebElement SuperSave;
@@ -135,7 +135,7 @@ public class AssetsPage extends Base {
 	WebElement DebtDelete2;
 	@FindBy(xpath = "//a[contains(@id,'DebtEdit')]")
 	WebElement DebtEdit;
-	@FindBy(xpath = "//input[contains(@value,'Save')]")
+	@FindBy(xpath = "//input[contains(@value,'Save') and contains(@name,'ListRecordDebts')]")
 	WebElement DebtSave;
 	@FindBy(xpath = "(//input[contains(@value,'Cancel')])[2]")
 	WebElement DebtCancel;

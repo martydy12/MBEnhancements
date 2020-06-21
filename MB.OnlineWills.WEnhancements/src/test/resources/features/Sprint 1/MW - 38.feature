@@ -1,7 +1,7 @@
 Feature: MW - 38 : Beneficiaries - Gifts
 
   @WIP
-  Scenario: 
+  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Then user close browser
 
   @Sprint1
-  Scenario Outline: 
+  Scenario Outline: MW - 38
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -17,7 +17,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -41,7 +41,7 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Then user is on "Beneficiaries" page
     And user sees question "Do you want to give the whole of your estate equally to any children you have in the future?"
     And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
-    And user sees question "If any of your children predecease you"
+    And user sees question "If any of your children pass away before you"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     #Scenario 1: Customer Indicates gifts to allocate
@@ -53,8 +53,8 @@ Feature: MW - 38 : Beneficiaries - Gifts
     Then user checks required fields in the gift section
     When user fills up gift from beneficiaries
     Then user updates gift from beneficiaries
-    And user removes gift beneficiary
-    And user cancels created gift beneficiary
+    # And user removes gift beneficiary
+    #And user cancels created gift beneficiary
     Then user close browser
 
     Examples: 

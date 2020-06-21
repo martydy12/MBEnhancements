@@ -20,7 +20,7 @@ Feature: MW - 144B / Single Package - Checks if Relationship status for about yo
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard victorian will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

@@ -1,6 +1,6 @@
-Feature: MW - 34 : Super annuation
+Feature: MW - 34 and 35 : Super annuation
   @WIP
-  Scenario: 
+  Scenario:  Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -8,7 +8,7 @@ Feature: MW - 34 : Super annuation
     Then user close browser
 
   @Sprint11
-  Scenario Outline: 
+  Scenario Outline:  MW - 34
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -16,7 +16,7 @@ Feature: MW - 34 : Super annuation
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -60,7 +60,7 @@ Feature: MW - 34 : Super annuation
     And user clicks save button on adding death beneficiary
     And user adds superannuation with death beneficiary
     #Delete beneficiary
-    And user deletes the first death benificiary
+    #And user deletes the first death benificiary
     Then user close browser
 
     Examples: 

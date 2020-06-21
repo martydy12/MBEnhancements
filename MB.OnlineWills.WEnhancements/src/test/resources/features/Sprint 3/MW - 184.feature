@@ -1,7 +1,7 @@
 Feature: MW-184	Updates to About you page for Email consent
 
   @WIP
-  Scenario: 
+  Scenario: MW-184
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW-184	Updates to About you page for Email consent
     Then user close browser
 
   @Sprint3
-  Scenario Outline: 
+  Scenario Outline: MW-184
     #Scenario 1
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -26,7 +26,7 @@ Feature: MW-184	Updates to About you page for Email consent
     And user click on confirm button
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

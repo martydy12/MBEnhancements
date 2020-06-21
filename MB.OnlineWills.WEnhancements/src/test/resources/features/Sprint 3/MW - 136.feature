@@ -1,7 +1,7 @@
 Feature: MW - 136 : Date of Birth cannot be current date or future date
 
   @WIP
-  Scenario: 
+  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     Then user close browser
 
   @Payment
-  Scenario Outline: 
+  Scenario Outline: MW - 136
     # Single Package - Union, Standard Will - no POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -18,7 +18,7 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user select today as birth date
@@ -65,14 +65,11 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "Review and Confirm" page
@@ -98,5 +95,5 @@ Feature: MW - 136 : Date of Birth cannot be current date or future date
     Then user close browser
 
     Examples: 
-      | email                   | password     | Address1                                         | Suburb         |
+      | email       | password     | Address1                                         | Suburb         |
       | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

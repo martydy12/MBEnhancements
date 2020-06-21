@@ -60,9 +60,9 @@ public class CheckOutPage extends Base {
 	WebElement Btn_Pay;
 	@FindBy(xpath = "//input[@value='Cancel']")
 	WebElement Btn_Cancel;
-	@FindBy(xpath = "//span[text()='Yes']//parent::button")
+	@FindBy(xpath = "//button[text()='Yes']")
 	WebElement Btn_Yes;
-	@FindBy(xpath = "//span[text()='No']//parent::button")
+	@FindBy(xpath = "//button[text()='No']")
 	WebElement Btn_No;
 	@FindBy(xpath = "//*[text()='Cancel Order']")
 	WebElement PopupCancelOrder;
@@ -189,13 +189,13 @@ public class CheckOutPage extends Base {
 	}
 
 	public void clickYesCancelOrder()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Cancel Order']");
+		//CommonFunctions.switchFrameByXPath("//button[text()='Yes']");
 		CommonFunctions.clickElement(Btn_Yes);
 
 	}
 
 	public void clickNoCancelOrder()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Cancel Order']");
+		//CommonFunctions.switchFrameByXPath("//button[text()='No']");
 		CommonFunctions.clickElement(Btn_No);
 
 	}

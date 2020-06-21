@@ -36,7 +36,7 @@ Feature: MW - 27A Questions : As a customer, I want to list my beneficiaries so 
    	And user sees message "Do you want to give the whole estate equally to your children?"
    	And user clicks yes to If your spouse/partner predeceases you do you want to give the whole estate equally to your children question
     And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
-    And user sees message "If any of your children predecease you"
+    And user sees message "If any of your children pass away before you"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question

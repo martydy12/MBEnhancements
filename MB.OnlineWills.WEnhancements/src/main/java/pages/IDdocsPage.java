@@ -34,6 +34,8 @@ public class IDdocsPage extends Base {
 	
 	@FindBy(xpath = "//input[@value='Add']")
 	WebElement AddValueButton;
+	@FindBy(xpath = "(//input[@value='Cancel'])[2]")
+	WebElement CancelValueButton;
 
 	// @FindBy(xpath = "(//select[contains(@id,'IdentificationTypeInput')])[2]")
 	// WebElement Question2B;
@@ -148,7 +150,7 @@ public class IDdocsPage extends Base {
 	//Australian Passport
 	@FindBy(xpath = "//span[contains(@id,'AusPassportNo')]")
 	WebElement APPNo;
-	@FindBy(xpath = "(//span[contains(@id,'PassportDOBInput')])[2]")
+	@FindBy(xpath = "(//span[contains(@id,'PassportDOBInput')])[1]")
 	WebElement APDOB;
 	@FindBy(xpath = "//span[contains(@id,'AusPassportGender')]")
 	WebElement APGender;
@@ -401,6 +403,9 @@ public class IDdocsPage extends Base {
 	public void ClickAddButton()throws Exception{
 		CommonFunctions.clickElement(AddValueButton);
 	}
+	public void ClickCancelButton()throws Exception{
+		CommonFunctions.clickElement(CancelValueButton);
+	}
 	public void SelectForeignPassportSecondID()throws Exception{
 		CommonFunctions.selectValueFromDropdown(Question2A, "Foreign Passport");
 	}
@@ -455,7 +460,7 @@ public class IDdocsPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.selectValueFromDropdown(Question10, "Green");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.enterElementValue(Question11, "A1111111");
+		CommonFunctions.enterElementValue(Question11, "1111111111");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question12, "0123456789");
 		CommonFunctions.pause(5000, false);
@@ -471,7 +476,7 @@ public class IDdocsPage extends Base {
 	public void FillUpAustralianPassport()throws Exception{
 
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.enterElementValue(Question15, "ABC1111");
+		CommonFunctions.enterElementValue(Question15, "N0995852");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question16, "Dim");
 		CommonFunctions.pause(5000, false);

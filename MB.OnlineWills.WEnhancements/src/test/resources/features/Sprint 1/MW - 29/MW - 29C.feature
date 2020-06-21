@@ -57,8 +57,8 @@ Feature: MW - 29C : ID Docs Page
     And user agrees to terms and agreement inside the ID docs Page
     #Select Foreign and Australian Passport
     And user selects Driver License as first identification type
-    And user selects Medicare as second identification type
     And user adds driver license details
+    And user selects Medicare as first identification type
     And user adds medicare details
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page

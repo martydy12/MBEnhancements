@@ -39,7 +39,7 @@ public class DashboardPage extends Base {
 	WebElement tablerow_Phone;
 	@FindBy(xpath = "//*[text()='Phone']//parent::th")
 	WebElement tablerow_Email;
-	@FindBy(xpath = "//*[text()='Single']//parent::th")
+	@FindBy(xpath = "//*[contains(text(),'Single/')]//parent::th")
 	WebElement tablerow_Single;
 	@FindBy(xpath = "//*[text()='Union']//parent::th")
 	WebElement tablerow_Union;
@@ -67,6 +67,8 @@ public class DashboardPage extends Base {
 	WebElement option_DateEnd;
 	@FindBy(xpath = "//div[contains(@id,'Options')]//parent::span[text()='Actions']")
 	WebElement option_Actions;
+	@FindBy(xpath = "//a[text()='More Options']")
+    WebElement dropdown_MoreOptions;
 
 	/* Table Row - More Option - Options */
 	// @FindBy(xpath = "//div[contains(@id,'Options')]//parent::select[contains(@id,'WillTypeId')]")
@@ -94,7 +96,8 @@ public class DashboardPage extends Base {
 	WebElement tablerow_NewestRow;
 	@FindBy(xpath = "(//table[contains(@id,'FormItemTable')]//following-sibling::tr)[11]")
 	WebElement tablerow_OldestRow;
-	@FindBy(xpath = "(//select[contains(@id,'FormItemTable_List_Current_Actions_Id')])[1]")
+	//@FindBy(xpath = "(//select[contains(@id,'FormItemTable_List_Current_Actions_Id')])[1]")
+	@FindBy(xpath = "(//select)[5]")
 	WebElement dropdown_Action;
 	@FindBy(xpath = "(//input[contains(@id,'ActionDate2')])[1]")
 	WebElement input_ActionDate;
@@ -132,7 +135,7 @@ public class DashboardPage extends Base {
 	}
 
 	public void clickMoreOption()throws Exception{
-		CommonFunctions.clickElement(link_MoreOption);
+		CommonFunctions.clickElement(dropdown_MoreOptions);
 		CommonFunctions.pause(3000, false);
 	}
 
@@ -185,7 +188,7 @@ public class DashboardPage extends Base {
 	public void UpdateUserActions()throws Exception{
 		CommonFunctions.selectValueFromDropdown(dropdown_Action, "Made contact");
 		CommonFunctions.pause(3000, false);
-		CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/20");
+		//CommonFunctions.clearThenEnterElementValue(input_ActionDate, "05/09/20");
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.pause(3000, false);
 	}
@@ -201,6 +204,7 @@ public class DashboardPage extends Base {
 	}
 
 	public void displayMoreOptionSearchFields()throws Exception{
+		 CommonFunctions.clickElement(dropdown_MoreOptions);
 		CommonFunctions.elementDisplayed(dropdown_WillType);
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(dropdown_UnionMember);

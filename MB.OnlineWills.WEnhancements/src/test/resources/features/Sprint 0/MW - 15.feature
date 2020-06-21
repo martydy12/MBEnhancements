@@ -60,8 +60,8 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user input "Demeth@gmail.com" in the Email field on registration page
     When the user clicks on create account button
     #And user sees message "Email address already registered.  Try another"
-   And user checks if validation on registered email is displayed
-   Then user close browser
+    And user checks if validation on registered email is displayed
+    Then user close browser
 
   @Regression
   Scenario Outline: Scenario 5: Password does not match password policy
@@ -92,7 +92,7 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
 
     Examples: 
       | Password     | Invalid Confirm Password |
-      | Password123! | P123! |
+      | Password123! | P123!                    |
 
   @Regression1
   Scenario Outline: Scenario 8: Patient successfully completes registration
@@ -103,7 +103,8 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     # Supply all mandatory fields
     When user inputs "<First Name>" in the First Name field on registration page
     When user inputs "<Family Name>" in the Family Name field on registration page
-    When user inputs "<Email>" in the Email field on registration page 
+    When user inputs "<Email>" in the Email field on registration page
+    When user inputs "<Phone>" in the Phone field on registration page
     When user selects "<State>" on state dropdown
     When user inputs "<Password>" in the Password field on registration page
     When user inputs "<Confirm Password>" in the Confirm Password field on registration page
@@ -111,15 +112,19 @@ Feature: MW - 15 : As a customer, I want to register my account so I can create 
     When user agress on I have read and agree to the MyLife Wills
     When user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox
     When the user clicks on create account button
-    And user sees message "Thank you for registering"
+    And user sees message "Well done, your account is nearly created."
+    And user sees message "We have sent you an activation email. Please go to your email and click the activation link to confirm your account."
+    And user sees message "Once activated you can begin providing your instructions in our easy online system."
+    #And user sees message "If you are unable to answer a question, or unsure of what information to provide, don’t worry you can discuss this with us during our follow up consultation."
+    # And user sees message "Time to get started!"
     Then user close browser
 
     #Not automated
     #And an activation email is sent to the email address they entered during registration
     #And the activation email is sent from:<MB email address>
     Examples: 
-      | First Name | Family Name | Email  | State | Password     | Confirm Password | Source        |
-      | Demeth     | Camuin      | Demeth | VIC   | Password123! | Password123!     | Word Of Mouth |
+      | First Name | Family Name | Email  | State | Password     | Confirm Password | Source        | Phone   |
+      | Demeth     | Camuin      | Demeth | VIC   | Password123! | Password123!     | Word Of Mouth | 4772894 |
 
   @Regression
   Scenario: Scenario 9: Customer clicks on the Password Policy tool tip

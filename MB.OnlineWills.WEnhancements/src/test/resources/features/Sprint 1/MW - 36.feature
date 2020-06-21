@@ -1,7 +1,7 @@
 Feature: MW - 36 : As a customer, I want to enter the required details about my assets, so I can process my Wil
 
   @WIP
-  Scenario: 
+  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 36 : As a customer, I want to enter the required details about my 
     Then user close browser
 
   @Sprint11
-  Scenario Outline: 
+  Scenario Outline: MW - 36
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -17,7 +17,7 @@ Feature: MW - 36 : As a customer, I want to enter the required details about my 
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

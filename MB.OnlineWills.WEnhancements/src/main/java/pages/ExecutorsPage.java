@@ -18,7 +18,8 @@ public class ExecutorsPage extends Base {
 	// Element - Link
 
 	// @FindBy(xpath = "//*[contains(@id,'lnkAddExecutor')]//parent::div")
-	@FindBy(xpath = "//span[@class='fa fa-fw fa-plus']")
+	//@FindBy(xpath = "//span[@class='fa fa-fw fa-plus']")
+	@FindBy(xpath = "//a[text()='Add Executor']")
 	WebElement Question2;
 
 	// Element - PopUp
@@ -448,7 +449,7 @@ public class ExecutorsPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(Question13, "4321");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(btn_Add);
+		CommonFunctions.clickElement(btn_add3);
 		CommonFunctions.pause(5000, false);
 	}
 

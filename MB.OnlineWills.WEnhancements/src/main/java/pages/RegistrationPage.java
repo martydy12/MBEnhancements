@@ -30,6 +30,8 @@ public class RegistrationPage extends Base {
 	WebElement PrivacyPolicyLink;
 	@FindBy(xpath = "//input[@value='Create Account']")
 	WebElement CreateAccountButton;
+	@FindBy(xpath = "//input[contains(@id,'PhoneField')]")
+	WebElement Phone;
 	@FindBy(xpath = "//input[contains(@id,'DescriptionField')]")
 	WebElement DescriptionField;
 	@FindBy(xpath = "//span[text()='Back to Login']")
@@ -193,6 +195,9 @@ public class RegistrationPage extends Base {
 	public void displayedCreateAccountButton()throws Exception{
 		CommonFunctions.elementDisplayed(CreateAccountButton);
 	}
+	public void displayedPhone()throws Exception{
+		CommonFunctions.elementDisplayed(Phone);
+	}
 
 	public void displayedDescriptionField()throws Exception{
 		CommonFunctions.elementDisplayed(DescriptionField);
@@ -258,7 +263,9 @@ public class RegistrationPage extends Base {
 	public void setFamilyNameField(String Value) throws Exception{
 		CommonFunctions.clearThenEnterElementValue(FamilyNameField, Value);
 	}
-
+	public void setPhoneeField(String Value) throws Exception{
+		CommonFunctions.clearThenEnterElementValue(Phone, Value);
+	}
 	public String setEmailField(String Value)throws Exception{
 		CommonFunctions.clearThenEnterElementValue(EmailField, Value);
 		return Value;

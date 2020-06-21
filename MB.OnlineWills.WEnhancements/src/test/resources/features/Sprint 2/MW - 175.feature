@@ -1,7 +1,7 @@
 Feature: MW - 175 : Union Member Payments
 
  		@Payment
-  	Scenario: 
+  	Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 175 : Union Member Payments
     Then user close browser
 
   @Sprint22
-  Scenario Outline: 
+  Scenario Outline: MW - 175
   # Single Package - Union, Standard Will - no POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -32,7 +32,7 @@ Feature: MW - 175 : Union Member Payments
 		
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
@@ -77,13 +77,14 @@ Feature: MW - 175 : Union Member Payments
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
     #ID docs Page-------------------------------------------------------------------------
-    Then user is on "ID Check" page
+     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
     And user selects Foreign Passport as first identification type
     And user adds foreign passport details
     And user selects Driver License as second identification type
     And user adds driver license details
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "ReviewAndConfirm" page
@@ -106,13 +107,13 @@ Feature: MW - 175 : Union Member Payments
       | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
       
     @Payment
- 		Scenario: 
+ 		Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-  	Scenario Outline: 
+  	Scenario Outline: MW-175
   	# Single Package - Staff, Standard Will - no POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -190,6 +191,7 @@ Feature: MW - 175 : Union Member Payments
     And user selects Driver License as second identification type
     And user adds driver license details
     And user clicks next button on the ID docs page
+    And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "ReviewAndConfirm" page
     And user confirms on the acknowledgement inside the review and confirm page
@@ -211,7 +213,7 @@ Feature: MW - 175 : Union Member Payments
       | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
       
   	@Payment
-	  Scenario: 
+	  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -219,7 +221,7 @@ Feature: MW - 175 : Union Member Payments
     Then user close browser
       
     @Payment
-    Scenario Outline: 
+    Scenario Outline: MW-175
     # Single Package - Staff, Standard Will + POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -289,13 +291,14 @@ Feature: MW - 175 : Union Member Payments
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
     #ID docs Page-------------------------------------------------------------------------
-    Then user is on "ID Check" page
+     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
     And user selects Foreign Passport as first identification type
     And user adds foreign passport details
     And user selects Driver License as second identification type
     And user adds driver license details
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     #Review and confirm-------------------------------------------------------------------------
     Then user is on "ReviewAndConfirm" page

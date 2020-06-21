@@ -8,7 +8,8 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class AboutPage extends Base {
-	// ========================================================== Page Objects ==========================================================
+	// ========================================================== Page Objects
+	// ==========================================================
 	@FindBy(xpath = "//select[contains(@id,'Select_PartnerRelationshipId')]")
 	WebElement RelationshipStatus;
 	@FindBy(xpath = "//input[contains(@value,'Save and Continue')]")
@@ -17,6 +18,11 @@ public class AboutPage extends Base {
 	WebElement CancelButton;
 	@FindBy(xpath = "//input[contains(@id,'PropertySettlementRadioNo')]")
 	WebElement LawNoButton;
+	@FindBy(xpath = "//input[contains(@id,'SpouseExistingOrderButton2')]")
+	WebElement OkButtonPopUp;
+	@FindBy(xpath = "//input[contains(@id,'SpouseInviteOkButton')]")
+	WebElement OkButtonPopUp2;
+
 	@FindBy(xpath = "//input[contains(@id,'PropertySettlementRadioYes')]")
 	WebElement LawYesButton;
 	@FindBy(xpath = "//input[contains(@id,'PropertySettlementRadioNA')]")
@@ -36,7 +42,7 @@ public class AboutPage extends Base {
 	WebElement Question4;
 	@FindBy(xpath = "//input[contains(@id,'LengthOfRelationship')]")
 	WebElement Question5;
-	//@FindBy(xpath = "//label[text()='Do you plan to marry or re-marry?']")
+	// @FindBy(xpath = "//label[text()='Do you plan to marry or re-marry?']")
 	@FindBy(xpath = "//label[text()='Do you plan to get married?']")
 	WebElement Question6;
 	@FindBy(xpath = "//input[contains(@id,'WillMarryRadioYes')]")
@@ -57,7 +63,7 @@ public class AboutPage extends Base {
 	WebElement Question10;
 	@FindBy(xpath = "//input[contains(@id,'YearSettlement')]")
 	WebElement Question11;
-	@FindBy(xpath = "//label[text()='What year did you separate/divorce?']//following-sibling::input")
+	@FindBy(xpath = "//label[text()='What year did you separate/divorce? (Optional)']//following-sibling::input")
 	WebElement Question12;
 
 	@FindBy(xpath = "//input[contains(@id,'ChildrenRadioYes')]")
@@ -71,7 +77,7 @@ public class AboutPage extends Base {
 	WebElement DependentsYes;
 	@FindBy(xpath = "//input[contains(@id,'OtherDependentNo')]")
 	WebElement DependentsNo;
-	@FindBy(xpath = "//*[text()='Add Guardian']")
+	@FindBy(xpath = "//*[text()='Add Guardian (Optional)']")
 	WebElement AddGuardian;
 	@FindBy(xpath = "(//div[text()='Primary Guardian']//parent::div//parent::div//following::a[text()='Edit'])[1]")
 	WebElement EditPrimaryGuardian;
@@ -108,6 +114,8 @@ public class AboutPage extends Base {
 
 	@FindBy(xpath = "//input[contains(@id,'GuardianRadioYes')]")
 	WebElement GuardianYes;
+	@FindBy(xpath = "//input[contains(@id,'GuardianPopup')]")
+	WebElement GuardianOKPopUp;
 	@FindBy(xpath = "//input[contains(@id,'GuardianRadioNo')]")
 	WebElement GuardianNo;
 
@@ -119,6 +127,8 @@ public class AboutPage extends Base {
 	WebElement AddChildQuestion14;
 	@FindBy(xpath = "//input[contains(@id,'ParentFamilyName')]")
 	WebElement AddChildQuestion15;
+	@FindBy(xpath = "//input[contains(@id,'ParentLastName')]")
+	WebElement AddChildQuestion15a;
 
 	@FindBy(xpath = "//input[contains(@id,'ChildSaveButton')]")
 	WebElement AddChildSave;
@@ -294,29 +304,31 @@ public class AboutPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'Partner_Email')]")
 	WebElement Field_SpouseEmail;
 
-	@FindBy(xpath = "//span[text()='Please input your spouse/partnerâ€™s email so we can send them an invitation to complete their online form. By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to complete their online form. By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 	WebElement email_Consent;
 
-	// ================================================== Initializing the Page Objects ==================================================
-	public AboutPage() throws Exception{
+	// ================================================== Initializing the Page
+	// Objects ==================================================
+	public AboutPage() throws Exception {
 		PageFactory.initElements(driver, this);
 
 	}
 
-	// ============================================================= Actions =============================================================
-	public void ClickAddDependent() throws Exception{
+	// ============================================================= Actions
+	// =============================================================
+	public void ClickAddDependent() throws Exception {
 		CommonFunctions.clickElement(AddDependent);
 	}
 
-	public void ClickEditFirstDependent() throws Exception{
+	public void ClickEditFirstDependent() throws Exception {
 		CommonFunctions.clickElement(EditfirstDependent);
 	}
 
-	public void ClickDeleteFirstDependent() throws Exception{
+	public void ClickDeleteFirstDependent() throws Exception {
 		CommonFunctions.clickElement(DeletefirstDependent);
 	}
 
-	public void DisplayMandatoryFieldDependent() throws Exception{
+	public void DisplayMandatoryFieldDependent() throws Exception {
 		CommonFunctions.elementDisplayed(DependentTitleReq);
 		CommonFunctions.elementDisplayed(DependentFNameReq);
 		CommonFunctions.elementDisplayed(DependentLNameReq);
@@ -331,7 +343,7 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(DependentStateReq);
 	}
 
-	public void AddAUDependent() throws Exception{
+	public void AddAUDependent() throws Exception {
 		CommonFunctions.selectValueFromDropdown(DependentTitle, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(DependentFName, "AUDependent First Name");
@@ -358,7 +370,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void AddNonAUDependent() throws Exception{
+	public void AddNonAUDependent() throws Exception {
 		CommonFunctions.selectValueFromDropdown(DependentTitle, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(DependentFName, "Dependent First Name");
@@ -385,29 +397,32 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void ClickSaveAddDependent() throws Exception{
+	public void ClickSaveAddDependent() throws Exception {
 		CommonFunctions.clickElement(DependentSave);
 	}
-	
-	public PersonalPage ClickChangeButtonPersonal()throws Exception{
+
+	public PersonalPage ClickChangeButtonPersonal() throws Exception {
 		CommonFunctions.clickElement(ChangePersonalButton);
 
 		return new PersonalPage();
 	}
 
-	public void ClickEditFirstChild() throws Exception{
+	public void ClickEditFirstChild() throws Exception {
 		CommonFunctions.clickElement(EditFirstChild);
 	}
 
-	public void ClickGuardianSave() throws Exception{
+	public void ClickGuardianSave() throws Exception {
 		CommonFunctions.clickElement(GuardianSave);
 	}
 
-	public void ClickGuardianCancel() throws Exception{
+	public void ClickGuardianCancel() throws Exception {
 		CommonFunctions.clickElement(GuardianCancel);
 	}
 
-	public void AddGuardian() throws Exception{
+	public void AddGuardian() throws Exception {
+		String country = "AUSTRALIA";
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(GuardianCountry, country);
+
 		CommonFunctions.selectValueFromDropdown(GuardianTitle, "Reverend");
 		CommonFunctions.pause(5000, false);
 
@@ -441,7 +456,10 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void AddGuardian2() throws Exception{
+	public void AddGuardian2() throws Exception {
+		String country = "AUSTRALIA";
+		CommonFunctions.checkSingleSelectDropdownSelectedOption(GuardianCountry, country);
+
 		CommonFunctions.selectValueFromDropdown(GuardianTitle, "Reverend");
 		CommonFunctions.pause(5000, false);
 
@@ -475,7 +493,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void DisplayMandatoryFieldsOnGuardian() throws Exception{
+	public void DisplayMandatoryFieldsOnGuardian() throws Exception {
 		CommonFunctions.elementDisplayed(GuardianTitleReq);
 		CommonFunctions.elementDisplayed(GuardianFirstNameReq);
 		CommonFunctions.elementDisplayed(GuardianLastNameReq);
@@ -487,19 +505,24 @@ public class AboutPage extends Base {
 
 	}
 
-	public void ClickDeleteSecondChild() throws Exception{
+	public void ClickDeleteSecondChild() throws Exception {
 		CommonFunctions.clickElement(RemoveSecondChild);
 	}
 
-	public void ClickGuardianYes() throws Exception{
+	public void ClickGuardianYes() throws Exception {
 		CommonFunctions.clickElement(GuardianYes);
 	}
 
-	public void GuardianRequiredDisplayed() throws Exception{
-		CommonFunctions.elementDisplayed(GuardianNo.findElement(By.xpath(".//following::label//following::div[text()='Required field']")));
+	public void ClickGuardianOKGuardianPopUp() throws Exception {
+		CommonFunctions.clickElement(GuardianOKPopUp);
 	}
 
-	public void AddChildrenFromPrevious() throws Exception{
+	public void GuardianRequiredDisplayed() throws Exception {
+		CommonFunctions.elementDisplayed(
+				GuardianNo.findElement(By.xpath(".//following::label//following::div[text()='Required field']")));
+	}
+
+	public void AddChildrenFromPrevious() throws Exception {
 		CommonFunctions.selectValueFromDropdown(AddChildQuestion4, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(AddChildQuestion5, "Little Dim");
@@ -510,12 +533,14 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(AddChildQuestion11Yes);
 		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(AddChildQuestion11);
+		CommonFunctions.pause(5000, false);
 
 		CommonFunctions.selectValueFromDropdown(AddChildQuestion12, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(AddChildQuestion13, "Demeth");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.enterElementValue(AddChildQuestion15, "Camuin");
+		CommonFunctions.enterElementValue(AddChildQuestion15a, "Camuin");
 		CommonFunctions.pause(5000, false);
 
 		CommonFunctions.clickElement(AddChildSave);
@@ -523,7 +548,7 @@ public class AboutPage extends Base {
 
 	}
 
-	public void AddChildrenToggleOffOn() throws Exception{
+	public void AddChildrenToggleOffOn() throws Exception {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -532,17 +557,17 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void AddChildrenClickAddChild() throws Exception{
+	public void AddChildrenClickAddChild() throws Exception {
 		CommonFunctions.clickElement(AddChild);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void AddGauardianClickAddGuardian() throws Exception{
+	public void AddGauardianClickAddGuardian() throws Exception {
 		CommonFunctions.clickElement(AddGuardian);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void EditSecondaryGuardian() throws Exception{
+	public void EditSecondaryGuardian() throws Exception {
 		CommonFunctions.clickElement(EditSecondaryGuardian);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(GuardianAddress1, "THIS ADDRESS IS EDITED");
@@ -552,13 +577,13 @@ public class AboutPage extends Base {
 
 	}
 
-	public void DeleteSecondaryGuardian() throws Exception{
+	public void DeleteSecondaryGuardian() throws Exception {
 		CommonFunctions.clickElement(DeleteSecondaryGuardian);
 		CommonFunctions.pause(5000, false);
 
 	}
 
-	public void AddChildrenLegitimate() throws Exception{
+	public void AddChildrenLegitimate() throws Exception {
 
 		CommonFunctions.selectValueFromDropdown(AddChildQuestion4, "Dr");
 		CommonFunctions.pause(5000, false);
@@ -574,7 +599,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void CheckAddChildrenRequired() throws Exception{
+	public void CheckAddChildrenRequired() throws Exception {
 		CommonFunctions.elementDisplayed(AddChildQuestion4Req);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.elementDisplayed(AddChildQuestion5Req);
@@ -586,14 +611,18 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(AddChildQuestion9Req);
 		CommonFunctions.pause(5000, false);
 		/*
-		 * CommonFunctions.elementDisplayed(AddChildQuestion12Req); CommonFunctions.pause(5000, false); CommonFunctions.elementDisplayed(AddChildQuestion13Req); CommonFunctions.pause(5000, false);
-		 * CommonFunctions.elementDisplayed(AddChildQuestion14Req); CommonFunctions.pause(5000, false);
+		 * CommonFunctions.elementDisplayed(AddChildQuestion12Req);
+		 * CommonFunctions.pause(5000, false);
+		 * CommonFunctions.elementDisplayed(AddChildQuestion13Req);
+		 * CommonFunctions.pause(5000, false);
+		 * CommonFunctions.elementDisplayed(AddChildQuestion14Req);
+		 * CommonFunctions.pause(5000, false);
 		 */
 		CommonFunctions.clickElement(AddChildCancel);
 
 	}
 
-	public void CheckAddChildrenRequiredPreReq() throws Exception{
+	public void CheckAddChildrenRequiredPreReq() throws Exception {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -607,7 +636,7 @@ public class AboutPage extends Base {
 
 	}
 
-	public void AddChildrenStepChild() throws Exception{
+	public void AddChildrenStepChild() throws Exception {
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -634,7 +663,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void CheckContentAddChildren() throws Exception{
+	public void CheckContentAddChildren() throws Exception {
 		CommonFunctions.elementDisplayed(AddChild);
 		CommonFunctions.clickElement(AddChild);
 		CommonFunctions.pause(5000, false);
@@ -646,22 +675,22 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(AddChildQuestion9);
 		CommonFunctions.elementDisplayed(AddChildQuestion10);
 		CommonFunctions.elementDisplayed(AddChildQuestion11);
-		CommonFunctions.clickElement(AddChild);
+		// CommonFunctions.clickElement(AddChild);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.elementDisplayed(AddChildSave);
 		CommonFunctions.elementDisplayed(AddChildCancel);
 	}
 
-	public void YesChildren() throws Exception{
+	public void YesChildren() throws Exception {
 		CommonFunctions.clickElement(ChildrenYes);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void AddChildrenLinkDisplayed() throws Exception{
+	public void AddChildrenLinkDisplayed() throws Exception {
 		CommonFunctions.elementDisplayed(AddChild);
 	}
 
-	public void AdditionalQuestionsForSingleSinglesPackage() throws Exception{
+	public void AdditionalQuestionsForSingleSinglesPackage() throws Exception {
 		// Only 2 question will be additional
 		CommonFunctions.elementDisplayed(Question10);
 		CommonFunctions.clickElement(LawYesButton);
@@ -669,213 +698,243 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		CommonFunctions.clickElement(LawNAButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		// Other questions is hidden
-		//CommonFunctions.elementInvisible(Question1);
+		// CommonFunctions.elementInvisible(Question1);
 		CommonFunctions.elementNotExistingByXPath("//select[contains(@id,'Partner_TitleId')]");
-			
-		//CommonFunctions.elementInvisible(Question2);
+
+		// CommonFunctions.elementInvisible(Question2);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_FirstName')]");
-				
-		//CommonFunctions.elementInvisible(Question3);
+
+		// CommonFunctions.elementInvisible(Question3);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_MiddleName')]");
-				
-		//CommonFunctions.elementInvisible(Question4);
+
+		// CommonFunctions.elementInvisible(Question4);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_LastName')]");
-				
-		//CommonFunctions.elementInvisible(Question5);
+
+		// CommonFunctions.elementInvisible(Question5);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'LengthOfRelationship')]");
-				
-		//CommonFunctions.elementInvisible(Question6);
+
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-				
-		//CommonFunctions.elementInvisible(Question7);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you want to do your Will together with your spouse/partner']");
-				
-		//CommonFunctions.elementInvisible(Question8);
+
+		// CommonFunctions.elementInvisible(Question7);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='Do you want to do your Will together with your spouse/partner']");
+
+		// CommonFunctions.elementInvisible(Question8);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separate/divorce?']//following-sibling::input");
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separate/divorce?']//following-sibling::input");
 	}
 
-	public void RequiredValidationOnAboutPage() throws Exception{
-		CommonFunctions.elementDisplayed(RelationshipStatus.findElement(By.xpath(".//following::span//following::span[text()='Required field']")));
+	public void RequiredValidationOnAboutPage() throws Exception {
+		CommonFunctions.elementDisplayed(RelationshipStatus
+				.findElement(By.xpath(".//following::span//following::span[text()='Required field']")));
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 	}
 
-	public void RequiredValidationOnAboutPageWidowed() throws Exception{
+	public void RequiredValidationOnAboutPageWidowed() throws Exception {
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 	}
 
-	public void RequiredValidationOnAboutPageSingle() throws Exception{
+	public void RequiredValidationOnAboutPageSingle() throws Exception {
 		CommonFunctions.elementDisplayed(LawNAButtonRequired);
 
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 
 	}
 
-	public void RequiredValidationOnAboutPageMarried() throws Exception{
-		CommonFunctions.elementDisplayed(Question1.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question2.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question4.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question5.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(WillTogetherRadioNo.findElement(By.xpath(".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
+	public void RequiredValidationOnAboutPageMarried() throws Exception {
+		CommonFunctions.elementDisplayed(Question1
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question2
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question4
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question5
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(WillTogetherRadioNo.findElement(By.xpath(
+				".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
 
 		CommonFunctions.elementDisplayed(LawNAButtonRequired);
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 	}
 
-	public void RequiredValidationOnAboutPageSeparated() throws Exception{
-		CommonFunctions.elementDisplayed(Question1.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question2.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question4.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+	public void RequiredValidationOnAboutPageSeparated() throws Exception {
+		CommonFunctions.elementDisplayed(Question1
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question2
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question4
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
 
 		CommonFunctions.elementDisplayed(LawNAButtonRequired);
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 	}
 
-	public void RequiredValidationOnAboutPageDefacto() throws Exception{
-		CommonFunctions.elementDisplayed(Question1.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question2.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question4.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(Question5.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
-		CommonFunctions.elementDisplayed(WillMarryNo.findElement(By.xpath(".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
-		CommonFunctions.elementDisplayed(WillTogetherRadioNo.findElement(By.xpath(".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
+	public void RequiredValidationOnAboutPageDefacto() throws Exception {
+		CommonFunctions.elementDisplayed(Question1
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question2
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question4
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(Question5
+				.findElement(By.xpath(".//following-sibling::span//following-sibling::span[text()='Required field']")));
+		CommonFunctions.elementDisplayed(WillMarryNo.findElement(By.xpath(
+				".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
+		CommonFunctions.elementDisplayed(WillTogetherRadioNo.findElement(By.xpath(
+				".//parent::div[contains(@id, 'InputsAndLabels')]//label[text() = 'No']//parent::div//following-sibling::div")));
 
 		CommonFunctions.elementDisplayed(LawNAButtonRequired);
 		CommonFunctions.elementDisplayed(ChildrenNoRequired);
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 	}
 
-	public void AdditionalQuestionsForSingleCouplesPackage() throws Exception{
+	public void AdditionalQuestionsForSingleCouplesPackage() throws Exception {
 		// Only 2 question will be additional
-		//CommonFunctions.elementDisplayed(Question8);
+		// CommonFunctions.elementDisplayed(Question8);
 		CommonFunctions.elementDisplayed(Question10);
 		CommonFunctions.clickElement(LawYesButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		CommonFunctions.clickElement(LawNAButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		// Other questions is hidden
-		//CommonFunctions.elementInvisible(Question1);
+		// CommonFunctions.elementInvisible(Question1);
 		CommonFunctions.elementNotExistingByXPath("//select[contains(@id,'Partner_TitleId')]");
-				
-		//CommonFunctions.elementInvisible(Question2);
+
+		// CommonFunctions.elementInvisible(Question2);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_FirstName')]");
-				
-		//CommonFunctions.elementInvisible(Question3);
+
+		// CommonFunctions.elementInvisible(Question3);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_MiddleName')]");
-				
-		//CommonFunctions.elementInvisible(Question4);
+
+		// CommonFunctions.elementInvisible(Question4);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_LastName')]");
-				
-		//CommonFunctions.elementInvisible(Question5);
+
+		// CommonFunctions.elementInvisible(Question5);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'LengthOfRelationship')]");
-				
-		//CommonFunctions.elementInvisible(Question6);
+
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-				
-		//CommonFunctions.elementInvisible(Question7);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you want to do your Will together with your spouse/partner']");
-		
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separate/divorce?']//following-sibling::input");
+
+		// CommonFunctions.elementInvisible(Question7);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='Do you want to do your Will together with your spouse/partner']");
+
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separate/divorce?']//following-sibling::input");
 	}
 
-	public void AdditionalQuestionsForWidowedCouple() throws Exception{
+	public void AdditionalQuestionsForWidowedCouple() throws Exception {
 		// All Questions are hidden
-		//CommonFunctions.elementInvisible(Question1);
+		// CommonFunctions.elementInvisible(Question1);
 		CommonFunctions.elementNotExistingByXPath("//select[contains(@id,'Partner_TitleId')]");
-				
-		//CommonFunctions.elementInvisible(Question2);
+
+		// CommonFunctions.elementInvisible(Question2);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_FirstName')]");
-				
-		//CommonFunctions.elementInvisible(Question3);
+
+		// CommonFunctions.elementInvisible(Question3);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_MiddleName')]");
-				
-		//CommonFunctions.elementInvisible(Question4);
+
+		// CommonFunctions.elementInvisible(Question4);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_LastName')]");
-				
-		//CommonFunctions.elementInvisible(Question5);
+
+		// CommonFunctions.elementInvisible(Question5);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'LengthOfRelationship')]");
-				
-		//CommonFunctions.elementInvisible(Question6);
+
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-				
-		//CommonFunctions.elementInvisible(Question7);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you want to do your Will together with your spouse/partner']");
-				
-		//CommonFunctions.elementInvisible(Question8);
+
+		// CommonFunctions.elementInvisible(Question7);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='Do you want to do your Will together with your spouse/partner']");
+
+		// CommonFunctions.elementInvisible(Question8);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
-				
-		//CommonFunctions.elementInvisible(Question10);
+
+		// CommonFunctions.elementInvisible(Question10);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Have you had a family law property settlement?']");
-				
-		//CommonFunctions.elementInvisible(Question11);
+
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
-				
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separate/divorce?']//following-sibling::input");
+
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separate/divorce?']//following-sibling::input");
 	}
 
-	public void AdditionalQuestionsForWidowedSingle() throws Exception{
+	public void AdditionalQuestionsForWidowedSingle() throws Exception {
 		// All Questions are hidden
-		//CommonFunctions.elementInvisible(Question1);
+		// CommonFunctions.elementInvisible(Question1);
 		CommonFunctions.elementNotExistingByXPath("//select[contains(@id,'Partner_TitleId')]");
-				
-		//CommonFunctions.elementInvisible(Question2);
+
+		// CommonFunctions.elementInvisible(Question2);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_FirstName')]");
-				
-		//CommonFunctions.elementInvisible(Question3);
+
+		// CommonFunctions.elementInvisible(Question3);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_MiddleName')]");
-				
-		//CommonFunctions.elementInvisible(Question4);
+
+		// CommonFunctions.elementInvisible(Question4);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_LastName')]");
-				
-		//CommonFunctions.elementInvisible(Question5);
+
+		// CommonFunctions.elementInvisible(Question5);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'LengthOfRelationship')]");
-				
-		//CommonFunctions.elementInvisible(Question6);
+
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-				
-		//CommonFunctions.elementInvisible(Question7);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you want to do your Will together with your spouse/partner']");
-				
-		//CommonFunctions.elementInvisible(Question8);
+
+		// CommonFunctions.elementInvisible(Question7);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='Do you want to do your Will together with your spouse/partner']");
+
+		// CommonFunctions.elementInvisible(Question8);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
-				
-		//CommonFunctions.elementInvisible(Question10);
+
+		// CommonFunctions.elementInvisible(Question10);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Have you had a family law property settlement?']");
-				
-		//CommonFunctions.elementInvisible(Question11);
+
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
-				
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separate/divorce?']//following-sibling::input");
+
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separate/divorce?']//following-sibling::input");
 	}
 
-	public void AdditionalQuestionsForMarried() throws Exception{
+	public void AdditionalQuestionsForMarried() throws Exception {
 		// Questions that are hidden
-		//CommonFunctions.elementInvisible(Question6);
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separate/divorce?']//following-sibling::input");
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separate/divorce?']//following-sibling::input");
 
 		// Questions displayed
 		CommonFunctions.elementDisplayed(Question1);
@@ -884,13 +943,13 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(Question4);
 		CommonFunctions.elementDisplayed(Question5);
 		// Check if yes and no
-		CommonFunctions.elementDisplayed(Question7);
-		CommonFunctions.clickElement(WillTogetherRadioYes);
-		CommonFunctions.elementDisplayed(Question8);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
+		// CommonFunctions.elementDisplayed(Question7);
+		// CommonFunctions.clickElement(WillTogetherRadioYes);
+		// CommonFunctions.elementDisplayed(Question8);
+		// CommonFunctions.clickElement(WillTogetherRadioNo);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question8);
-		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
+		// CommonFunctions.elementInvisible(Question8);
+		// CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
 		// Check if yes and no
 		CommonFunctions.elementDisplayed(Question10);
 		CommonFunctions.clickElement(LawYesButton);
@@ -898,18 +957,19 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		CommonFunctions.clickElement(LawNAButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 	}
 
-	public void AdditionalQuestionsForDefactoAndEngaged() throws Exception{
+	public void AdditionalQuestionsForDefactoAndEngaged() throws Exception {
 		// Questions that are hidden
-		//CommonFunctions.elementInvisible(Question12);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='What year did you separated or get divorced?']//following-sibling::input");
+		// CommonFunctions.elementInvisible(Question12);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='What year did you separated or get divorced?']//following-sibling::input");
 		// Questions displayed
 		CommonFunctions.elementDisplayed(Question1);
 		CommonFunctions.elementDisplayed(Question2);
@@ -923,19 +983,19 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(WillMarryNote);
 		CommonFunctions.clickElement(WillMarryNo);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(WillMarryNote);
-		CommonFunctions.elementNotExistingByXPath("//span[text()='If you are planning to marry, we will draft your Will so it is not revoked when you marry.']");
-		
+		// CommonFunctions.elementInvisible(WillMarryNote);
+		CommonFunctions.elementNotExistingByXPath(
+				"//span[text()='If you are planning to marry, we will draft your Will so it is not revoked when you marry.']");
 
 		// Check if yes and no
-		CommonFunctions.elementDisplayed(Question7);
-		CommonFunctions.clickElement(WillTogetherRadioYes);
+		// CommonFunctions.elementDisplayed(Question7);
+		// CommonFunctions.clickElement(WillTogetherRadioYes);
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.elementDisplayed(Question8);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
-		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question8);
-		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
+		// CommonFunctions.elementDisplayed(Question8);
+		// CommonFunctions.clickElement(WillTogetherRadioNo);
+		// CommonFunctions.pause(5000, false);
+		// CommonFunctions.elementInvisible(Question8);
+		// CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
 		// Check if yes and no
 		CommonFunctions.elementDisplayed(Question10);
 		CommonFunctions.clickElement(LawYesButton);
@@ -943,23 +1003,24 @@ public class AboutPage extends Base {
 		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		CommonFunctions.clickElement(LawNAButton);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 	}
 
-	public void AdditionalQuestionsForSeparatedAndDivorced() throws Exception{
+	public void AdditionalQuestionsForSeparatedAndDivorced() throws Exception {
 		// Questions that are hidden
-		//CommonFunctions.elementInvisible(Question5);
+		// CommonFunctions.elementInvisible(Question5);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'LengthOfRelationship')]");
-		//CommonFunctions.elementInvisible(Question6);
+		// CommonFunctions.elementInvisible(Question6);
 		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you plan to get married?']");
-		//CommonFunctions.elementInvisible(Question7);
-		CommonFunctions.elementNotExistingByXPath("//label[text()='Do you want to do your Will together with your spouse/partner']");
-		//CommonFunctions.elementInvisible(Question8);
+		// CommonFunctions.elementInvisible(Question7);
+		CommonFunctions.elementNotExistingByXPath(
+				"//label[text()='Do you want to do your Will together with your spouse/partner']");
+		// CommonFunctions.elementInvisible(Question8);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'Partner_Email')]");
 		// Questions displayed
 		CommonFunctions.elementDisplayed(Question1);
@@ -971,21 +1032,21 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(LawYesButton);
 		CommonFunctions.elementDisplayed(Question11);
 		CommonFunctions.clickElement(LawNoButton);
-		//CommonFunctions.elementInvisible(Question11);
-		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
+		// CommonFunctions.elementInvisible(Question11);
+		// CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 		CommonFunctions.elementDisplayed(Question12);
 	}
 
-	public void DisplayedRelationshipStatus() throws Exception{
+	public void DisplayedRelationshipStatus() throws Exception {
 		CommonFunctions.elementDisplayed(RelationshipStatus);
 	}
 
-	public void HiddenYearSettlement() throws Exception{
-		//CommonFunctions.elementInvisible(Question11);
+	public void HiddenYearSettlement() throws Exception {
+		// CommonFunctions.elementInvisible(Question11);
 		CommonFunctions.elementNotExistingByXPath("//input[contains(@id,'YearSettlement')]");
 	}
 
-	public void FillUpMandatoryFieldsSingle() throws Exception{
+	public void FillUpMandatoryFieldsSingle() throws Exception {
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -994,7 +1055,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsSingleWithChild() throws Exception{
+	public void FillUpMandatoryFieldsSingleWithChild() throws Exception {
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -1016,7 +1077,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsSingleWithMinorChild() throws Exception{
+	public void FillUpMandatoryFieldsSingleWithMinorChild() throws Exception {
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -1038,29 +1099,38 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void DisplayMandatoryFieldsDependent() throws Exception{
-		CommonFunctions.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
+	public void DisplayMandatoryFieldsDependent() throws Exception {
+		CommonFunctions
+				.elementDisplayed(DependentsNo.findElement(By.xpath(".//following::div[text()='Required field']")));
 
 	}
 
-	public void FillUpMandatoryFieldsWidowed() throws Exception{
+	public void FillUpMandatoryFieldsWidowed() throws Exception {
 		CommonFunctions.clickElement(ChildrenNo);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void ClickDependentsNo() throws Exception{
+	public void ClickDependentsNo() throws Exception {
 		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void ClickDependentsYes() throws Exception{
+	public void ClickDependentsYes() throws Exception {
 		CommonFunctions.clickElement(DependentsYes);
 		CommonFunctions.pause(5000, false);
 	}
+	public void ClickOkSpousePopup() throws Exception {
+		CommonFunctions.clickElement(OkButtonPopUp);
+	}
+	public void ClickOkInviteSpousePopup() throws Exception {
+		CommonFunctions.clickElement(OkButtonPopUp2);
+	}
 
-	public void FillUpMandatoryFieldsDefacto() throws Exception{
+	
+	
+	public void FillUpMandatoryFieldsDefacto() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1081,7 +1151,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsEngaged() throws Exception{
+	public void FillUpMandatoryFieldsEngaged() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1102,7 +1172,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsMarried() throws Exception{
+	public void FillUpMandatoryFieldsMarried() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1111,9 +1181,12 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question5, "5");
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.clickElement(WillMarryNo);
+		CommonFunctions.enterElementValue(Question8, "Spouse@email.com");
+		// CommonFunctions.clickElement(WillMarryNo);
+		// CommonFunctions.pause(5000, false);
+		//CommonFunctions.clickElement(WillTogetherRadioNo);
 		//CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
+		//CommonFunctions.clickElement(OkButtonPopUp);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
@@ -1123,7 +1196,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsMarriedWithChildren() throws Exception{
+	public void FillUpMandatoryFieldsMarriedWithChildren() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1132,9 +1205,11 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question5, "5");
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.clickElement(WillMarryNo);
-		//CommonFunctions.pause(5000, false);
+		// CommonFunctions.clickElement(WillMarryNo);
+		// CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioNo);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickElement(OkButtonPopUp);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
@@ -1157,7 +1232,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsSeparated() throws Exception{
+	public void FillUpMandatoryFieldsSeparated() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1178,7 +1253,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsDivorced() throws Exception{
+	public void FillUpMandatoryFieldsDivorced() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1199,7 +1274,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void FillUpMandatoryFieldsMarriedWithSpouse() throws Exception{
+	public void FillUpMandatoryFieldsMarriedWithSpouse() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1210,7 +1285,7 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioYes);
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail, "spousesample@gmail.com");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
@@ -1219,7 +1294,8 @@ public class AboutPage extends Base {
 		CommonFunctions.clickElement(DependentsNo);
 		CommonFunctions.pause(5000, false);
 	}
-	public void FillUpMandatoryFieldsMarriedWithOutSpouseEmail() throws Exception{
+
+	public void FillUpMandatoryFieldsMarriedWithOutSpouseEmail() throws Exception {
 		CommonFunctions.selectValueFromDropdown(Question1, "Dr");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question2, "Dim");
@@ -1230,8 +1306,8 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioNo);
 		CommonFunctions.pause(5000, false);
-		//CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
-		//CommonFunctions.pause(5000, false);
+		// CommonFunctions.clearThenEnterElementValue(Field_SpouseEmail,"spousesample@gmail.com");
+		// CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -1240,204 +1316,216 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 	}
 
-
-	public void DisplayedYearSettlement() throws Exception{
+	public void DisplayedYearSettlement() throws Exception {
 		CommonFunctions.elementDisplayed(Question11);
 	}
 
-	public void clickNoBtnLaw() throws Exception{
+	public void clickNoBtnLaw() throws Exception {
 		CommonFunctions.clickElement(LawNoButton);
 	}
 
-	public void clickYesBtnLaw() throws Exception{
+	public void clickYesBtnLaw() throws Exception {
 		CommonFunctions.clickElement(LawYesButton);
 	}
 
-	public void clickNABtnLaw() throws Exception{
+	public void clickNABtnLaw() throws Exception {
 		CommonFunctions.clickElement(LawNAButton);
 	}
 
-	public void DisplayedNextBtn() throws Exception{
+	public void DisplayedNextBtn() throws Exception {
 		CommonFunctions.elementDisplayed(NextButton);
 	}
 
-	public void DisplayedCancelBtn() throws Exception{
+	public void DisplayedCancelBtn() throws Exception {
 		CommonFunctions.elementDisplayed(CancelButton);
 	}
 
-	public void SelectRelationshipStatusPersonalPage(String value)throws Exception{
+	public void SelectRelationshipStatusPersonalPage(String value) throws Exception {
 		CommonFunctions.selectValueFromDropdown(RelationshipStatus, value);
 	}
 
-	public void CheckRelationshipStatusDropdownValues(String[] expectedValues)throws Exception{
+	public void CheckRelationshipStatusDropdownValues(String[] expectedValues) throws Exception {
 		CommonFunctions.checkDropdownOptionsAvailable(RelationshipStatus, expectedValues);
 	}
 
-	public void CheckRelStatusDefaultValue(String expectedValue)throws Exception{
+	public void CheckRelStatusDefaultValue(String expectedValue) throws Exception {
 		CommonFunctions.checkSingleSelectDropdownSelectedOption(RelationshipStatus, expectedValue);
 	}
 
-	public void CheckGuardianCountryDefaultValue() throws Exception{
+	public void CheckGuardianCountryDefaultValue() throws Exception {
 		String country = "AUSTRALIA";
 		CommonFunctions.checkSingleSelectDropdownSelectedOption(GuardianCountry, country);
 	}
 
-	public AssetsPage ClickNextButton() throws Exception{
+	public AssetsPage ClickNextButton() throws Exception {
 		CommonFunctions.clickElement(NextButton);
 
 		return new AssetsPage();
 	}
-
-	public PersonalPage ClickBackButton() throws Exception{
+	public AssetsPage ClickOkInviteSpousePopup2() throws Exception {
+		CommonFunctions.clickElement(OkButtonPopUp2);
+		return new AssetsPage();
+	}
+	public void ClickNextButton2() throws Exception {
+		CommonFunctions.clickElement(NextButton);
+	}
+	public PersonalPage ClickBackButton() throws Exception {
 		CommonFunctions.clickElement(CancelButton);
 
 		return new PersonalPage();
 	}
 
-	public void CheckRelationshipStatusDropdownMandatory() throws Exception{
-		CommonFunctions.elementDisplayed(RelationshipStatus.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
+	public void CheckRelationshipStatusDropdownMandatory() throws Exception {
+		CommonFunctions.elementDisplayed(
+				RelationshipStatus.findElement(By.xpath(".//following-sibling::span[text()='Required field']")));
 	}
 
-	public void clickWillTogetherRadioYesRadioButton() throws Exception{
+	public void clickWillTogetherRadioYesRadioButton() throws Exception {
 		CommonFunctions.clickElement(WillTogetherRadioYes);
 	}
 
-	public void clickWillTogetherRadioNoRadioButton() throws Exception{
+	public void clickWillTogetherRadioNoRadioButton() throws Exception {
 		CommonFunctions.clickElement(WillTogetherRadioNo);
 	}
 
-	public void setQuestion8Input(String value)throws Exception{
+	public void setQuestion8Input(String value) throws Exception {
 		CommonFunctions.clearThenEnterElementValue(Question8, value);
 	}
 
-	public void UploadWill10MBPLUS() throws Exception{
-		// CommonFunctions.assembleFilePathsToUpload(GoodPath, "C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
-		// CommonFunctions.attachToUploadElement(driver.findElement(By.xpath(".//input[@id='Upload_file']")), GoodPath);
+	public void UploadWill10MBPLUS() throws Exception {
+		// CommonFunctions.assembleFilePathsToUpload(GoodPath,
+		// "C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/12.84MB.jpg");
+		// CommonFunctions.attachToUploadElement(driver.findElement(By.xpath(".//input[@id='Upload_file']")),
+		// GoodPath);
 
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/15mb.jpg");
-
-	}
-
-	public void UploadValidWill() throws Exception{
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions1.pdf");
+		driver.findElement(By.xpath(".//input[@id='Upload_file']"))
+				.sendKeys("C:/Users/DemethCamuin/Desktop/Maurice Blackburn/For Upload/Uploads/12.84MB.jpg");
 
 	}
 
-	public void UploadMoreWills() throws Exception{
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions1.pdf");
+	public void UploadValidWill() throws Exception {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']"))
+				.sendKeys("C:/Users/DemethCamuin/Desktop/Maurice Blackburn/For Upload/Uploads/WillInstructions1.pdf");
+
+	}
+
+	public void UploadMoreWills() throws Exception {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']"))
+				.sendKeys("C:/Users/DemethCamuin/Desktop/Maurice Blackburn/For Upload/Uploads/WillInstructions1.pdf");
 		CommonFunctions.pause(5000, false);
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/WillInstructions2.pdf");
+		driver.findElement(By.xpath(".//input[@id='Upload_file']"))
+				.sendKeys("C:/Users/DemethCamuin/Desktop/Maurice Blackburn/For Upload/Uploads/WillInstructions2.pdf");
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void UploadWillInvalidFileFormat() throws Exception{
-		// driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/CLOUD-Demeth/Desktop/Maurice Blackburn/For Upload/Proposed MB Online Will Form V1.4.xlsx");
-		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys("C:/Users/David Peralta/Desktop/Uploads/Proposed MB Online Will Form V2.4.xlsx");
+	public void UploadWillInvalidFileFormat() throws Exception {
+		driver.findElement(By.xpath(".//input[@id='Upload_file']")).sendKeys(
+				"C:/Users/DemethCamuin/Desktop/Maurice Blackburn/For Upload/Uploads/Proposed MB Online Will Form V1.4.xlsx");
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void ClickRemoveAttachment() throws Exception{
+	public void ClickRemoveAttachment() throws Exception {
 		CommonFunctions.clickElement(RemoveAttachment);
 	}
 
-	public PersonalPage ProgressChangePersonal() throws Exception{
+	public PersonalPage ProgressChangePersonal() throws Exception {
 		CommonFunctions.clickElement(ProgressPersonal);
 
 		return new PersonalPage();
 	}
 
-	public AssetsPage ProgressChangeAssets() throws Exception{
+	public AssetsPage ProgressChangeAssets() throws Exception {
 		CommonFunctions.clickElement(ProgressAssets);
 
 		return new AssetsPage();
 	}
 
-	public BeneficiariesPage ProgressChangeBeneficiaries() throws Exception{
+	public BeneficiariesPage ProgressChangeBeneficiaries() throws Exception {
 		CommonFunctions.clickElement(ProgressBeneficiaries);
 
 		return new BeneficiariesPage();
 	}
 
-	public ExecutorsPage ProgressChangeExecutors() throws Exception{
+	public ExecutorsPage ProgressChangeExecutors() throws Exception {
 		CommonFunctions.clickElement(ProgressExecutors);
 
 		return new ExecutorsPage();
 	}
 
-	public IDdocsPage ProgressChangeIDdocs() throws Exception{
+	public IDdocsPage ProgressChangeIDdocs() throws Exception {
 		CommonFunctions.clickElement(ProgressIDDocs);
 
 		return new IDdocsPage();
 	}
 
-	public ReviewConfirmPage ProgressChangeReviewConfirm() throws Exception{
+	public ReviewConfirmPage ProgressChangeReviewConfirm() throws Exception {
 		CommonFunctions.clickElement(ProgressReviewConfirm);
 
 		return new ReviewConfirmPage();
 	}
 
-	public AddOnsPage ProgressChangeAddOns() throws Exception{
+	public AddOnsPage ProgressChangeAddOns() throws Exception {
 		CommonFunctions.clickElement(ProgressAddOns);
 
 		return new AddOnsPage();
 	}
 
-	public void DisplayTooltipForSpouse() throws Exception{
+	public void DisplayTooltipForSpouse() throws Exception {
 		CommonFunctions.elementDisplayed(SpousePartner_Tooltip);
 	}
 
-	public void DisplayTooltipSignificant() throws Exception{
+	public void DisplayTooltipSignificant() throws Exception {
 		CommonFunctions.elementDisplayed(Significant_Tooltip);
 	}
 
-	public void DisplayTooltipDependents() throws Exception{
+	public void DisplayTooltipDependents() throws Exception {
 		CommonFunctions.elementDisplayed(Dependents_Tooltip);
 	}
 
-	public void DisplayTooltipUploadWill() throws Exception{
+	public void DisplayTooltipUploadWill() throws Exception {
 		CommonFunctions.elementDisplayed(UploadWill_Tooltip);
 	}
 
-	public void ClickTooltipUploadWill() throws Exception{
+	public void ClickTooltipUploadWill() throws Exception {
 		CommonFunctions.clickElement(UploadWill_Tooltip);
 	}
 
-	public void ClickTooltipForSpouse() throws Exception{
+	public void ClickTooltipForSpouse() throws Exception {
 		CommonFunctions.clickElement(SpousePartner_Tooltip);
 	}
 
-	public void ClickTooltipSignificant() throws Exception{
+	public void ClickTooltipSignificant() throws Exception {
 		CommonFunctions.clickElement(Significant_Tooltip);
 	}
 
-	public void ClickTooltipDependents() throws Exception{
+	public void ClickTooltipDependents() throws Exception {
 		CommonFunctions.clickElement(Dependents_Tooltip);
 	}
 
-	public void ClickChildrenYes() throws Exception{
+	public void ClickChildrenYes() throws Exception {
 		CommonFunctions.clickElement(ChildrenYes);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void ClickAddChild() throws Exception{
+	public void ClickAddChild() throws Exception {
 		CommonFunctions.clickElement(AddChild);
 		CommonFunctions.pause(5000, false);
 	}
 
-	public void DisplayTooltipGuardian() throws Exception{
+	public void DisplayTooltipGuardian() throws Exception {
 		CommonFunctions.elementDisplayed(Guardian_Tooltip);
 	}
 
-	public void DisplayTooltipGuardianVideo() throws Exception{
+	public void DisplayTooltipGuardianVideo() throws Exception {
 		CommonFunctions.elementDisplayed(Guardian_TooltipVideo);
 	}
 
-	public void ClickTooltipGuardian() throws Exception{
+	public void ClickTooltipGuardian() throws Exception {
 		CommonFunctions.clickElement(Guardian_Tooltip);
 	}
 
-	public void displayEmailConsent() throws Exception{
-		//CommonFunctions.scrollToElement(email_Consent);
+	public void displayEmailConsent() throws Exception {
+		// CommonFunctions.scrollToElement(email_Consent);
 		CommonFunctions.elementDisplayed(email_Consent);
 		CommonFunctions.pause(2500, false);
 	}

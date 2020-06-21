@@ -1,7 +1,7 @@
 Feature: MW - 177 114 115: Union List
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 177 114 115
     #Login to Online Wills Backoffice
     Given user opens admin page
     When user logs into app with the "<email>" and "<password>" to dashboard
@@ -24,7 +24,7 @@ Feature: MW - 177 114 115: Union List
     
     #MW-177 Scenario 1: Max Length must be greater than the Min Length
     Then check add rule
-    Then user select alphanumeric string type
+    Then user selects alphanumeric string type
     And user enter min length greater than max length
     Then user click save button
     Then user sees message "Max Length must be greater than the Min Length"

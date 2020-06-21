@@ -1,6 +1,6 @@
 Feature: MW - 58 - Check Footer
 
-  Scenario Outline: 
+  Scenario Outline: Delete Order
     #Delete Order for a fresh start
     Given user opens browser and proceeds to orders page
     Then user selects "<email>" on user dropdown
@@ -11,7 +11,7 @@ Feature: MW - 58 - Check Footer
       | demeth@gmail.com |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 58
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials

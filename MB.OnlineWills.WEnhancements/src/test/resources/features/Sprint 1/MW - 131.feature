@@ -1,8 +1,19 @@
 Feature: MW - 131 : Executors Page
 
+  @WIP
+  Scenario Outline: MW - 106 : Payments Page
+    #Go to site and log in
+    Given user opens browser and proceeds to orders page
+    Then user selects "victorian@gmail.com" on user dropdown
+    Then user clicks on delete all button
+    Then user close browser
+
+    Examples: 
+      | email               | password     | Address1  | Suburb         |
+      | victorian@gmail.com | Password123! | Australia | Executive Lane |
 
   @Regression
-  Scenario Outline: 
+  Scenario Outline: MW - 131 : Executors Page
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -10,9 +21,9 @@ Feature: MW - 131 : Executors Page
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard victorian will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
-		When user fills up mandatory fields inside the personal page for victorian
+    When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single
@@ -54,4 +65,4 @@ Feature: MW - 131 : Executors Page
 
     Examples: 
       | email               | password     | Address1                                         | Suburb         |
-      | Victorian@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
+      | victorian@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

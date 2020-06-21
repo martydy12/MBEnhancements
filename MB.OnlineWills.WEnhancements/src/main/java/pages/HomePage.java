@@ -10,13 +10,25 @@ import utilities.Base;
 import utilities.CommonFunctions;
 
 public class HomePage extends Base {
-	// ========================================================== Page Objects ===========================================================
+	// ========================================================== Page Objects
+	// ===========================================================
 	/* CSS Property */
 	@FindBy(xpath = "//div[contains (@class, 'menu-item  background-red OSInline')]")
 	WebElement css_Red;
 
 	@FindBy(xpath = "//input[@value = 'Yes, logout']")
 	WebElement button_LogoutPopup_Yes;
+	@FindBy(xpath = "//select[contains(@id,'StatePopUp')]")
+	WebElement select_StateResidence;
+	@FindBy(xpath = "//input[contains(@id,'StatePopUp')]")
+	WebElement input_StateResidence;
+	@FindBy(xpath = "//select[contains(@id,'StatePopUp')]")
+	WebElement OKBtnPopUpState;
+	
+	
+	
+	
+	
 
 	@FindBy(xpath = "//*[text() = 'Are you sure you want to log out?']")
 	WebElement LogoutPopup;
@@ -30,20 +42,22 @@ public class HomePage extends Base {
 	@FindBy(xpath = "//a[contains(text(),'Logout')]")
 	WebElement link_UserFullNameAccordion_Logout;
 
-	//@FindBy(xpath = "//span[text() = 'Single']")
+	// @FindBy(xpath = "//span[text() = 'Single']")
 	@FindBy(xpath = "//input[@value = '2']")
 	WebElement SinglesProduct;
 	@FindBy(xpath = "//span[text() = 'Couple']")
 	WebElement CouplesProduct;
 	@FindBy(xpath = "//input[contains(@id,'StandardCoupleGetStarted')]")
-	//@FindBy(xpath = "//input[@value='Get Started'][1]")
+	// @FindBy(xpath = "//input[@value='Get Started'][1]")
 	WebElement CouplesProductStandardWillBtn;
-	
+
 	@FindBy(xpath = "(//input[@value='Confirm'])[4]")
-		WebElement ConfirmFeedbackChangeToStandardCouple;
+	WebElement ConfirmFeedbackChangeToStandardCouple;
 	@FindBy(xpath = "//input[contains(@id,'StandardSingleGetStarted')]")
-	//@FindBy(xpath = "//input[@value='Get Started']")
+	// @FindBy(xpath = "//input[@value='Get Started']")
 	WebElement SinglesProductStandardWillBtn;
+	@FindBy(xpath = "//input[contains(@id,'PersonalDetailsPopup_block')]")
+	WebElement OKBtnPopUp;
 	@FindBy(xpath = "//input[contains(@id,'StandardSingleGetStarted')]")
 	WebElement SinglesProductStandardWillVicBtn;
 	@FindBy(xpath = "//input[contains(@id,'MyLifeSingleGetStarted')]")
@@ -96,7 +110,9 @@ public class HomePage extends Base {
 	WebElement CoupleWillTypeText2;
 
 	/* Footer */
-	@FindBy(xpath = "//div[contains(text(),'© Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
+
+	//@FindBy(xpath = "//div[contains(text(),'© Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
+	@FindBy(xpath = "//div[contains(text(),'� Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
 	WebElement Footer_MB;
 	@FindBy(xpath = "(//span[@class='fa fa-fw fa-ellipsis-v'])[1]")
 	WebElement ellipsis_BackOfficeEmailChange;
@@ -117,277 +133,297 @@ public class HomePage extends Base {
 	@FindBy(xpath = "(//span[@class='fa fa-fw fa-trash-o fa-2x'])[1]")
 	WebElement button_OrdersDelete;
 
-	
-	
-	
-	
-	
-	// ================================================== Initializing the Page Objects ==================================================
-	
-	public HomePage()throws Exception{
+	// ================================================== Initializing the Page
+	// Objects ==================================================
+
+	public HomePage() throws Exception {
 		PageFactory.initElements(driver, this);
 	}
 
-	// ============================================================= Actions =============================================================
-	
-	public void selectEmailOnOrders(String newEmail)throws Exception{
+	// ============================================================= Actions
+	// =============================================================
+
+	public void selectEmailOnOrders(String newEmail) throws Exception {
 		CommonFunctions.selectValueFromDropdown(dropdown_OrdersInputUSer, newEmail);
 	}
-	public void clickDeleteAllButtonORders()throws Exception{
+
+	public void clickDeleteAllButtonORders() throws Exception {
 		CommonFunctions.clickElement(button_OrdersDeleteAll);
 	}
-	public void clickDeleteButtonORders()throws Exception{
+
+	public void clickDeleteButtonORders() throws Exception {
 		CommonFunctions.clickElement(button_OrdersDelete);
 	}
-	public void setSpouseNewEmail(String newEmail)throws Exception{
+
+	public void setSpouseNewEmail(String newEmail) throws Exception {
 		CommonFunctions.clearThenEnterElementValue(spouse_NewEmail, newEmail);
 	}
-	public void ClickOnBackOfficeEmailChangeEmailLogMoreOption()throws Exception{
+
+	public void ClickOnBackOfficeEmailChangeEmailLogMoreOption() throws Exception {
 		CommonFunctions.clickElement(moreOption_EmailLog);
 	}
-	public void ClickOnBackOfficeEmailChangeUpdateSpouseEmailButton()throws Exception{
+
+	public void ClickOnBackOfficeEmailChangeUpdateSpouseEmailButton() throws Exception {
 		CommonFunctions.clickElement(spouse_NewEmailUpdateButton);
 	}
-	public void ClickOnBackOfficeEmailChangeEmailLog()throws Exception{
+
+	public void ClickOnBackOfficeEmailChangeEmailLog() throws Exception {
 		CommonFunctions.clickElement(link_EmailLog);
 	}
-	public void checkCouplesProductRadioButtonIsToggled()throws Exception{
-		CommonFunctions.elementAttributeContains(CouplesProduct.findElement(By.xpath(".//parent::label//input")), "checked", "true");
+
+	public void checkCouplesProductRadioButtonIsToggled() throws Exception {
+		CommonFunctions.elementAttributeContains(CouplesProduct.findElement(By.xpath(".//parent::label//input")),
+				"checked", "true");
 	}
-	public void HoverOnBackOfficeEmailChangeEllipsis()throws Exception{
+
+	public void HoverOnBackOfficeEmailChangeEllipsis() throws Exception {
 		CommonFunctions.hoverElement(ellipsis_BackOfficeEmailChange);
 	}
-	public void ClickOnBackOfficeEmailChangeEllipsis()throws Exception{
+
+	public void ClickOnBackOfficeEmailChangeEllipsis() throws Exception {
 		CommonFunctions.clickElement(ellipsis_BackOfficeEmailChange);
 	}
-	public void ClickOnBackOfficeEmailChangeNexPage()throws Exception{
+
+	public void ClickOnBackOfficeEmailChangeNexPage() throws Exception {
 		CommonFunctions.clickElement(NextPage_BackOfficeEmailChange);
 	}
 
-	public void clickNewOrderOnPopUp()throws Exception{
+	public void clickNewOrderOnPopUp() throws Exception {
 		CommonFunctions.switchFrameByXPath("//div[text()='DEBUG You have an incomplete Order']");
 		CommonFunctions.clickElement(NewOrderPopUp);
 
 	}
 
-	public void containsValueUserFullNameLabel(String expectedValue)throws Exception{
+	public void containsValueUserFullNameLabel(String expectedValue) throws Exception {
 		CommonFunctions.elementContainsText(label_UserFullName, expectedValue);
 	}
 
-	public void displayedCouplesProductMyLifeWillBtn()throws Exception{
+	public void displayedCouplesProductMyLifeWillBtn() throws Exception {
 		CommonFunctions.elementDisplayed(CouplesProductMyLifeWillBtn);
 	}
 
-	public void displayedCouplesProductStandardWillBtn()throws Exception{
+	public void displayedCouplesProductStandardWillBtn() throws Exception {
 		CommonFunctions.elementDisplayed(CouplesProductStandardWillBtn);
 	}
 
-	public void displayedCouplesProduct()throws Exception{
+	public void displayedCouplesProduct() throws Exception {
 		CommonFunctions.elementDisplayed(CouplesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
-	public void displayedSinglesProduct()throws Exception{
+	public void displayedSinglesProduct() throws Exception {
 		CommonFunctions.elementDisplayed(SinglesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
-	public void displayedbutton_LogoutPopup_Yes()throws Exception{
+	public void displayedbutton_LogoutPopup_Yes() throws Exception {
 		CommonFunctions.elementDisplayed(button_LogoutPopup_Yes);
 	}
 
-	public void displayedLogoutPopup()throws Exception{
+	public void displayedLogoutPopup() throws Exception {
 		CommonFunctions.elementDisplayed(LogoutPopup);
 	}
 
-	public void NotdisplayedLogoutPopup()throws Exception{
+	public void NotdisplayedLogoutPopup() throws Exception {
 		CommonFunctions.elementInvisible(LogoutPopup);
 	}
 
-	public void displayedbutton_LogoutPopup_Cancel()throws Exception{
+	public void displayedbutton_LogoutPopup_Cancel() throws Exception {
 		CommonFunctions.elementDisplayed(button_LogoutPopup_Cancel);
 	}
 
-	public void clickUserFullNameAccordionLogoutLink()throws Exception{
+	public void clickUserFullNameAccordionLogoutLink() throws Exception {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(link_UserFullNameAccordion_Logout);
 	}
 
-	public void clickUserFullName(String expectedValue)throws Exception{
+	public void clickUserFullName(String expectedValue) throws Exception {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(driver.findElement(By.xpath("//*[contains(text(), '" + expectedValue + "')]")));
 	}
 
-	public void clickLogoutPopupCancelButton()throws Exception{
+	public void clickLogoutPopupCancelButton() throws Exception {
 		CommonFunctions.clickElement(button_LogoutPopup_Cancel);
 	}
 
-	public void clickSinglesProduct()throws Exception{
+	public void clickSinglesProduct() throws Exception {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 		CommonFunctions.pause(1500, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 		CommonFunctions.clickElement(SinglesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
-	public void clickCouplesProduct()throws Exception{
+	public void clickCouplesProduct() throws Exception {
 		CommonFunctions.clickElement(CouplesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
-	public void clickMyLifeProduct()throws Exception{
+	public void clickMyLifeProduct() throws Exception {
 		CommonFunctions.clickElement(CouplesProduct.findElement(By.xpath(".//parent::label")));
 	}
 
-	public LoginPage clickLogoutPopupYesButton()throws Exception{
+	public LoginPage clickLogoutPopupYesButton() throws Exception {
 		CommonFunctions.clickElement(button_LogoutPopup_Yes);
+	//	CommonFunctions.selectValueFromDropdown(select_StateResidence, "VIC");
+	//	CommonFunctions.clickElement(input_StateResidence);
 
 		return new LoginPage();
 	}
 
-	public PersonalPage clickCouplesProductStandardWillBtn()throws Exception{
+	public PersonalPage clickCouplesProductStandardWillBtn() throws Exception {
 		CommonFunctions.clickElement(CouplesProductStandardWillBtn);
 		CommonFunctions.pause(5000, false);
 		return new PersonalPage();
 	}
-	public PersonalPage clickConfirmButtonToChangeToStandardCouple()throws Exception{
+
+	public PersonalPage clickConfirmButtonToChangeToStandardCouple() throws Exception {
 		CommonFunctions.clickElement(ConfirmFeedbackChangeToStandardCouple);
 		CommonFunctions.pause(5000, false);
 		return new PersonalPage();
 	}
 
-	public PersonalPage clickSinglesProductStandardWillBtn()throws Exception{
+	public PersonalPage clickSinglesProductStandardWillBtn() throws Exception {
 		CommonFunctions.elementDisplayed(SinglesProductStandardWillBtn);
 		CommonFunctions.clickElement(SinglesProductStandardWillBtn);
 
 		return new PersonalPage();
 	}
 
-	public PersonalPage clickSinglesProductStandardWillVicBtn()throws Exception{
+	public PersonalPage clickOKBtnPopUp() throws Exception {
+		CommonFunctions.elementDisplayed(OKBtnPopUp);
+		CommonFunctions.clickElement(OKBtnPopUp);
+
+		return new PersonalPage();
+	}
+
+	public PersonalPage clickSinglesProductStandardWillVicBtn() throws Exception {
 		CommonFunctions.clickElement(SinglesProductStandardWillVicBtn);
 
 		return new PersonalPage();
 	}
 
-	public PersonalPage clickMyLifeProductStandardSingleWillBtn()throws Exception{
+	public PersonalPage clickMyLifeProductStandardSingleWillBtn() throws Exception {
 		CommonFunctions.clickElement(SinglesProductMyLifeWillBtn);
 
 		return new PersonalPage();
 	}
 
-	public PersonalPage clickMyLifeProductStandardCoupleWillBtn()throws Exception{
+	public PersonalPage clickMyLifeProductStandardCoupleWillBtn() throws Exception {
 		CommonFunctions.clickElement(CouplesProductMyLifeWillBtn);
 
 		return new PersonalPage();
 	}
 
-	public void ClickFreeStandardWill()throws Exception{
+	public void ClickFreeStandardWill() throws Exception {
 		CommonFunctions.clickElement(FreeStandardWill);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.pause(3000, false);
 	}
 
-	public void DisplayedPopupHeader()throws Exception{
+	public void DisplayedPopupHeader() throws Exception {
 		CommonFunctions.elementDisplayed(PopupHeader);
 	}
 
-	public void DisplayedSelectAffliatedUnions()throws Exception{
+	public void DisplayedSelectAffliatedUnions() throws Exception {
 		CommonFunctions.elementDisplayed(AffiliatedUnionsDropdown);
 
 	}
 
-	public void DisplayedYourMemberNumber()throws Exception{
+	public void DisplayedYourMemberNumber() throws Exception {
 		CommonFunctions.elementDisplayed(YourMemberNumber);
 
 	}
 
-	public void DisplayedMemberNumberFootnote()throws Exception{
+	public void DisplayedMemberNumberFootnote() throws Exception {
 		CommonFunctions.elementDisplayed(MemberNumberFootnote);
 	}
 
-	public void DisplayedCancelBtn()throws Exception{
+	public void DisplayedCancelBtn() throws Exception {
 		CommonFunctions.elementDisplayed(CancelBtn);
 
 	}
 
-	public void DisplayedConfirmBtn()throws Exception{
+	public void DisplayedConfirmBtn() throws Exception {
 		CommonFunctions.clickElement(ConfirmBtn);
 
 	}
-	public void ClickCancelBtn()throws Exception{
+
+	public void ClickCancelBtn() throws Exception {
 		CommonFunctions.clickElement(CancelBtn);
 
 	}
 
-	public void DisplayedValidationMessage1()throws Exception{
+	public void DisplayedValidationMessage1() throws Exception {
 		CommonFunctions.elementDisplayed(ValidationMessage1);
 
 	}
 
-	public void DisplayedValidationMessage2()throws Exception{
+	public void DisplayedValidationMessage2() throws Exception {
 		CommonFunctions.elementDisplayed(ValidationMessage2);
 
 	}
 
-	public void SelectAffiliatedUnion(String value)throws Exception{
+	public void SelectAffiliatedUnion(String value) throws Exception {
 		CommonFunctions.selectValueFromDropdown(AffiliatedUnionsDropdown, value);
 
 	}
 
-	public void SetMemberNumber(String value)throws Exception{
+	public void SetMemberNumber(String value) throws Exception {
 		CommonFunctions.clearThenEnterElementValue(YourMemberNumber, value);
 
 	}
 
-	public void DisplayedCost()throws Exception{
+	public void DisplayedCost() throws Exception {
 		CommonFunctions.elementDisplayed(Cost);
 
 	}
-	public void DisplayedTotalCost()throws Exception{
+
+	public void DisplayedTotalCost() throws Exception {
 		CommonFunctions.elementDisplayed(TotalCost);
 
 	}
-	
-	public void DisplayedTotalCostWithPOA()throws Exception{
+
+	public void DisplayedTotalCostWithPOA() throws Exception {
 		CommonFunctions.elementDisplayed(TotalCostWithPOA);
 
 	}
 
-	public PaymentsPage ClickContiueButtonPopUp()throws Exception{
+	public PaymentsPage ClickContiueButtonPopUp() throws Exception {
 		CommonFunctions.clickElement(ContinueOrderPopUp);
 		return new PaymentsPage();
 
 	}
 
-	public void checkCSSColor()throws Exception{
+	public void checkCSSColor() throws Exception {
 		CommonFunctions.elementCssValueContains(css_Red, "background-color", "rgba(201, 42, 42, 1)");
 		// CommonFunctions.elementCssValueContains(css_Red, "font-size", "20px");
 	}
 
-	public void checkStandardSingleWillText()throws Exception{
+	public void checkStandardSingleWillText() throws Exception {
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(StandardSingleWill);
 	}
 
-	public void checkSingleWillBodyText()throws Exception{
+	public void checkSingleWillBodyText() throws Exception {
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(SingleWillBodyText);
 	}
 
-	public void checkStandardCoupleWillText()throws Exception{
+	public void checkStandardCoupleWillText() throws Exception {
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(StandardCoupleWill);
 	}
 
-	public void checkCoupleWillBodyText1()throws Exception{
+	public void checkCoupleWillBodyText1() throws Exception {
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(CoupleWillBodyText);
 	}
 
-	public void checkCoupleWillBodyText2()throws Exception{
+	public void checkCoupleWillBodyText2() throws Exception {
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(CoupleWillTypeText1);
 		CommonFunctions.pause(3000, false);
 		CommonFunctions.elementDisplayed(CoupleWillTypeText2);
 	}
 
-	public void checkFooterIfDisplayed()throws Exception{
+	public void checkFooterIfDisplayed() throws Exception {
 		CommonFunctions.scrollToBottom();
 		CommonFunctions.pause(2500, false);
 		CommonFunctions.elementDisplayed(Footer_MB);

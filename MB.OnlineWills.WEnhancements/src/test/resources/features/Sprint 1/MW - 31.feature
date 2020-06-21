@@ -1,4 +1,11 @@
-Feature: MW - 30 : As a customer, I want to list all my children, so I can indicate my family situation in my Will
+Feature: MW - 31 : As a customer, I want to list all my children, so I can indicate my family situation in my Will
+
+  Scenario Outline: Delete Order
+    Given the user deletes any existing order on "<email>"
+
+    Examples: 
+      | email            |
+      | demeth@gmail.com |
 
   @Sprint1
   Scenario Outline: Scenario 1: Customer indicates they have a child/children
@@ -9,7 +16,7 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
@@ -27,12 +34,12 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     #Single
     When user selects "Single" as Relationship Status on about page
     Then user fill up the all required fields for single status
-    And user sees message "Do you have any other dependents?"
+    And user sees message "Do you have any other dependants?"
     When user clicks yes on do you have any other dependents question
     #Scenario 2: Mandatory fields not filled in
     And user check if mandatory fields validation in adding children is implemented
+
     #Scenario 3: Mandatory fields filled in
-    
     Examples: 
       | email            | password     | Address1                                         | Suburb         |
       | demeth@gmail.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

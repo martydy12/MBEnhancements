@@ -1,6 +1,7 @@
 Feature: MW - 28 : Executors Page
+
   @WIP
-  Scenario: 
+  Scenario: MW - 28 : Executors Page
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "bam@bam.com" on user dropdown
@@ -8,7 +9,7 @@ Feature: MW - 28 : Executors Page
     Then user close browser
 
   @Sprint11
-  Scenario Outline: 
+  Scenario Outline: MW - 28 : Executors Page
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -16,7 +17,7 @@ Feature: MW - 28 : Executors Page
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -49,7 +50,7 @@ Feature: MW - 28 : Executors Page
     And user adds back up executor
     #  And user adds first option executor
     And user clicks on add executor
-    And user adds back up executor
+    And user adds second back up executor
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
@@ -59,7 +60,7 @@ Feature: MW - 28 : Executors Page
     And user clicks edit button on first executor
     And user updates details of first executor
     # Delete executor
-    And user deletes the first executor
+    #And user deletes the first executor
     #
     And user clicks edit button on first executor
     And user update the executor details from backup to first option
@@ -67,5 +68,5 @@ Feature: MW - 28 : Executors Page
     Then user close browser
 
     Examples: 
-      | email            | password     | Address1                                         | Suburb         |
+      | email       | password     | Address1                                         | Suburb         |
       | bam@bam.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

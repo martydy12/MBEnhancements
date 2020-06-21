@@ -1,7 +1,7 @@
 Feature: MW - 73 - As a customer, I want to skip filling in the Executor details if my Will has been identified as complex so that I can discuss this directly with the lawyer
 
   @Regression
-  Scenario Outline: 
+  Scenario Outline: MW - 73
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -13,7 +13,7 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
@@ -48,20 +48,18 @@ Feature: MW - 73 - As a customer, I want to skip filling in the Executor details
     And user clicks no to Do you want to include any children you have in the future question
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user clicks no to Do you wish to leave any gifts question
+    And user clicks the next button on the beneficiaries page
     #And user sees disaster question displayed
     #Scenario 2: Customer reviews information entered
-    When user click the next button to the idDocs page
     Then user is on "ID Check" page
-    And user agrees to terms and agreement inside the ID docs Page
+   
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
+     And user agrees to terms and agreement inside the ID docs Page
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     Then user is on "Review and Confirm" page
     And user reviews and confirms will details

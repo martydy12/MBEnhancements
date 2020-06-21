@@ -1,7 +1,7 @@
 Feature: MW - 30 : As a customer, I want to list all my children, so I can indicate my family situation in my Will
 
   @WIP
-  Scenario: 
+  Scenario: MW - 30
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -17,7 +17,7 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -25,7 +25,7 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     #Single
     When user selects "Single" as Relationship Status on about page
     And user fill up the all required fields for single status
-    And user sees message "Do you have any children?"
+    And user sees message "Do you have any children (including adult children)?"
     And user answers yes to question do have children
     And user checks if all fields inside the adding of children is complete
     #Scenario 2: Mandatory fields not filled in
@@ -38,8 +38,9 @@ Feature: MW - 30 : As a customer, I want to list all my children, so I can indic
     And user adds another legitimate child
     #Scenario 5: Customer edits their child’s details
     And user edits first child's details
-    #Scenario 6: Customer removes child record from the table
-    And user removes second child
+    #Scenario 6: Customer removes child record from the table 
+    #Issue on clicking popup
+    #And user removes second child
     Then user close browser
 
     Examples: 

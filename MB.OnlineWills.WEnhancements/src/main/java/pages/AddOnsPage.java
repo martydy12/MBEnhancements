@@ -19,7 +19,7 @@ public class AddOnsPage extends Base {
 
 	// @FindBy(xpath =
 	// "//input[contains(@id,'AddSpouseButtonVic')]|//input[@value=Add]")
-	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]//parent::span[contains(@id,'IsSpouseEmailNull2')]")
+	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonVic')]")
 	WebElement AddSpouseButton;
 	@FindBy(xpath = "//input[contains(@value,'Next')]")
 	WebElement btn_Next;
@@ -60,7 +60,7 @@ public class AddOnsPage extends Base {
 	// confirm that you have consent from the relevant person to pass on such
 	// details to Maurice Blackburn in connection with the service.']")
 
-	@FindBy(xpath = "//span[text()='By adding your partner now you can take advantage of our bundled price for couples of $599']")
+	@FindBy(xpath = "//span[contains(text(),'Maurice Blackburn offers great value if you include an Enduring Power of Attorney and Appointment of a Medical Treatment Decision Maker documents today. This bundled package is a savings of $220 over the offline price.')]")
 	WebElement Body_spouse;
 	@FindBy(xpath = "//input[contains(@id,'SpouseEmailInput')]")
 	WebElement Email_spouse;
@@ -70,7 +70,7 @@ public class AddOnsPage extends Base {
 	WebElement btn_CancelSpouse;
 
 	// POA - Couple
-	@FindBy(xpath = "//input[contains(@id,'AddPOAButtonNonCouple')]")
+	@FindBy(xpath = "//input[contains(@id,'AddSpouseButtonNonVic')]")
 	WebElement AddCouple_POA;
 
 	// ================================================== Initializing the Page

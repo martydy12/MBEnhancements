@@ -1,19 +1,17 @@
-Feature: Single with union membership
- Scenario Outline: Delete Order
+Feature: 6months
+
+  Scenario Outline: Delete Order
     Given the user deletes any existing order on "<email>"
 
     Examples: 
-      | email           | password     |
-      | sol2d@gmail.com | Password123! |
-  Scenario Outline: Single with union membership
+      | email            |
+      | 60days@gmail.com |
+
+  Scenario Outline: 6months
     Given user opens browser
     # Go to site and log in-------------------------------------------------------------
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
-    And user click free standard will
-    And user selects "Alpha" as affliated unions
-    And user enter "AAA" on your member number
-    And user click on confirm button
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
@@ -62,7 +60,7 @@ Feature: Single with union membership
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -88,8 +86,13 @@ Feature: Single with union membership
     When user clicks the next button on the review and confirm page to go to payments page
     #Payments
     Then user is on "Payment" page
-    #Check union membership
-    And user sees union membership details
+    #Check order summary (With POA)
+    #And POA is displayed in the order summary
+    And Standard will legal document is displayed in the order summary
+    #When user clicks on back button on the order summary page
+    #User is redirected back to Review and Confirm-------------------------------------------------------------------------
+    #Then user is on "ReviewAndConfirm" page
+    #And user clicks the next button on the review and confirm page to go to add-on page
     And user clicks on pay now button
     #Checkout page
     Then user is on "Checkout" page
@@ -102,5 +105,16 @@ Feature: Single with union membership
     Then user is on "Thank You" page
 
     Examples: 
-      | email           | password     | Address1  | Suburb         |
-      | sol2d@gmail.com | Password123! | Australia | Executive Lane |
+      | email            | password     | Address1  | Suburb         |
+      | 60days@gmail.com | Passw0rd123! | Australia | Executive Lane |
+
+  Scenario Outline: 6 month Popup check
+    Given user opens browser
+    # Go to site and log in-------------------------------------------------------------
+    When user logs into app with the "<email>" and "<password>" as the login credentials
+    Then user is on "Landing" page
+    And user is prompted about MB 6 months policy rule
+
+    Examples: 
+      | email            | password     |
+      | 60days@gmail.com | Passw0rd123! |

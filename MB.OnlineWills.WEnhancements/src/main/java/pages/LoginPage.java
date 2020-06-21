@@ -20,7 +20,8 @@ public class LoginPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'User_email')]")
 	WebElement ForgottenPasswordEmailField;
 
-	@FindBy(xpath = "//*[text() = 'Create an Account']")
+	@FindBy(xpath = "//*[@value = 'Create account']")
+	//@FindBy(xpath = "//*[text() =\"Don't have an account?\"]")
 	WebElement RegisterLink;
 
 	@FindBy(xpath = "//input[contains(@id, 'UserNameInput')]")

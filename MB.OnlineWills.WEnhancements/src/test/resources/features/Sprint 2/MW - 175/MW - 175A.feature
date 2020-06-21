@@ -11,7 +11,7 @@ Feature: MW - 175 : Union Member Payments
       | bam@bam.com |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 175A
     # Single Package - Union, Standard Will - no POA
     # Go to site and log in-------------------------------------------------------------------------
     Given user opens browser
@@ -35,7 +35,7 @@ Feature: MW - 175 : Union Member Payments
     And user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     And user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -67,17 +67,13 @@ Feature: MW - 175 : Union Member Payments
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
     And user clicks next button on the ID docs page
-    #Review and confirm-------------------------------------------------------------------------
-    Then user is on "Review and Confirm" page
+    And user clicks next button on the ID docs page
+    #Review and confirm-----------------------------------
     And user confirms on the acknowledgement inside the review and confirm page
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page

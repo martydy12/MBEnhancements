@@ -20,7 +20,7 @@ Feature: MW - 144A /Couple Package-  Checks if Relationship status for about you
     When user selects couples product
     #Select Standard will Package
     When user clicks Standard will product for couples
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page

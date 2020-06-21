@@ -9,7 +9,7 @@ Feature: MW - 14 : As a customer, I want to change my forgotten password so that
     Then user is on "Login" page
     When the user clicks on forgot password link
     Then user is on "ForgottenPassword" page
-    When user inputs an "toni.bickle@mail.com" in the forgotten password email field
+    When user inputs an "test@7890.com" in the forgotten password email field
     Given user opens browser and decides to proceed to the activation links page
     Then user is on "Codes" page
     When the user clicks on reset password link

@@ -1,7 +1,7 @@
 Feature: MW - 180
 
   @Sprint3
-  Scenario Outline: 
+  Scenario Outline: MW - 180
     #Login to Online Wills Backoffice
     Given user opens admin page
     When user logs into app with the "<email>" and "<password>" to dashboard
@@ -14,10 +14,7 @@ Feature: MW - 180
     Then check add rule
     And user fill up add union details
     Then user click save button
-    Then user clicks on add union button
-    Then check add rule
-    And user fill up add union details
-    Then user click save button
+   
 
 
     #MW-115 Scenario 4: Edit Rule

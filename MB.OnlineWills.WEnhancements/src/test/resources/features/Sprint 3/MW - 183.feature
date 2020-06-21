@@ -1,7 +1,7 @@
 Feature: MW-183	Updates to the Account Registration page to include Privacy requirements
 
   @Sprint3
-  Scenario Outline: 
+  Scenario Outline: MW-183
     Given user opens browser
     Then user is on "Login" page
     When the user click on register link
@@ -24,7 +24,7 @@ Feature: MW-183	Updates to the Account Registration page to include Privacy requ
       | David      | Peralta     | david.peralta@yahoo.com | VIC   | Password123! | Password123!     | Union  |
 
   @Sprint3
-  Scenario Outline: 
+  Scenario Outline: MW-183
     Given user opens browser
     Then user is on "Login" page
     When the user click on register link
@@ -48,7 +48,7 @@ Feature: MW-183	Updates to the Account Registration page to include Privacy requ
       | Demeth     | Camuin      | Demeth@gmail.com | VIC   | Password123! | Password123!     | Google |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW-183
     Given user opens browser
     Then user is on "Login" page
     When the user click on register link

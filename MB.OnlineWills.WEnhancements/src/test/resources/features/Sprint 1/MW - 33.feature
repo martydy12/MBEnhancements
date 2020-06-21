@@ -1,7 +1,7 @@
 Feature: MW - 33 : Assests - Debt
 
   @WIP
-  Scenario: 
+  Scenario: Delete Order
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -9,7 +9,7 @@ Feature: MW - 33 : Assests - Debt
     Then user close browser
 
   @Sprint11
-  Scenario Outline: 
+  Scenario Outline: MW - 33
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -17,7 +17,7 @@ Feature: MW - 33 : Assests - Debt
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -37,10 +37,10 @@ Feature: MW - 33 : Assests - Debt
     And user clicks on add debt
     And user adds another debt
     And user edits debt
-    And user removes debt
-    And user cancels debt with unsaved changes
-    #Then user close browser
 
+    #And user removes debt
+    # And user cancels debt with unsaved changes
+    #Then user close browser
     Examples: 
       | email                   | password     | Address1                                         | Suburb         |
       | david.peralta@yahoo.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |

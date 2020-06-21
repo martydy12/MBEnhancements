@@ -56,7 +56,7 @@ public class Base {
 			options.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 			System.setProperty("webdriver.chrome.driver", "/Program Files/Automation Tools/Drivers/chromedriver.exe");
 			
-			
+			//options.addArguments("--headless");
 
 			driver = new ChromeDriver(options);
 			

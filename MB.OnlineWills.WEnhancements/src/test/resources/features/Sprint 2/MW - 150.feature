@@ -12,7 +12,7 @@ Feature: MW - 150 - As a customer, I want to view the Summary of my Will POA app
       | david.peralta@yahoo.com |
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 150
     #Scenario2
     # Go to site and log in
     Given user opens browser

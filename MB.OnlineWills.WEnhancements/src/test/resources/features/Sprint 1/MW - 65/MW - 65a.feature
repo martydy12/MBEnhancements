@@ -1,23 +1,37 @@
-Feature: 6months
+Feature: MW - 65a : Checkout
 
   Scenario Outline: Delete Order
     Given the user deletes any existing order on "<email>"
 
     Examples: 
-      | email           | password     |
-      | 60days@gmail.com | Passw0rd123! |
+      | email                   | password     |
+      | david.peralta@yahoo.com | Passw0rd123! |
 
-  Scenario Outline: 6months
-      Given user opens browser
-    # Go to site and log in-------------------------------------------------------------
+  @Sprint
+  Scenario Outline: MW - 65
+    #Without POA
+    # Go to site and log in-------------------------------------------------------------------------
+    Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
+    # When user clicks on new order on incomplete order popup
+    #When user clicks on continue on incomplete order popup
     When user selects singles product
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
     Then user is on "Personal Details" page
     #User filled valid input
-    When user fills up mandatory fields inside the personal page for victorian
+    When user selects "Dr" as title on personal page
+    When user inputs "01/01/1993" as date of birth on personal page
+    When user inputs "4772834" as Phone Number on personal page
+    When user inputs "Consultant" as Occupation on personal page
+    When user inputs "<Address1>" as Residential address line one on personal page
+    When user inputs "<Suburb>" as Residential suburb on personal page
+    When user selects "VIC" as Residential state on personal page
+    When user selects "4103" as Residential Postcode on personal page
+    When user selects Postal Address same as Residential checkbox
+    When user selects no on first question
+    When user selects no on second question
     When user clicks on Next button on personal page
     Then user is on "About you" page
     #Single-------------------------------------------------------------------------
@@ -27,7 +41,12 @@ Feature: 6months
     Then user is on "Assets" page
     And user clicks no to do you have assets question
     #Asset answer "no" to other question
-    And user clicks no to all assets question
+    And user clicks no to do you have debts question
+    And user clicks no to do you have any superannuation question
+    And user clicks no to do you have life insurance separate from your superannuation
+    And user clicks no to do you control a trust question
+    And user clicks no to do you control a self-managed superannuation fund question
+    And user clicks no to do you own your own business or are you a partner in a partnership question
     And user click the next button on the assets page
     #Skip Beneficiaries Page-------------------------------------------------------------------------
     And user clicks yes to Do you want to include any children you have in the future question
@@ -35,6 +54,7 @@ Feature: 6months
     And user clicks no to Do you wish to leave any gifts question
     And user click the next button on the beneficiaries page
     #Executors Page-------------------------------------------------------------------------
+    Then user is on "Executors" page
     Then user is on "Executors" page
     #And user adds first option executor
     And user clicks on add executor
@@ -44,7 +64,7 @@ Feature: 6months
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
     And user selects i have no wish on funeral wishes
     And user click the next button on the executors page
-    #ID docs Page-------------------------------------------------------------------------
+    #ID docs Page
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
@@ -60,7 +80,7 @@ Feature: 6months
     And user clicks the next button on the review and confirm page to go to add-on page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -91,8 +111,36 @@ Feature: 6months
     And Standard will legal document is displayed in the order summary
     #When user clicks on back button on the order summary page
     #User is redirected back to Review and Confirm-------------------------------------------------------------------------
-    #Then user is on "ReviewAndConfirm" page
+    #Then user is on "Review and Confirm" page
     #And user clicks the next button on the review and confirm page to go to add-on page
+    And user clicks on pay now button
+    #User is redirected to checkout
+    #Scenario1: Checkout - invalid details--------------------------
+    Then user is on "Checkout" page
+    When user sees card type option
+    When user sees card number input
+    And user sees expiration date month selection
+    And user sees expiration date year selection
+    And user sees CVN input
+    When user clicks the pay button
+    Then error message Card type is a required field is displayed
+    Then error message Enter a valid card number is displayed
+    Then error message Enter a valid expiry date is displayed
+    And user clicks the cancel button
+    When user sees validation message Are you sure you want to cancel your order?
+    Then user clicks no
+    Then user is on "Checkout" page
+    And user clicks the cancel button
+    When user sees validation message Are you sure you want to cancel your order?
+    Then user clicks yes
+    #Order Canceled Page
+    Then user is on "Order Canceled" page
+    And user clicks on return to website button
+    #Landing Page
+    #Then user is on "Landing" page
+    # When user clicks on continue on incomplete order popup
+    #Payment Page
+    Then user is on "Payment" page
     And user clicks on pay now button
     #Checkout page
     Then user is on "Checkout" page
@@ -103,18 +151,8 @@ Feature: 6months
     When user clicks the pay button
     #Payment Complete
     Then user is on "Thank You" page
+    Then user close browser
 
     Examples: 
-      | email           | password     | Address1  | Suburb         |
-      | 60days@gmail.com | Passw0rd123! | Australia | Executive Lane |
-
-  Scenario Outline: 6 month Popup check
-    Given user opens browser
-    # Go to site and log in-------------------------------------------------------------
-    When user logs into app with the "<email>" and "<password>" as the login credentials
-    Then user is on "Landing" page
-    And user is prompted about MB 6 months policy rule
-
-    Examples: 
-      | email           | password     |
-      | 60days@gmail.com | Passw0rd123! |
+      | email                   | password     | Address1  | Suburb         |
+      | david.peralta@yahoo.com | Password123! | Australia | Executive Lane |

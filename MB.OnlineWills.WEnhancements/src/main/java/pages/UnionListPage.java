@@ -111,11 +111,12 @@ public class UnionListPage extends Base {
 
 	// Alpha
 	public void fillUpUnionDetails_alpha()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
+		//CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionName, "Alpha1");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.selectValueFromDropdown(select_UnionState, "ACT");
+		CommonFunctions.clickElement(chk_AddRule);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionMinLength, "1");
 		CommonFunctions.pause(5000, false);
@@ -127,11 +128,12 @@ public class UnionListPage extends Base {
 
 	// Numeric
 	public void fillUpUnionDetails_numeric()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
+		//CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionName, "Numeric1");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.selectValueFromDropdown(select_UnionState, "ACT");
+		CommonFunctions.clickElement(chk_AddRule);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionMinLength, "1");
 		CommonFunctions.pause(5000, false);
@@ -143,11 +145,12 @@ public class UnionListPage extends Base {
 
 	// AlphaNumeric
 	public void fillUpUnionDetails_numeric_alphanumeric()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
+		//CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionName, "AlphaNumeric1");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.selectValueFromDropdown(select_UnionState, "ACT");
+		CommonFunctions.clickElement(chk_AddRule);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionMinLength, "1");
 		CommonFunctions.pause(5000, false);
@@ -163,13 +166,15 @@ public class UnionListPage extends Base {
 
 	// SampleUnion for Min length > Max length
 	public void fillUpUnionDetails_SampleUnion1()throws Exception{
-		CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
+		//CommonFunctions.switchFrameByXPath("//*[text()='Add Union']");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionName, "SampleUnion");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.selectValueFromDropdown(select_UnionState, "ACT");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clearThenEnterElementValue(field_UnionMinLength, "10");
+		CommonFunctions.clickElement(chk_AddRule);
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clearThenEnterElementValue(field_UnionMinLength, "11111111111111");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clearThenEnterElementValue(field_UnionMaxLength, "5");
 		CommonFunctions.pause(5000, false);
@@ -236,10 +241,16 @@ public class UnionListPage extends Base {
 
 	}
 
+	public void selectAlphanumericStringType2()throws Exception{
+		CommonFunctions.clickElement(chk_AddRule);
+		CommonFunctions.selectValueFromDropdown(select_UnionStringType, "AlphaNumeric");
+		CommonFunctions.pause(5000, false);
+	}
 	public void selectAlphanumericStringType()throws Exception{
 		CommonFunctions.selectValueFromDropdown(select_UnionStringType, "AlphaNumeric");
 		CommonFunctions.pause(5000, false);
 	}
+
 
 	public void alertMessageDisplay_AlphaLocation()throws Exception{
 		CommonFunctions.elementDisplayed(alert_UnionAlphaLocation);

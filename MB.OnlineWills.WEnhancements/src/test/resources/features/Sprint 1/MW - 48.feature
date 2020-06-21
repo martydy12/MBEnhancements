@@ -1,7 +1,7 @@
 Feature: MW - 48
 
   @Sprint
-  Scenario Outline: 
+  Scenario Outline: MW - 48
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "david.peralta@yahoo.com" on user dropdown
@@ -13,7 +13,7 @@ Feature: MW - 48
     When user selects singles product
     #Select Standard will Package
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user selects "Dr" as title on personal page
     When user inputs "01/01/1993" as date of birth on personal page
@@ -61,14 +61,11 @@ Feature: MW - 48
     Then user is on "ID Check" page
     And user agrees to terms and agreement inside the ID docs Page
     #ADD ID
-    Then user clicks on first identification document
-    And user selects Driver License as first identification type
+    And user selects Foreign Passport as first identification type
+    And user adds foreign passport details
+    And user selects Driver License as second identification type
     And user adds driver license details
-    And user adds first identification
-    Then user clicks on second identification document
-    And user selects Medicare as second identification type
-    And user adds medicare details
-    And user adds second identification
+    And user clicks next button on the ID docs page
     And user clicks next button on the ID docs page
     #Review and confirm
     Then user is on "Review and Confirm" page
@@ -76,7 +73,8 @@ Feature: MW - 48
     And user click the next button on the review and confirm page
     #Add ons page
     Then user is on "Add-Ons" page
-    Then user clicks on add POA on addons page
+    #Then user clicks on add POA on addons page
+    Then user click on add POA on addons page
     And user click the next button with POA on the AddOns page
     #Financial Decisions
     Then user is on "Enduring Power Of Attorney" page
@@ -115,38 +113,12 @@ Feature: MW - 48
     #Add Personal Decision Maker
     And user selects Only personal matters on enduring power of attorney options
     And user clicks on add personal decision maker on financial decision page
-    #2
-    #And user clicks on add financial decision maker on financial decision page
-    #And user fills up financial decision maker details with Primary Decision Maker
-    #And user clicks on add financial decision maker
-    #3
-    #And user clicks on add financial decision maker on financial decision page
-    #And user fills up financial decision maker details with Primary Decision Maker
-    #And user clicks on add financial decision maker
-    #4
-    #And user clicks on add financial decision maker on financial decision page
-    #And user fills up financial decision maker details with Primary Decision Maker
-    #And user clicks on add financial decision maker
-    #Check if add add financial decision maker on financial decision page is hidden
-    #And user checks if add financial decision maker button on financial decision pagencial decision page
+    
     And user clicks on add personal decision maker
     And user sees mandatory fields validation on adding personal decision maker
     And user fills up personal decision maker details with Primary Decision Maker
     And user clicks on add personal decision maker
-    #2
-    #And user clicks on add personal decision maker on financial decision page
-    #And user fills up personal decision maker details with Primary Decision Maker
-    #And user clicks on add personal decision maker
-    #3
-    #And user clicks on add personal decision maker on financial decision page
-    #And user fills up personal decision maker details with Primary Decision Maker
-    #And user clicks on add personal decision maker
-    #4
-    #And user clicks on add personal decision maker on financial decision page
-    #And user fills up personal decision maker details with Primary Decision Maker
-    #And user clicks on add personal decision maker
-    #Check if add add financial decision maker on financial decision page is hidden
-    #And user checks if add personal decision maker button on financial decision page is hidden
+    
     #Select immediately on start to act dropdown
     And user selects "Immediately" on When do you want your Financial/Personal Decision Makers to start to act dropdown
     #Input limitation
@@ -166,7 +138,7 @@ Feature: MW - 48
     #Add and validate
     And user clicks on add decision maker on medical decision page
     And user clicks on add decision maker
-    And user sees validation on mandatory field inside the medical decision page
+    #And user sees validation on mandatory field inside the medical decision page
     And user fills up all required fields on adding a decision maker
     And user clicks on add decision maker
     And user selects no on Do you have an Advance Care Directive currently in place question
@@ -181,8 +153,9 @@ Feature: MW - 48
     And user edits some details on the added decision maker
     And user clicks on add decision maker
     #Remove decision
-    And user clicks on remove button on medical decision page
-    And user hits the enter key
+    #Issue on clicking inline popup
+    #And user clicks on remove button on medical decision page
+    #And user hits the enter key
     # Next
     And user clicks next button on the medical decision page
     Then user is on "Review and Confirm" page

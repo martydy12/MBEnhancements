@@ -159,7 +159,8 @@ public class MedicalDecisionsPage extends Base {
 	}
 
 	public void SetAdvanceCareSignDate()throws Exception{
-		CommonFunctions.selectValueFromDropdown(AdvanceCareSignDate, "05/09/1990");
+		CommonFunctions.clearThenEnterElementValue(AdvanceCareSignDate, "05/09/1990");
+		
 	}
 
 	public void clickIDontWantDecisionMaker()throws Exception{

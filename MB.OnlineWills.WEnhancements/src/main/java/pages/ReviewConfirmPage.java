@@ -187,9 +187,9 @@ public class ReviewConfirmPage extends Base {
 	@FindBy(xpath = "(//span[contains(text(),'Do you want to give the whole of your estate equally to any children you have in the future?')]//following::div[text()='No'])[1]")
 	WebElement BenefFutureChildrenQuestionNo;
 
-	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you')]//following::div[text()='Yes'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children pass away before you')]//following::div[text()='Yes'])[1]")
 	WebElement BenefDisasterQuestionYes;
-	@FindBy(xpath = "(//span[contains(text(),'If any of your children predecease you')]//following::div[text()='No'])[1]")
+	@FindBy(xpath = "(//span[contains(text(),'If any of your children pass away before you')]//following::div[text()='No'])[1]")
 	WebElement BenefDisasterQuestionNo;
 	@FindBy(xpath = "(//div[contains(@id,'Content')])[120]")
 	WebElement BenefDisasterQuestionField;
@@ -343,6 +343,9 @@ public class ReviewConfirmPage extends Base {
 	}
 
 	public PersonalPage ClickEditPersonalInfoSummary()throws Exception{
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 		CommonFunctions.clickElement(EditPersonalInfoSummary);
 		return new PersonalPage();
 	}
@@ -593,6 +596,10 @@ public class ReviewConfirmPage extends Base {
 	}
 
 	public PersonalPage ProgressChangePersonal()throws Exception{
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 		CommonFunctions.clickElement(ProgressPersonal);
 
 		return new PersonalPage();

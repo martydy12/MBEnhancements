@@ -10,6 +10,7 @@ Feature: MW - 16 : As a customer, I want to activate my account so that I can lo
     When user inputs "<First Name>" in the First Name field on registration page
     When user inputs "<Family Name>" in the Family Name field on registration page
     When user inputs "<Email>" in the Email field on registration page
+    When user inputs "<Phone>" in the Phone field on registration page
     When user selects "<State>" on state dropdown
     When user inputs "<Password>" in the Password field on registration page
     When user inputs "<Confirm Password>" in the Confirm Password field on registration page
@@ -17,7 +18,9 @@ Feature: MW - 16 : As a customer, I want to activate my account so that I can lo
     When user agress on I have read and agree to the MyLife Wills
     When user agrees on Maurice Blackburn's Privacy Policy by ticking the checkbox
     When the user clicks on create account button
-    And user sees message "Thank you for registering"
+    And user sees message "Well done, your account is nearly created."
+    And user sees message "We have sent you an activation email. Please go to your email and click the activation link to confirm your account."
+    And user sees message "Once activated you can begin providing your instructions in our easy online system."
     Given user opens browser and decides to proceed to the activation links page
     Then user is on "Codes" page
     When the user clicks on activation link
@@ -33,5 +36,5 @@ Feature: MW - 16 : As a customer, I want to activate my account so that I can lo
     Then user close browser
 
     Examples: 
-      | First Name | Family Name | Email  | State | Password     | Confirm Password | Source        |
-      | Demeth     | Camuin      | Demeth | VIC   | Password123! | Password123!     | Word Of Mouth |
+      | First Name | Family Name | Email  | State | Password     | Confirm Password | Source        | Phone   |
+      | Demeth     | Camuin      | Demeth | VIC   | Password123! | Password123!     | Word Of Mouth | 4772834 |

@@ -39,9 +39,9 @@ Feature: MW - 27C Questions : As a customer, I want to list my beneficiaries so 
     #Yes Spouse and No Children
     And user sees question "Do you want to leave your whole estate to your spouse/partner if they survive you?"
     And user clicks yes to Do you want to leave your whole estate to your spouse/partner if they survive you question
-    And user sees question "If your spouse/partner predeceases you"
+    And user sees question "If your spouse/partner passes away before you, do you want to give the whole of your estate equally to any children you have in the future?"
     And user clicks yes to if your spouse/partner predeceases you, do you want to give the whole of your estate equally to any children you have in the future question
-    And user sees question "If any of your children predecease you"
+    And user sees question "If any of your children pass away before you"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question
@@ -51,7 +51,7 @@ Feature: MW - 27C Questions : As a customer, I want to list my beneficiaries so 
     And user clicks no to Do you want to leave your whole estate to your spouse/partner if they survive you question
     And user sees question "Do you want to give the whole of your estate equally to any children you have in the future?"
     And user clicks yes to Do you want to give the whole of your estate equally to any children you have in the future question
-    And user sees question "If any of your children predecease you"
+   And user sees question "If any of your children pass away before you"
     And user clicks yes to If any of your children predecease you, do you want to divide it equally amongst their children question
     And user sees disaster question displayed
     And user clicks no to If any of your children predecease you, do you want to divide it equally amongst their children question

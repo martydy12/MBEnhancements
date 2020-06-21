@@ -79,7 +79,7 @@ public class StepDefinitions extends Base {
 	@After
 	public void tearDown(Scenario scenario) throws Exception {
 		CommonFunctions.screenshotFailedTest(scenario);
-		driver.quit();
+		 //driver.quit();
 
 	}
 
@@ -142,7 +142,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^user is on \"([^\"]*)\" page$")
 	public void user_is_on_page(String arg1) throws Throwable {
-		CommonFunctions.pause(5000, false);
+		CommonFunctions.pause(10000, false);
 		CommonFunctions.checkPageTitle(arg1);
 
 	}
@@ -218,7 +218,9 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks edit button on personal info summary$")
 	public void user_clicks_edit_button_on_personal_info_summary() throws Throwable {
+		
 		reviewConfirmPage.ClickEditPersonalInfoSummary();
+		//personalPage.clickOKBtnPopUp2();
 	}
 
 	@Then("^user edits some personal details$")
@@ -323,7 +325,9 @@ public class StepDefinitions extends Base {
 				"Do you want to give the whole of your estate equally to any children you have in the future?");
 		reviewConfirmPage.BenefFutureChildrenQuestionYes();
 		CommonFunctions.textVisibleInPage(
-				"If any of your children predecease you, do you want to divide that child's share equally among their children?");
+				"If any of your children pass away before you");
+		CommonFunctions.textVisibleInPage(
+				"s share equally among their children?");
 		reviewConfirmPage.BenefDisasterQuestionNo();
 		CommonFunctions.textVisibleInPage(
 				"If all of your chosen beneficiaries pass away, who do you want to leave your estate to?");
@@ -375,16 +379,24 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks on add POA on addons page$")
 	public void user_clicks_on_add_POA_on_addons_page() throws Throwable {
+		addOnsPage.clickAddPOAButton2();
+		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+	}
+	@Then("^user click on add POA on addons page$")
+	public void user_click_on_add_POA_on_addons_page() throws Throwable {
 		addOnsPage.clickAddPOAButton();
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 	}
+
 	@Then("^user clicks on add non couple POA on addons page$")
 	public void user_clicks_on_add_non_couple_POA_on_addons_page() throws Throwable {
 		addOnsPage.clickAddPOAButton2();
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
 	}
+
 	@Then("^user sees beneficiary question displayed$")
 	public void user_sees_beneficiary_question_displayed() throws Throwable {
 		beneficiariesPage.BeneficiaryQuestionDisplayed();
@@ -445,6 +457,7 @@ public class StepDefinitions extends Base {
 	@When("^user clicks yes to Do you want to include any children you have in the future question$")
 	public void user_clicks_yes_to_Do_you_want_to_include_any_children_you_have_in_the_future_question()
 			throws Throwable {
+		CommonFunctions.pause(5000, false);
 		beneficiariesPage.ClickYesQuestion1();
 		CommonFunctions.pause(5000, false);
 	}
@@ -669,13 +682,16 @@ public class StepDefinitions extends Base {
 	@When("^user clicks Standard will product for couples$")
 	public void user_clicks_Standard_will_product_for_couples() throws Throwable {
 		personalPage = homePage.clickCouplesProductStandardWillBtn();
-		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user clicks confirm button on feedback message to change to standard couple$")
 	public void user_clicks_confirm_button_on_feedback_message_to_change_to_standard_couple() throws Throwable {
 		personalPage = homePage.clickConfirmButtonToChangeToStandardCouple();
 		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user sees feedback message when changing from Mylife Couple to Standard Couple$")
@@ -719,7 +735,7 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)?')])[1]")));
 
 	}
-	
+
 	@When("^user sees feedback message when changing from Mylife Single to Standard Couple$")
 	public void user_sees_feedback_message_when_changing_from_Mylife_Single_to_Standard_Couple() throws Throwable {
 		CommonFunctions.pause(10000, false);
@@ -727,8 +743,9 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)')])[1]")));
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Wills (Couple)?");
-		
+
 	}
+
 	@When("^user sees feedback message when changing from Standard Couple to Mylife Single$")
 	public void user_sees_feedback_message_when_changing_from_Standard_Couple_to_Mylife_Single() throws Throwable {
 		CommonFunctions.pause(10000, false);
@@ -738,7 +755,6 @@ public class StepDefinitions extends Base {
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("(Single)?");
 	}
 
-	
 	@When("^user sees feedback message when changing from Mylife Single to Standard Single$")
 	public void user_sees_feedback_message_when_changing_from_Mylife_Single_to_Standard_Single() throws Throwable {
 		CommonFunctions.pause(2000, false);
@@ -746,8 +762,7 @@ public class StepDefinitions extends Base {
 		CommonFunctions.elementDisplayed(driver.findElement(By.xpath("(//div[contains(text(),'(Single)?')])[1]")));
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("to Standard");
 		CommonFunctions.checkFeedbackMessageDisplayedContainsString("Will (Single)?");
-		
-		
+
 	}
 
 	@When("^user sees feedback message when changing from Mylife Single to Mylife Couple$")
@@ -890,25 +905,32 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		personalPage = homePage.clickSinglesProductStandardWillBtn();
-		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user clicks Standard victorian will product for singles$")
 	public void user_clicks_Standard_victorian_will_product_for_singles() throws Throwable {
 		personalPage = homePage.clickSinglesProductStandardWillVicBtn();
 		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user clicks MyLife will product for singles$")
 	public void user_clicks_MyLife_will_product_for_singles() throws Throwable {
 		personalPage = homePage.clickMyLifeProductStandardSingleWillBtn();
 		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user clicks MyLife will product for couples$")
 	public void user_clicks_MyLife_will_product_for_couples() throws Throwable {
 		personalPage = homePage.clickMyLifeProductStandardCoupleWillBtn();
 		CommonFunctions.pause(5000, false);
+		//CommonFunctions.pause(5000, false);
+		//personalPage = homePage.clickOKBtnPopUp();
 	}
 
 	@When("^user checks if additional questions displayed for single is correct when single product is selected$")
@@ -1160,6 +1182,11 @@ public class StepDefinitions extends Base {
 		executorsPage = beneficiariesPage.ClickNextButton();
 		CommonFunctions.pause(5000, false);
 	}
+	@Then("^user clicks the next button on the beneficiaries page$")
+	public void user_clicks_the_next_button_on_the_beneficiaries_page() throws Throwable {
+		idDocsPage = beneficiariesPage.ClickNextButton2();
+		CommonFunctions.pause(5000, false);
+	}
 
 	@Then("^user click the next button on the executors page$")
 	public void user_click_the_next_button_on_the_executors_page() throws Throwable {
@@ -1326,8 +1353,9 @@ public class StepDefinitions extends Base {
 
 	@When("^user selects Foreign Passport as first identification type$")
 	public void user_selects_Foreign_Passport_as_first_identification_type() throws Throwable {
+		CommonFunctions.pause(5000, false);
 		idDocsPage.ClickAddIdentificationDocument();
-		CommonFunctions.pause(2000, false);
+		CommonFunctions.pause(5000, false);
 		idDocsPage.SelectForeignPassportFirstID();
 		CommonFunctions.pause(2000, false);
 	}
@@ -1350,6 +1378,8 @@ public class StepDefinitions extends Base {
 
 	@When("^user selects Medicare as first identification type$")
 	public void user_selects_Medicare_as_first_identification_type() throws Throwable {
+		idDocsPage.ClickAddIdentificationDocument();
+		CommonFunctions.pause(5000, false);
 		idDocsPage.SelectMedicareFirstID();
 		CommonFunctions.pause(5000, false);
 	}
@@ -1408,6 +1438,7 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.pause(5000, false);
+		idDocsPage.ClickAddButton();
 	}
 
 	@When("^user adds australian passport details$")
@@ -1417,10 +1448,13 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.clickKeys(Keys.chord(Keys.TAB));
 		CommonFunctions.pause(5000, false);
+		idDocsPage.ClickAddButton();
 	}
 
 	@When("^user selects Australian Passport as first identification type$")
 	public void user_selects_Australian_Passport_as_first_identification_type() throws Throwable {
+		idDocsPage.ClickAddIdentificationDocument();
+		CommonFunctions.pause(2000, false);
 		idDocsPage.SelectAustralianPassportSecondID();
 		CommonFunctions.pause(5000, false);
 	}
@@ -1436,6 +1470,20 @@ public class StepDefinitions extends Base {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		reviewConfirmPage = idDocsPage.ClickNextButton();
+		CommonFunctions.pause(5000, false);
+	}
+
+	@When("^user clicks add button on the ID docs page$")
+	public void user_clicks_add_button_on_the_ID_docs_page() throws Throwable {
+
+		idDocsPage.ClickAddButton();
+		CommonFunctions.pause(5000, false);
+	}
+
+	@When("^user clicks cancel button on the ID docs page$")
+	public void user_clicks_cancel_button_on_the_ID_docs_page() throws Throwable {
+
+		idDocsPage.ClickCancelButton();
 		CommonFunctions.pause(5000, false);
 	}
 
@@ -1845,7 +1893,15 @@ public class StepDefinitions extends Base {
 		assetsPage = aboutPage.ClickNextButton();
 		CommonFunctions.pause(5000, false);
 	}
-
+	@When("^user click the next button on the about page with spouse$")
+	public void user_click_the_next_button_on_the_about_page_with_spouse() throws Throwable {
+		aboutPage.ClickNextButton2();
+		aboutPage.ClickNextButton2();
+		CommonFunctions.pause(15000, false);
+		assetsPage =aboutPage.ClickOkInviteSpousePopup2();
+		CommonFunctions.pause(5000, false);
+		
+	}
 	@When("^user click the back button on the about page$")
 	public void user_click_the_back_button_on_the_about_page() throws Throwable {
 		personalPage = aboutPage.ClickBackButton();
@@ -2100,7 +2156,9 @@ public class StepDefinitions extends Base {
 
 	@When("^user adds a legitimate child$")
 	public void user_adds_a_legitimate_child() throws Throwable {
-		aboutPage.AddChildrenToggleOffOn();
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_UP));
+		// aboutPage.AddChildrenToggleOffOn();
 		CommonFunctions.pause(5000, false);
 		aboutPage.AddChildrenClickAddChild();
 		CommonFunctions.pause(5000, false);
@@ -2123,12 +2181,14 @@ public class StepDefinitions extends Base {
 	public void user_checks_if_the_default_value_for_country_inside_the_adding_of_guardian_screen_is_set_to_Australia()
 			throws Throwable {
 		aboutPage.CheckGuardianCountryDefaultValue();
+		aboutPage.ClickGuardianCancel();
 	}
 
 	@When("^user adds a guardian$")
 	public void user_adds_a_guardian() throws Throwable {
 		aboutPage.AddGauardianClickAddGuardian();
 		CommonFunctions.pause(5000, false);
+		
 		aboutPage.AddGuardian();
 	}
 
@@ -2158,6 +2218,9 @@ public class StepDefinitions extends Base {
 	public void user_selects_yes_on_guardian_question() throws Throwable {
 		aboutPage.ClickGuardianYes();
 		CommonFunctions.pause(5000, false);
+		//aboutPage.ClickGuardianOKGuardianPopUp();
+		
+			
 	}
 
 	@When("^user checks if guardian question is mandatory$")
@@ -2505,6 +2568,10 @@ public class StepDefinitions extends Base {
 		arg1 = arg1 + "@gmail.com";
 		Email = registrationPage.setEmailField(arg1);
 	}
+	@When("^user inputs \"([^\"]*)\" in the Phone field on registration page$")
+	public void user_inputs_in_the_Phone_field_on_registration_page(String arg1) throws Throwable {
+		registrationPage.setPhoneeField(arg1);
+	}
 
 	@When("^user enter \"([^\"]*)\" in the Email field on registration page$")
 	public void user_enter_in_the_Email_field_on_registration_page(String arg1) throws Throwable {
@@ -2595,6 +2662,7 @@ public class StepDefinitions extends Base {
 
 	@When("^the user clicks on reset password link$")
 	public void the_user_clicks_on_reset_password_link() throws Throwable {
+		codePage.ClickNextPage();
 		changePasswordPage = codePage.clickResetPasswordLink();
 		CommonFunctions.pause(5000, false);
 	}
@@ -2699,7 +2767,8 @@ public class StepDefinitions extends Base {
 		registrationPage.displayedSourceDropdown();
 		registrationPage.displayedPrivacyCheckbox();
 		registrationPage.displayedCreateAccountButton();
-		registrationPage.displayedBacktoLoginLink();
+		registrationPage.displayedPhone();
+		//registrationPage.displayedBacktoLoginLink();
 
 	}
 
@@ -2889,7 +2958,7 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks no to do you want to do your will with your spouse or partner question$")
 	public void user_clicks_no_to_do_you_want_to_do_your_will_with_your_spouse_or_partner_question() throws Throwable {
-		aboutPage.clickWillTogetherRadioNoRadioButton();
+		//aboutPage.clickWillTogetherRadioNoRadioButton();
 	}
 
 	@When("^user clicks no to do you want to leave your whole estate to your spouse/partner if they survive you question$")
@@ -3098,7 +3167,7 @@ public class StepDefinitions extends Base {
 	public void user_selects_yes_on_Do_you_have_an_Advance_Care_Directive_currently_in_place_question()
 			throws Throwable {
 		medicalDecisionsPage.clickYes();
-		CommonFunctions.pause(5000, false);
+		CommonFunctions.pause(10000, false);
 	}
 
 	@Then("^user selects no on Do you have an Advance Care Directive currently in place question$")
@@ -3203,9 +3272,9 @@ public class StepDefinitions extends Base {
 		CommonFunctions.textVisibleInPage("Thank you for providing your information.");
 		CommonFunctions.textVisibleInPage("Please confirm the below details are correct.");
 		CommonFunctions.textVisibleInPage(
-				"NOTE: This is not Enduring Powers of Attorney. It is a copy of the information you provided to us online.");
-		CommonFunctions.textVisibleInPage(
-				"One of our expert Wills & Estates lawyers will review this information and be in touch soon.");
+				"NOTE: This is not your Enduring Powers of Attorney. It is a copy of the information you provided to us online.");
+		//CommonFunctions.textVisibleInPage(
+				//"One of our expert Wills & Estates lawyers will review this information and be in touch soon.");
 		CommonFunctions.textVisibleInPage("Enduring Power of Attorney");
 		CommonFunctions.textVisibleInPage("Do you want your Enduring Power of Attorney to be for:");
 		CommonFunctions.textVisibleInPage("Only financial matters");
@@ -3292,6 +3361,21 @@ public class StepDefinitions extends Base {
 	@Then("^user clicks on pay now button$")
 	public void user_clicks_on_pay_now_button() throws Throwable {
 		CommonFunctions.pause(5000, false);
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
+		CommonFunctions.pause(5000, false);
 		checkOutPage = paymentsPage.clickPayNow();
 		CommonFunctions.pause(5000, false);
 
@@ -3317,7 +3401,7 @@ public class StepDefinitions extends Base {
 	// Checkout - invalid payment steps
 	@When("^user sees card type option$")
 	public void user_sees_card_type_option() throws Throwable {
-		checkOutPage.displayCardType();
+		//checkOutPage.displayCardType();
 	}
 
 	@When("^user sees card number input$")
@@ -3373,11 +3457,13 @@ public class StepDefinitions extends Base {
 
 	@Then("^user clicks no$")
 	public void user_clicks_no() throws Throwable {
+		CommonFunctions.pause(10000, false);
 		checkOutPage.clickNoCancelOrder();
 	}
 
 	@Then("^user clicks yes$")
 	public void user_clicks_yes() throws Throwable {
+		CommonFunctions.pause(10000, false);
 		checkOutPage.clickYesCancelOrder();
 	}
 
@@ -3609,6 +3695,7 @@ public class StepDefinitions extends Base {
 
 	@Then("^check add rule$")
 	public void check_add_rule() throws Throwable {
+		CommonFunctions.pause(5000, false);
 		unionListPage.checkAddRule();
 	}
 
@@ -3637,6 +3724,11 @@ public class StepDefinitions extends Base {
 	@Then("^user select alphanumeric string type$")
 	public void user_select_alphanumeric_string_type() throws Throwable {
 		unionListPage.selectAlphanumericStringType();
+	}
+	
+	@Then("^user selects alphanumeric string type$")
+	public void user_selects_alphanumeric_string_type() throws Throwable {
+		unionListPage.selectAlphanumericStringType2();
 	}
 
 	@Then("^user sees alert message for alpha location$")
@@ -3787,7 +3879,7 @@ public class StepDefinitions extends Base {
 		aboutPage.ClickTooltipDependents();
 		CommonFunctions.pause(2000, false);
 		CommonFunctions.textVisibleInPage(
-				"A Dependent includes someone you financailly support or someone who lives with you and with whom you have a supportive relationship. It does not usually include a housemate.");
+				"A dependent includes someone you financially support or someone who lives with you and with whom you have a supportive relationship. It does not usually include a housemate.");
 	}
 
 	@When("^user sees upload will tooltip$")
@@ -3850,7 +3942,7 @@ public class StepDefinitions extends Base {
 	public void user_checks_the_content_of_assets_tooltip() throws Throwable {
 		assetsPage.ClickTooltipAssets();
 		CommonFunctions.pause(1500, false);
-		CommonFunctions.textVisibleInPage("An Asset is something of financial value that you solely or jointly own.");
+		CommonFunctions.textVisibleInPage("An Asset is something of financial value that you own solely or with another person.");
 	}
 
 	@When("^user sees trusts tooltip$")
@@ -4138,9 +4230,9 @@ public class StepDefinitions extends Base {
 	public void user_checks_spouse_invitation_message() throws Throwable {
 		CommonFunctions.clickKeys(Keys.chord(Keys.PAGE_DOWN));
 		CommonFunctions.pause(5000, false);
-		addOnsPage.clickAddSpouse();
+		//addOnsPage.clickAddSpouse();
 		// CommonFunctions.pause(3000, false);
-		// addOnsPage.checkSpouseBody();
+		 addOnsPage.checkSpouseBody();
 	}
 
 	@Then("^user input spouse email$")

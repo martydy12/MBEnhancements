@@ -1,15 +1,15 @@
 Feature: MW - 29A : ID Docs Page
 
-		@WIP
-  	Scenario: Scenario 1
+  @WIP
+  Scenario: Scenario 1
     #Go to site and log in
     Given user opens browser and proceeds to orders page
     Then user selects "jerome@yehey.com" on user dropdown
     Then user clicks on delete all button
     Then user close browser
-    
-  	@Sprint1
- 	  Scenario Outline: Scenario 1
+
+  @Sprint1
+  Scenario Outline: Scenario 1
     # Go to site and log in
     Given user opens browser
     When user logs into app with the "<email>" and "<password>" as the login credentials
@@ -59,19 +59,23 @@ Feature: MW - 29A : ID Docs Page
     And user agrees to terms and agreement inside the ID docs Page
     #Select Foreign and Australian Passport
     And user selects Foreign Passport as first identification type
-    And user selects Australian Passport as second identification type
-    And user clicks next button on the ID docs page
+    And user clicks add button on the ID docs page
     And user checks if mandatory fields for Foreign Passport Identification type
+     And user clicks cancel button on the ID docs page
+    And user selects Australian Passport as first identification type
+    And user clicks add button on the ID docs page
     And user checks if mandatory fields for Australian Passport Identification type
+    And user clicks cancel button on the ID docs page
     #Select Driver license and Medicare
     And user selects Driver License as first identification type
-    And user selects Medicare as second identification type
-    And user clicks next button on the ID docs page
+    And user clicks add button on the ID docs page
     And user checks if mandatory fields for Driver License Identification type
+    And user clicks cancel button on the ID docs page
+    And user selects Medicare as first identification type
+    And user clicks add button on the ID docs page
     And user checks if mandatory fields for Medicare Identification type
     Then user close browser
 
     Examples: 
-      | email       | password     | Address1                                         | Suburb         |
+      | email            | password     | Address1                                         | Suburb         |
       | jerome@yehey.com | Password123! | No.22 Diamond Street Bahayang Pagasa Imus Cavite | Executive Lane |
-    
