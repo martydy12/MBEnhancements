@@ -304,7 +304,7 @@ public class AboutPage extends Base {
 	@FindBy(xpath = "//input[contains(@id,'Partner_Email')]")
 	WebElement Field_SpouseEmail;
 
-	@FindBy(xpath = "//span[text()='Please input your spouse/partner’s email so we can send them an invitation to complete their online form. By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
+	@FindBy(xpath = "//span[text()='Please input your spouse/partnerï¿½s email so we can send them an invitation to complete their online form. By providing the contact email address, you confirm that you have consent from the relevant person to pass on such details to Maurice Blackburn in connection with the service.']")
 	WebElement email_Consent;
 
 	// ================================================== Initializing the Page
@@ -1141,7 +1141,9 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(WillMarryNo);
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
+//		CommonFunctions.clickElement(WillTogetherRadioNo);
+//		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Question8, "Spouse@email.com");
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
@@ -1160,10 +1162,11 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question5, "5");
 		CommonFunctions.pause(5000, false);
+		CommonFunctions.enterElementValue(Question8, "Spouse@email.com");
 		CommonFunctions.clickElement(WillMarryNo);
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
-		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(WillTogetherRadioNo);
+//		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -1209,8 +1212,8 @@ public class AboutPage extends Base {
 		// CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(WillTogetherRadioNo);
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(OkButtonPopUp);
-		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(OkButtonPopUp);
+//		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenYes);
@@ -1239,12 +1242,12 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question4, "Camuin");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.enterElementValue(Question5, "5");
-		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillMarryNo);
-		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
-		CommonFunctions.pause(5000, false);
+//		CommonFunctions.enterElementValue(Question5, "5");
+//		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(WillMarryNo);
+//		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(WillTogetherRadioNo);
+//		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);
@@ -1260,12 +1263,12 @@ public class AboutPage extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.enterElementValue(Question4, "Camuin");
 		CommonFunctions.pause(5000, false);
-		CommonFunctions.enterElementValue(Question5, "5");
-		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillMarryNo);
-		CommonFunctions.pause(5000, false);
-		CommonFunctions.clickElement(WillTogetherRadioNo);
-		CommonFunctions.pause(5000, false);
+//		CommonFunctions.enterElementValue(Question5, "5");
+//		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(WillMarryNo);
+//		CommonFunctions.pause(5000, false);
+//		CommonFunctions.clickElement(WillTogetherRadioNo);
+//		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(LawNoButton);
 		CommonFunctions.pause(5000, false);
 		CommonFunctions.clickElement(ChildrenNo);

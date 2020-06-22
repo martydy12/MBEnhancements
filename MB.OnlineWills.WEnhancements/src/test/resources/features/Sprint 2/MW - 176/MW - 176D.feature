@@ -29,7 +29,7 @@ Feature: MW - 176 : Union - Confirmation
     Then user check the cost
     #Select Standard will Package-------------------------------------------------------------------------
     When user clicks Standard will product for singles
-    Then user is on "Personal" page
+    Then user is on "Personal Details" page
     #User filled valid input
     When user fills up mandatory fields inside the personal page for victorian
     When user clicks on Next button on personal page
@@ -37,7 +37,7 @@ Feature: MW - 176 : Union - Confirmation
     #Single-------------------------------------------------------------------------
     When user selects "Single" as Relationship Status on about page
     And user fill up the all required fields for single status
-    And user click the next button on the about page
+    And user click the next button on the about pages
     Then user is on "Assets" page
     #Asset answer "no" to other question
     And user clicks no to all assets question

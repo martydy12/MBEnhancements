@@ -27,8 +27,8 @@ Feature: MW - 59A - About you tooltips
     Then user is on "About you" page
     When user selects "Married" as Relationship Status on about page
     #spouse/partner will tooltip-----------------------------------------------------------------------------------------
-    And user sees spouse/partner will tooltip
-    And user checks the content of spouse/partner will tooltip
+    #And user sees spouse/partner will tooltip
+    #And user checks the content of spouse/partner will tooltip
     #significant child will tooltip-----------------------------------------------------------------------------------------
     And user clicks yes to Do you have any children question
     And user clicks add child on about you page

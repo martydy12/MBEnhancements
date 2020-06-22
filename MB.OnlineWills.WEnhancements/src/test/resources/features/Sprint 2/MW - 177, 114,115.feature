@@ -23,8 +23,8 @@ Feature: MW - 177 114 115: Union List
     Then user clicks on add union button
     
     #MW-177 Scenario 1: Max Length must be greater than the Min Length
-    Then check add rule
-    Then user selects alphanumeric string type
+    #Then check add rule
+    Then user select alphanumeric string type
     And user enter min length greater than max length
     Then user click save button
     Then user sees message "Max Length must be greater than the Min Length"
@@ -57,7 +57,7 @@ Feature: MW - 177 114 115: Union List
     
     #MW-115 Scenario 3: Add Rule
     Then user clicks on add union button
-    Then check add rule
+    #Then check add rule
     And user fill up add union details
     Then user click save button
     Then user is on "Union List" page
@@ -74,10 +74,10 @@ Feature: MW - 177 114 115: Union List
     And user check for the edited union
     
     #MW-114 Scenario 1: Delete Rule
-    Then user click delete button
-    Then user click delete button
+    #Then user click delete button
+    #Then user click delete button
     #And windows alert message is displayed
-    When user hits the enter key
+    #When user hits the enter key
     Then user is on "Union List" page
     And user check for the edited union
       	

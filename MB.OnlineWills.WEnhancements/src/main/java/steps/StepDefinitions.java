@@ -780,8 +780,8 @@ public class StepDefinitions extends Base {
 		CommonFunctions.pause(5000, false);
 		CommonFunctions
 				.checkFeedbackMessageDisplayedContainsString("Are you sure you want to change your order from a");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents® (Couple) to");
-		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documents® (Single)?");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documentsï¿½ (Couple) to");
+		CommonFunctions.checkFeedbackMessageDisplayedContainsString("MyLife Documentsï¿½ (Single)?");
 
 	}
 
@@ -1893,6 +1893,14 @@ public class StepDefinitions extends Base {
 		assetsPage = aboutPage.ClickNextButton();
 		CommonFunctions.pause(5000, false);
 	}
+	
+	@When("^user click the next button on the about pages$")
+	public void user_click_the_next_button_on_the_about_pages() throws Throwable {
+		Thread.sleep(3000);
+		aboutPage.ClickNextButton2();
+		CommonFunctions.pause(15000, false);
+
+	}
 	@When("^user click the next button on the about page with spouse$")
 	public void user_click_the_next_button_on_the_about_page_with_spouse() throws Throwable {
 		aboutPage.ClickNextButton2();
@@ -2329,7 +2337,15 @@ public class StepDefinitions extends Base {
 
 	@When("^user clicks on add executor$")
 	public void user_clicks_on_add_executor() throws Throwable {
+		CommonFunctions.scrollToTop();
 		executorsPage.clickQuestion2();
+		CommonFunctions.pause(5000, false);
+	}
+	
+	@When("^user clicks on add executor2$")
+	public void user_clicks_on_add_executor2() throws Throwable {
+		CommonFunctions.scrollToTop();
+		executorsPage.clickQuestion2a();
 		CommonFunctions.pause(5000, false);
 	}
 

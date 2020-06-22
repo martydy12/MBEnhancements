@@ -23,8 +23,8 @@ Feature: MW - 42A : As a customer, I want to view additional products I can purc
     Then user is on "About you" page
     And user selects "Engaged" as Relationship Status on about page
     And user fill up the all required fields for engaged status
-    And user clicks yes to do you want to do your will with your spouse or partner question
-    And user inputs "testspouse@test.com" as the email address of the spouse/partner
+    #And user clicks yes to do you want to do your will with your spouse or partner question
+    #And user inputs "testspouse@test.com" as the email address of the spouse/partner
     And user click the next button on the about page
     Then user is on "Assets" page
     And user clicks no to all assets question

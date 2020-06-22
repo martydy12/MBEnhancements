@@ -19,7 +19,7 @@ Feature: MW - 178D
     When user logs into app with the "<email>" and "<password>" as the login credentials
     Then user is on "Landing" page
     #And user clicks on new order on incomplete order popup
-    And user verifies if css is displayed
+    #And user verifies if css is displayed
     When user selects couples product
     Then user checks couple will title is displayed
     And user checks couple will body is displayed

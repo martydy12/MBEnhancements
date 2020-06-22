@@ -44,7 +44,7 @@ Feature: MW - 59E - POA tooltip
     #And user adds first option executor
     And user clicks on add executor
     And user adds first option executor
-    And user clicks on add executor
+    And user clicks on add executor2
     And user adds back up executor
     And user clicks no to Would you like Maurice Blackburn to help your Executor manage your estate question
     And user selects i have no wish on funeral wishes

@@ -96,15 +96,15 @@ public class HomePage extends Base {
 	WebElement TotalStandardWillCostWithPOA;
 
 	/* View Text */
-	@FindBy(xpath = "//span[contains(text(),'Standard Single Will')]")
+	@FindBy(xpath = "//h2[contains(text(),'Standard Will (one for you)')]")
 	WebElement StandardSingleWill;
-	@FindBy(xpath = "//span[contains(text(),'It takes only 30 mins to provide us with all the information we need to draft your Will. ')]")
+	@FindBy(xpath = "//span[contains(text(),'Takes as little as 30 minutes')]")
 	WebElement SingleWillBodyText;
-	@FindBy(xpath = "//span[contains(text(),'Standard Couple Will')]")
+	@FindBy(xpath = "//h2[contains(text(),'Couples Standard Wills (one for you and one for your partner)')]")
 	WebElement StandardCoupleWill;
-	@FindBy(xpath = "//span[contains(text(),'It takes only 30 mins to provide us with all the information we need to draft a Will for you and your spouse/partner. ')]")
+	@FindBy(xpath = "//span[contains(text(),'Takes as little as 30 minutes each')]")
 	WebElement CoupleWillBodyText;
-	@FindBy(xpath = "(//span[contains(text(),'A Will for you')])[1]")
+	@FindBy(xpath = "//span[contains(text(),'You and your partner can make your individual Wills from the comfort of your home.')]")
 	WebElement CoupleWillTypeText1;
 	@FindBy(xpath = "//span[contains(text(),'A Will for your spouse/partner')]")
 	WebElement CoupleWillTypeText2;
@@ -112,7 +112,7 @@ public class HomePage extends Base {
 	/* Footer */
 
 	//@FindBy(xpath = "//div[contains(text(),'Â© Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
-	@FindBy(xpath = "//div[contains(text(),'© Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
+	@FindBy(xpath = "//div[contains(text(),'ï¿½ Copyright 2019 Maurice Blackburn. All Rights Reserved.')]")
 	WebElement Footer_MB;
 	@FindBy(xpath = "(//span[@class='fa fa-fw fa-ellipsis-v'])[1]")
 	WebElement ellipsis_BackOfficeEmailChange;

@@ -21,6 +21,9 @@ public class ExecutorsPage extends Base {
 	//@FindBy(xpath = "//span[@class='fa fa-fw fa-plus']")
 	@FindBy(xpath = "//a[text()='Add Executor']")
 	WebElement Question2;
+	
+	@FindBy(xpath = "//a[text()='Add Executor']")
+	WebElement Question2a;
 
 	// Element - PopUp
 	// Are you sure you want to remove this entry from the list?
@@ -230,6 +233,10 @@ public class ExecutorsPage extends Base {
 	/* Add Executor */
 	public void clickQuestion2()throws Exception{
 		CommonFunctions.clickElement(Question2);
+	}
+	
+	public void clickQuestion2a()throws Exception{
+		CommonFunctions.clickElement(Question2a);
 	}
 
 	/* FirstOption & Backup */
